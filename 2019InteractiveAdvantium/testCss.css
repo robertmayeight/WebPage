@@ -169,10 +169,13 @@ body{
 }
 
 .questions{
+  overflow: scroll;
   position:fixed;
     top:0;
   top: 5px;
   left: 5px;
+  width: 200px;
+  height: 100%;
 }
 
 
