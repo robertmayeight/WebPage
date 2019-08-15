@@ -14,15 +14,16 @@
 
   </div>
   <div class="questions">
-    <div id="redBox" onclick="changeColors('red')" style="cursor:pointer;display:block; width:100px; background-color:brown; color:white";><center>Red</center></div>
-    <div id="blueBox" onclick="changeColors('blue')" style="cursor:pointer;display:block; width:100%; background-color:blue; color:white";><center>Blue</center></div>
-    <div id="orangeBox" onclick="changeColors('orange')" style="cursor:pointer;display:block; width:100%; background-color:orange; color:black";><center>Orange</center></div>
+    <div id="redBox" onclick="changeColors('red')" style="cursor:pointer; display:block; width:100%; background-color:red; color:white";><center>Red</center></div>
+    <div id="blueBox" onclick="changeColors('blue')" style="cursor:pointer; display:block; width:100%; background-color:blue; color:white";><center>Blue</center></div>
+    <div id="orangeBox" onclick="changeColors('orange')" style="cursor:pointer; display:block; width:100%; background-color:orange; color:black";><center>Orange</center></div>
     <div id="yellowBox" onclick="changeColors('yellow')" style="cursor:pointer;display:block; width:100%; background-color:yellow";><center>Yellow</center></div>
     <div id="purpleBox" onclick="changeColors('purple')" style="cursor:pointer;display:block; width:100%; background-color:purple; color:white";><center>Purple</center></div>
     <div id="greenBox" onclick="changeColors('green')" style="cursor:pointer;display:block; width:100%; background-color:green";><center>Green</center></div>
     <div id="greyBox" onclick="changeColors('grey')" style="cursor:pointer;display:block; width:100%; background-color:grey";><center>Grey</center></div>
     <div id="brownBox" onclick="changeColors('brown')" style="cursor:pointer;display:block; width:100%; background-color:brown";><center>Brown</center></div>
-    <div id="blackBox" onclick="changeColors('black')" style="cursor:pointer;display:block; width:100%; background-color:black; color:white";><center>Black</center></div>
+    <div id="blackBox" onclick="changeColors('black')" style="cursor:pointer;display:block; width:100%; background-color:black; color:white";><center>Black</center>
+  </div>
     &nbsp;
         <button type="button" id="clearDiagram" onclick="clearHighlights()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Clear Diagram</center></button>
          <button type="button" id="showL1" onclick="showL1()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Show L1</center></button>
@@ -30,6 +31,15 @@
 
          &nbsp;
         <button type="button" id="ovenLampBtn" onclick="showOvenLamp()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Oven Lamp</center></button>
+        <button type="button" id="fanMotorBtn" onclick="showFanMotor()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Fan Motor</center></button>
+        <button type="button" id="conMotorBtn" onclick="showConMotor()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Covection Fan Motor</center></button>
+        <button type="button" id="turnTableBtn" onclick="showTurnTableMotor()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>TurnTable Fan Motor</center></button>
+        <button type="button" id="damperMotorBtn" onclick="showDamperMotor()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Damper Motor</center></button>
+        <button type="button" id="UH1Btn" onclick="showUH1()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Upper Heater 1</center></button>
+        <button type="button" id="UH2Btn" onclick="showUH2()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Upper Heater 2</center></button>
+        <button type="button" id="lowerHeaterCeramicBtn" onclick="showLowerHeaterCeramic()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Lower Heater Ceramic</center></button>
+        <button type="button" id="conHeaterBtn" onclick="showConHeater()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Convection Heater</center></button>
+        <button type="button" id="highVotageBtn" onclick="showHighVoltage()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>High Voltage (Mag)</center></button>
 </div>
 
 </body>
