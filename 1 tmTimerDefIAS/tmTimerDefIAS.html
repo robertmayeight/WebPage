@@ -1,26 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>TMNF Timer Defrost Interactive Schematic</title>
+  <title>2019 120 V Advantium Interactive Schematic</title>
   <meta charset="UTF-8">
   <!DOCTYPE html>
-  <link rel="stylesheet" href="../JavaScriptLibraries/interActiveDiagram.css">
+  <link rel="stylesheet" href="../JavaScriptLibraries/interactiveSchematic.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 </head>
 <body>
   <input type="range" min="1" max="5" value="0" step="0.01" id="zoomSlider" class="slider">
   <div id="showWindow"></div>
-  <div class="questions">
-    <div id="redBox" onclick="changeColors('red')" style="cursor:pointer;display:block; width:100%; background-color:red; color:white";><center>Red</center></div>
-    <div id="blueBox" onclick="changeColors('blue')" style="cursor:pointer;display:block; width:100%; background-color:blue; color:white";><center>Blue</center></div>
-    <div id="orangeBox" onclick="changeColors('orange')" style="cursor:pointer;display:block; width:100%; background-color:orange; color:black";><center>Orange</center></div>
+  
+  <div class="questions" style="scroll-behavior: smooth;">
+    <div id="redBox" onclick="changeColors('red')" style="cursor:pointer; display:block; width:100%; background-color:red; color:white";><center>Red</center></div>
+    <div id="blueBox" onclick="changeColors('blue')" style="cursor:pointer; display:block; width:100%; background-color:blue; color:white";><center>Blue</center></div>
+    <div id="orangeBox" onclick="changeColors('orange')" style="cursor:pointer; display:block; width:100%; background-color:orange; color:black";><center>Orange</center></div>
     <div id="yellowBox" onclick="changeColors('yellow')" style="cursor:pointer;display:block; width:100%; background-color:yellow";><center>Yellow</center></div>
     <div id="purpleBox" onclick="changeColors('purple')" style="cursor:pointer;display:block; width:100%; background-color:purple; color:white";><center>Purple</center></div>
     <div id="greenBox" onclick="changeColors('green')" style="cursor:pointer;display:block; width:100%; background-color:green";><center>Green</center></div>
     <div id="greyBox" onclick="changeColors('grey')" style="cursor:pointer;display:block; width:100%; background-color:grey";><center>Grey</center></div>
     <div id="brownBox" onclick="changeColors('brown')" style="cursor:pointer;display:block; width:100%; background-color:brown";><center>Brown</center></div>
-    <div id="blackBox" onclick="changeColors('black')" style="cursor:pointer;display:block; width:100%; background-color:black; color:white";><center>Black</center></div>
-</div>
+    <div id="blackBox" onclick="changeColors('black')" style="cursor:pointer;display:block; width:100%; background-color:black; color:white";><center>Black</center>
+  </div>
+  &nbsp;
+        <button type="button" id="clearDiagram" onclick="clearHighlights()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Clear Diagram</center></button>
+         <button type="button" id="showL1" onclick="showL1()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Show L1</center></button>
+         <button type="button" id="showNeutral" onclick="showNeutral()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Show Neutral</center></button>
+         &nbsp;
+        <button type="button" id="compressorBtn" onclick="showCompressor()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Compressor To Overload</center></button>
+        <button type="button" id="defrostTimerBtn" onclick="showDefrostTimerMotor()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Defrost Timer Motor</center></button>
+        <button type="button" id="conFanMotorBtn" onclick="showConFanMotor()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Condenser Fan Motor</center></button>
+        <button type="button" id="evapFanMotorBtn" onclick="showEvapFanMotor()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Evaporator Fan Motor</center></button>
+        <button type="button" id="defHeaterBtn" onclick="showDefHeater()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Defrost Heater</center></button>
+        <button type="button" id="doorLampBtn" onclick="showDoorLamp()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Door Lamp</center></button>
+        <button type="button" id="waterValveBtn" onclick="showWaterValve()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Water Valve</center></button>
+        <button type="button" id="IMPowerBtn" onclick="showIMPower()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Power to Ice Maker</center></button>
+  </div>
+
 </body>
 <script src="../JavaScriptLibraries/TweenMax.min.js"></script>
 <script src="../JavaScriptLibraries/draggable.js"></script>

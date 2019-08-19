@@ -112,7 +112,146 @@ function changeColors(myColor){
 	}
 }
 
+TweenMax.to(schematic, .01, {scaleX:2, scaleY:2, x:100, y:-200, transformOrigin: "50% 50%", ease: Power0.easeNone});
+
 // -----------------------------------------------------------------------------------------------------------------------------
+
+function clearHighlights(){
+	TweenMax.to([defrostControlWiper,path200,path334,tcBlade,IMSwitch],1,{rotation:0});
+	TweenMax.to([defrostControlWipercopy,path200copy,path334copy,tcBladecopy,IMSwitchcopy],1,{rotation:0});
+	ccSwitchRotated=false;
+	timerSwitchRotated=false;
+	doorSwitchRotated=false;
+	defrostThermostatRotated=false;
+	waterValveSwitchRotated=false;
+
+	for(i=0; i<noPathsLength; i++){
+		noPaths[i].style.stroke = "black"
+		}
+}
+
+
+function showL1(){
+	TweenMax.to([path2783,path2775,path2691,tcBlade,"#path178-2",path1077,defrostControlWiper,"#path162-5","#path1583-6",path1097,path1100,path1366,path2801,path2792,path2803,path116,path142,path2479,path182,path4025,path200,path9983,path2477], .1, {stroke:"red"})
+}
+
+function showNeutral(){
+	TweenMax.to([path1116,path1099,path1101,path1370,path1103,path294,path1587,path6011,path348,path334,path2773,path302,path304,path1414,path168,path1416,path1418,"#path40-7",path6617,path3913,path6641,"#heater-0",path2750,path306,path308,path1117,path1177,path1179,path1084,path3961,path3965,path3959,path3963,pathfzLight,path40], .1, {stroke:"blue"})
+}
+
+function showCompressor(){
+	clearHighlights();
+	TweenMax.to([path2783,path2775,path2691,tcBlade,"#path178-2",path1077,defrostControlWiper,"#path162-5",path1097,path1100,path2801], .1, {stroke:"red"});
+	TweenMax.to([path1116,path1099,path1117], .1, {stroke:"blue"});
+}
+
+function showDefrostTimerMotor(){
+	clearHighlights();
+	TweenMax.to([path2783,path2775,path2691,tcBlade,"#path178-2"], .1, {stroke:"red"});
+	TweenMax.to([path1116,path1099,path1101,path1103,path294,path6011,path1414,path168], .1, {stroke:"blue"});
+	TweenMax.to([path296], .1, {stroke:"orange"});
+}
+
+function showConFanMotor(){
+	clearHighlights();
+	TweenMax.to([path2783,path2775,path2691,tcBlade,"#path178-2",path1077,"#path162-5",path1097,path1100,path1366,defrostControlWiper], .1, {stroke:"red"});
+	TweenMax.to([path1116,path1099,path1101,path1370], .1, {stroke:"blue"});
+	TweenMax.to(["#path1370-4"], .1, {stroke:"orange"});
+}
+
+function showEvapFanMotor(){
+	clearHighlights();
+	TweenMax.to([path2783,path2775,path2691,tcBlade,"#path178-2",path1077,defrostControlWiper,"#path162-5","#path1583-6"], .1, {stroke:"red"});
+	TweenMax.to([path1116,path1099,path1101,path1103,path294,path1587], .1, {stroke:"blue"});
+	TweenMax.to([evapFanMotor], .1, {stroke:"orange"});
+}
+
+function showDefHeater(){
+	clearHighlights();
+	TweenMax.to([path2783,path2775,path2691,tcBlade,"#path178-2",path1077,defrostControlWiper,path2750,path306,path308], .1, {stroke:"red"});
+	TweenMax.to([path1116,path1099,path1101,path1103,path294,path6011,path348,path334,path2773,path302,path304], .1, {stroke:"blue"});
+	TweenMax.to(["#heater-0"], .1, {stroke:"orange"});
+	TweenMax.to(defrostControlWiper,1,{rotation:-33});
+	TweenMax.to(defrostControlWipercopy,1,{rotation:-33});
+	timerSwitchRotated=true;
+}
+
+function showDoorLamp(){
+	clearHighlights();
+	TweenMax.to([path2783,path2775,path182,path4025,path4025,path200,path40], .1, {stroke:"red"});
+	TweenMax.to([path1116,path1099,path1101,path1103,path294,path6011,path1414,path1416,"#path40-7"], .1, {stroke:"blue"});
+	TweenMax.to([pathfzLight], .1, {stroke:"orange"});
+	TweenMax.to(path200,1,{rotation:-26});
+	TweenMax.to(path200copy,1,{rotation:-26});
+	doorSwitchRotated=true;
+}
+
+function showWaterValve(){
+	clearHighlights();
+	TweenMax.to([path2783,path2775,path182,path9983,path6641,path3064,path3066,IMSwitch], .1, {stroke:"red"});
+	TweenMax.to([path1116,path6617], .1, {stroke:"blue"});
+	TweenMax.to([path3913], .1, {stroke:"orange"});
+	TweenMax.to(IMSwitch,1,{rotation:-28});
+	TweenMax.to(IMSwitchcopy,1,{rotation:-28});
+	waterValveSwitchRotated=true;
+}
+
+
+function showIMPower(){
+	clearHighlights();
+	TweenMax.to([path2783,path2775,path182,path9983], .1, {stroke:"red"});
+	TweenMax.to([path1116,path1099,path1101,path1103,path294,path6011,path1414,path1416,path1418], .1, {stroke:"blue"});
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var ccSwitchRotated=false;
 ccSwitch.setAttribute('onclick','changeccSwitch();');
 ccSwitch.setAttribute('onmouseover','this.style.cursor = "pointer";');
@@ -176,6 +315,21 @@ function changeDefrostThermostatSwitch(){
 		TweenMax.to(path334copy,1,{rotation:0});
 		TweenMax.to(path324,1,{y:0});
 		defrostThermostatRotated=false;
+	}
+}
+
+var waterValveSwitchRotated=false;
+waterValveSwitch.setAttribute('onclick','changeIMSwitch();');
+waterValveSwitch.setAttribute('onmouseover','this.style.cursor = "pointer";');
+function changeIMSwitch(){
+	if(waterValveSwitchRotated === false){
+		TweenMax.to(IMSwitch,1,{rotation:-28});
+		TweenMax.to(IMSwitchcopy,1,{rotation:-28});
+		waterValveSwitchRotated=true;
+	}else{
+		TweenMax.to(IMSwitch,1,{rotation:0});
+		TweenMax.to(IMSwitchcopy,1,{rotation:0});
+		waterValveSwitchRotated=false;
 	}
 }
 

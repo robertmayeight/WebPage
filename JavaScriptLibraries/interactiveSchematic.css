@@ -169,13 +169,17 @@ body{
 }
 
 .questions{
-  overflow: scroll;
+  background-color: grey;
+  border-width: 10px;
+  border-color: green;
+  overflow-y: auto;
   position:fixed;
     top:0;
   top: 5px;
   left: 5px;
   width: 200px;
   height: 100%;
+  padding: 10px;
 }
 
 
@@ -267,8 +271,9 @@ body{
 
 .slider {
       position: fixed;
-      width: 96%;
+      width: 80%;
       height: 25px;
+      left: 225px;
       padding: 0;
       z-index: 10000;
       background: #d3d3d3;

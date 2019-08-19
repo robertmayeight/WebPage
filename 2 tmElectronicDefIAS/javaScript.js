@@ -28,8 +28,9 @@ for(i=0; i<noPathsLength; i++){
 
 var schematicDrag = Draggable.create(schematic, {zIndexBoost:false});
 schematic.addEventListener("DOMMouseScroll", function(e){zoomSchematic(e)}, false);
+scaleX:zoomSlider.value=1.8;
 
-var scaleUp = 1;
+var scaleUp = 1.8;
 function zoomSchematic(e){
 	e.preventDefault();
 	switch(e.detail>0) {
@@ -112,7 +113,110 @@ function changeColors(myColor){
 	}
 }
 
+TweenMax.to(schematic, .01, {scaleX:1.8, scaleY:1.8, x:100, y:-150, transformOrigin: "50% 50%", ease: Power0.easeNone});
+
 // -----------------------------------------------------------------------------------------------------------------------------
+
+function clearHighlights(){
+	TweenMax.to([defrostControlWiper,tcBlade,doorSwitchBlade,waterValveSwitch,defrostThermostat1Blade,defrostThermostat2Blade],1,{rotation:0});
+	TweenMax.to([defrostControlWipercopy,tcBladecopy,doorSwitchBladecopy,waterValveSwitchcopy,defrostThermostat1Bladecopy,defrostThermostat2Bladecopy],1,{rotation:0});
+	ry1Rotated = false;
+	ry2Rotated = false;
+	ry3Rotated = false;
+	ry4Rotated = false;
+	ry5Rotated = false;
+	ry7Rotated = false;
+	ry8Rotated = false;
+	ry9Rotated = false;
+	ry10Rotated = false;
+	ry11Rotated = false;
+	ry13Rotated = false;
+	ry15Rotated = false;
+	ry16Rotated = false;
+	ry19Rotated = false;
+	MISRotated = false;
+	
+	for(i=0; i<noPathsLength; i++){
+		noPaths[i].style.stroke = "black"
+		}
+}
+
+function showL1(){
+	TweenMax.to([path6367,path106,path1154,defrostControlWiper,path6970,tcBlade,path7006,path130,doorSwitchBlade,path1443,path1544,path1445], .1, {stroke:"red"})
+}
+
+function showNeutral(){
+	TweenMax.to([path6357,path7069,path7052,path7054,path7056,path7058,path1463,path7113,path7115,path7020,,path7073,path7075,path7016,path7077,path328,defrostThermostat2Blade,path1120,defrostThermostat1Blade,path1118,path7079,path6361,path1470,path7081,path7095,path1497,path1507,path7071], .1, {stroke:"blue"})
+}
+
+function showOvenLamp(){
+	clearHighlights();
+	TweenMax.to([path4394,path14236,path14230,path14232,path10442,path5600,path10444,path10426,path14249,path14247], .1, {stroke:"red"});
+	TweenMax.to([path17166], .1, {stroke:"orange"});
+	TweenMax.to([path17156,path11626,path10586,ry2Blade,path10528,path14654,path14656,path10736,path10734,path10008,path3872], .1, {stroke:"blue"});
+	TweenMax.to(ry2Blade,1,{rotation:26});
+	TweenMax.to(ry2Bladecopy,1,{rotation:26});
+	ry2Rotated=true;
+
+	TweenMax.to(PISBlade,1,{rotation:28});
+	TweenMax.to(PISBladecopy,1,{rotation:28});
+	PISRotated=true;
+
+	TweenMax.to(doorSwitchBlade,1,{rotation:28, transformOrigin: "100% 0%", ease: Power0.easeNone});
+	TweenMax.to(doorSwitchBladecopy,1,{rotation:28, transformOrigin: "100% 0%", ease: Power0.easeNone});
+	doorSwitchRotated=true;
+
+	TweenMax.to(MISBlade,1,{rotation:28});
+	TweenMax.to(MISBladecopy,1,{rotation:28});
+	MISRotated=true;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 var timerSwitchRotated=false;
 timerSwitch.setAttribute('onclick','changeTimerSwitch();');
@@ -215,97 +319,3 @@ function changeimvSwitch(){
 	}
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// var mainTl = new TimelineMax({paused:true, onUpdate:adjustUI, repeat:0});
-// mainTl
-// .to(colorBoxDiv,1, {autoAlpha:0})
-// // .to(showWindow,.5,{x:73, y:18, scaleX:1.1, scaleY:1.1, transformOrigin: "50% 50%",ease:Power0.easeNone, onComplete: updateLineNumber, onCompleteParams:[new Error().lineNumber]})
-// .set([path6367copy,path106copy,path1154copy,defrostControlWipercopy], {stroke:brown, opacity:1})
-// .set([path1152copy], {stroke:black, opacity:1})
-
-// .fromTo([path6367copy], 3, {drawSVG:'0% 0%'}, {drawSVG: '0% 100%', ease: Power0.easeNone})
-// .fromTo([path106copy], 1, {drawSVG:'0% 0%'}, {drawSVG: '0% 100%', ease: Power0.easeNone})
-// .fromTo([path1154copy], .3, {drawSVG:'100% 100%'}, {drawSVG: '100% 0%', ease: Power0.easeNone})
-// .fromTo([path1152copy], 2, {drawSVG:'0% 0%'}, {drawSVG: '0% 100%', ease: Power0.easeNone}, "+=.5")
-// .from([text1440,image1451],1, {autoAlpha:0})
-
-// .addPause()
-
-// .to([path1152copy,], .5, {autoAlpha:0})
-// .fromTo([defrostControlWipercopy,image1451], .3, {drawSVG:'0% 0%'}, {drawSVG: '0% 100%', ease: Power0.easeNone})
-// .to([defrostControlWiper, defrostControlWipercopy],1, {rotation:-60})
-
-// .set(text0, {text:"Power Cord", className:"h3", x:530, y:-193}).to([text0],1, {autoAlpha:1})
-// .set([receptacleBorder_copy], {stroke:red})
-// .staggerFromTo([receptacleBorder_copy], 1, {drawSVG:'0% 0%'}, {drawSVG: '0% 100%', ease: Power0.easeNone})
-// .addPause()
-// .to(['#text0'],1, {autoAlpha:0})
-// .to([receptacleBorder_copy], .5, {drawSVG: '0%', ease: Power0.easeNone},"-=1")
-
-// .set(text1, {text:"Long prong is neutral.", className:"h3 blackBg", x:622, y:-186}).to([text1],1, {autoAlpha:1})
-// .set([path4425_copy], {stroke:red})
-// .staggerFromTo([path4425_copy], .1, {drawSVG:'0% 0%'}, {drawSVG: '0% 100%', ease: Power0.easeNone})
-// .addPause()
-// .to(['#text1'],1, {autoAlpha:0})
-// .to([path4425_copy], .5, {drawSVG: '0%', ease: Power0.easeNone},"-=1")
-
-// .set(text2, {text:"Short prong is L1.", className:"h3 blackBg", x:348, y:-188}).to([text2],1, {autoAlpha:1})
-// .set([path36_copy], {stroke:red})
-// .staggerFromTo([path36_copy], .1, {drawSVG:'0% 0%'}, {drawSVG: '0% 100%', ease: Power0.easeNone})
-// .addPause()
-// .to(['#text2'],1, {autoAlpha:0})
-// .to([path36_copy], .5, {drawSVG: '0%', ease: Power0.easeNone},"-=1")
-
-// .set(text3, {text:"GND", className:"h3 blackBg", x:617, y:-119}).to([text3],1, {autoAlpha:1})
-// .set([path32_copy], {stroke:red})
-// .staggerFromTo([path32_copy], .7, {drawSVG:'0% 0%'}, {drawSVG: '0% 100%', ease: Power0.easeNone},.7)
-// .addPause()
-// .set(text7, {text:"GND does not operate loads.", className:"h3 blackBg", x:156, y:-174}).to([text7],1, {autoAlpha:1})
-// .addPause()
-// .to(['#text3',text7],1, {autoAlpha:0})
-// .to([path32_copy], .5, {drawSVG: '0%', ease: Power0.easeNone},"-=1")
-
-// .set(text4, {text:"L1", className:"h3 blackBg", x:485, y:-142}).to([text4],1, {autoAlpha:1})
-// .set([path2783_copy], {stroke:red})
-// .staggerFromTo([path2783_copy], 2, {drawSVG:'0% 0%'}, {drawSVG: '0% 100%', ease: Power0.easeNone})
-// .set([path3420_copy], {stroke:red})
-// .staggerFromTo([path3420_copy], .1, {drawSVG:'0% 0%'}, {drawSVG: '0% 100%', ease: Power0.easeNone})
-// .set(text5, {text:"Female Connector", className:"h3 blackBg", x:209, y:173}).to([text5],1, {autoAlpha:1})
-// .addPause()
-
-// .to(['#text5',text4],1, {autoAlpha:0})
-// .to(schematic,1,{x:222, y:-315, scaleX:1.8415725617280227, scaleY:1.8415725617280227, transformOrigin: "50% 50%",ease:Power0.easeNone})
-// .set([path2775_copy], {stroke:red})
-// .staggerFromTo([path2775_copy], .7, {drawSVG:'0% 0%'}, {drawSVG: '0% 100%', ease: Power0.easeNone})
-// .set(text6, {text:"Male Connector", className:"h3 blackBg", x:211, y:-9}).to([text6],1, {autoAlpha:1})
-// .set(text8, {text:"Component and connector<br>locator found on mini manual.<br>", className:"h3 blackBg", x:473, y:-181}).to([text8],1, {autoAlpha:1})
-// .from(['#diagram'],1, {autoAlpha:0},"-=1")
-// .addPause()
-// .to(['#text8'],1, {autoAlpha:0})
-// .staggerFromTo([diagram_callOut1], 2, {drawSVG:'0% 0%'}, {drawSVG: '0% 100%', ease: Power0.easeNone})
-// .set(text9, {text:"Connector location with pin out.<br>", className:"h3 blackBg", x:466, y:70}).to([text9],1, {autoAlpha:1})
-// .addPause()
-
-// .to([text6,'#text8',text9,diagram],1, {autoAlpha:0})
-// .set([path3424_copy], {stroke:red})
-// .staggerFromTo([path3424_copy], 1.2, {drawSVG:'0% 0%'}, {drawSVG: '0% 100%', ease: Power0.easeNone})
-// .staggerFromTo([path2691_copy], .2, {drawSVG:'0% 0%'}, {drawSVG: '0% 100%', ease: Power0.easeNone})
-// .staggerFromTo([tcBlade_copy], .2, {drawSVG:'0% 0%'}, {drawSVG: '0% 100%', ease: Power0.easeNone})
-
-// .set(text10, {text:"<center>Temperature Control<br>SPST Temperature Controlled Switch</center>", className:"h3 blackBg", x:57, y:86}).to([text10],1, {autoAlpha:1})
-// .addPause()
-// .to(['#text10'],1, {autoAlpha:0})
-// .set(text11, {text:"Single Pole", className:"h3 blackBg", x:77, y:86})
-// .add(function(){path8.setAttribute("d", "M578.8240051269531 449.1628646850586 L616.9003295898438 516.8453674316406");path8.style.strokeWidth = 3; path8.style.stroke = black;})
-// .from(path8, .5, {drawSVG:"0%", immediateRender:true, ease: Power0.easeNone, delay:.1})
-// .to([text11],1, {autoAlpha:1},"-=1")
-// .addPause()
-
-// .set(text12, {text:"Single Throw", className:"h3 blackBg", x:316, y:106})
-// .add(function(){path7.setAttribute("d", "M689.8240051269531 467.1628646850586 L640.9003295898438 513.8453674316406");path7.style.strokeWidth = 3; path7.style.stroke = black;})
-// .from(path7, .5, {drawSVG:"0%", immediateRender:true, ease: Power0.easeNone, delay:.1})
-// .to([text12],1, {autoAlpha:1},"-=1")
-// .addPause()
-
-// .set(text13, {text:"Pole below dot indicates switch<br>closes on temperature rise.<br>", className:"h3 blackBg", x:306, y:187}).to([text13],1, {autoAlpha:1})
-// .addPause()
