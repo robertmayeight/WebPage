@@ -27,6 +27,15 @@ for(i=0; i<noPathsLength; i++){
 	path.setAttribute('touchmove','wireClicked(this);');	
 }
 
+function toggleAnswers(){
+	console.log(answers.className);
+	if(answers.className === "hidden"){
+		answers.className = "visible"
+	}else{
+		answers.className = "hidden"
+	}
+}
+
 function clearHighlights(){
 	TweenMax.to([lineSwitchBlade,lineSwitchBladecopy,neutralSwitchBlade,neutralSwitchBladecopy],1,{rotation:0});
 	lineSwitchBladeRotated=true;
@@ -168,6 +177,29 @@ function showHeaterAir(){
 	TweenMax.to([path67875,path75674], .1, {stroke:"red"});
 	TweenMax.to([heaterAir], .1, {stroke:"orange"});
 
+}
+
+function showDuctFan(){
+	clearHighlights();
+	TweenMax.to([path77342], .1, {stroke:"blue"});
+	TweenMax.to([path77350], .1, {stroke:"red"});
+	TweenMax.to([path77334], .1, {stroke:"purple"});
+	TweenMax.to([ductFan], .1, {stroke:"orange"});
+}
+
+function showRinseAid(){
+	clearHighlights();
+	TweenMax.to([path77282], .1, {stroke:"blue"});
+	TweenMax.to([path77246], .1, {stroke:"red"});
+	TweenMax.to([path77218], .1, {stroke:"purple"});
+	TweenMax.to([rinseAidSensor], .1, {stroke:"orange"});
+}
+
+function showDetergentDispenser(){
+	clearHighlights();
+	TweenMax.to([path77166], .1, {stroke:"blue"});
+	TweenMax.to([path77170], .1, {stroke:"red"});
+	TweenMax.to([detergentDispenser], .1, {stroke:"orange"});
 }
 
 

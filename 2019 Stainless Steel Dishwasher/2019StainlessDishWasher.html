@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>2019 120 V Advantium Interactive Schematic</title>
+  <title>2019 Stainless Steel Dishwasher</title>
   <meta charset="UTF-8">
   <!DOCTYPE html>
   <link rel="stylesheet" href="../JavaScriptLibraries/interactiveSchematic.css">
@@ -12,7 +12,12 @@
   <div id="showWindow"></div>
   
   <div class="questions" style="scroll-behavior: smooth;">
-    <div id="redBox" onclick="changeColors('red')" style="cursor:pointer; display:block; width:100%; background-color:red; color:white";><center>Red</center></div>
+  	<button type="button" id="toggleAnswers" onclick="toggleAnswers()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Toggle Answers</center></button>
+  	  	<br>
+  	  	  	  	<hr>
+  	  <center>Highlight Colors</center>
+  	  <br>
+  	 <div id="redBox" onclick="changeColors('red')" style="cursor:pointer; display:block; width:100%; background-color:red; color:white";><center>Red</center></div>
     <div id="blueBox" onclick="changeColors('blue')" style="cursor:pointer; display:block; width:100%; background-color:blue; color:white";><center>Blue</center></div>
     <div id="orangeBox" onclick="changeColors('orange')" style="cursor:pointer; display:block; width:100%; background-color:orange; color:black";><center>Orange</center></div>
     <div id="yellowBox" onclick="changeColors('yellow')" style="cursor:pointer;display:block; width:100%; background-color:yellow";><center>Yellow</center></div>
@@ -22,6 +27,14 @@
     <div id="brownBox" onclick="changeColors('brown')" style="cursor:pointer;display:block; width:100%; background-color:brown";><center>Brown</center></div>
     <div id="blackBox" onclick="changeColors('black')" style="cursor:pointer;display:block; width:100%; background-color:black; color:white";><center>Black</center>
   </div>
+  <br>
+  	  	<hr>
+  	  <center>Check Answers</center>
+  	  <br>
+
+
+
+  <div id="answers" class="hidden">
     &nbsp;
         <button type="button" id="clearDiagram" onclick="clearHighlights()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Clear Diagram</center></button>
          <button type="button" id="showL1" onclick="showL1()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Show L1</center></button>
@@ -46,6 +59,14 @@
         <button type="button" id="fanDryBtn" onclick="showFanDry()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Fan - Dry</center></button>
 
         <button type="button" id="heaterAirBtn" onclick="showHeaterAir()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Heater - Air</center></button>
+
+        <button type="button" id="ductFanBtn" onclick="showDuctFan()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Fan - Duct</center></button>
+
+        <button type="button" id="rinseAidBtn" onclick="showRinseAid()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Rinse Aid Sensor</center></button>
+
+        <button type="button" id="detergentDispenserBtn" onclick="showDetergentDispenser()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Detergent Dispenser</center></button>
+        <br><br><br>
+    </div>
 </div>
 </div>
 
