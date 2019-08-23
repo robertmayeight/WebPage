@@ -762,52 +762,10 @@ function changery19(){
 
 
 
-// var timerSwitchRotated=false;
-// timerSwitch.setAttribute('onclick','changeTimerSwitch();');
-// timerSwitch.setAttribute('onmouseover','this.style.cursor = "pointer";');
+path10804.setAttribute('onclick','showWireVoltage();');
+path10804.setAttribute('onmouseover','this.style.cursor = "default"; overWire(this);');
+path10804.setAttribute('onmouseout','outWire(this);');
 
-// function changeTimerSwitch(){
-// 	if(timerSwitchRotated === false){
-// 		TweenMax.to(defrostControlWiper,1,{rotation:-33});
-// 		TweenMax.to(defrostControlWipercopy,1,{rotation:-33});
-// 		timerSwitchRotated=true;
-// 	}else{
-// 		TweenMax.to(defrostControlWiper,1,{rotation:0});
-// 		TweenMax.to(defrostControlWipercopy,1,{rotation:0});
-// 		timerSwitchRotated=false;
-// 	}
-// }
-
-// var doorSwitchRotated=false;
-// doorSwitch.setAttribute('onclick','changeDoorSwitch();');
-// doorSwitch.setAttribute('onmouseover','this.style.cursor = "pointer";');
-
-// function changeDoorSwitch(){
-// 	if(doorSwitchRotated === false){
-// 		TweenMax.to(path200,1,{rotation:-26});
-// 		TweenMax.to(path200copy,1,{rotation:-26});
-// 		doorSwitchRotated=true;
-// 	}else{
-// 		TweenMax.to(path200,1,{rotation:0});
-// 		TweenMax.to(path200copy,1,{rotation:0});
-// 		doorSwitchRotated=false;
-// 	}
-// }
-
-// var defrostThermostatRotated=false;
-// defrostThermostat.setAttribute('onclick','changeDefrostThermostatSwitch();');
-// defrostThermostat.setAttribute('onmouseover','this.style.cursor = "pointer";');
-// function changeDefrostThermostatSwitch(){
-// 	if(defrostThermostatRotated === false){
-// 		TweenMax.to(path334,1,{rotation:30});
-// 		TweenMax.to(path334copy,1,{rotation:30});
-// 		TweenMax.to(path324,1,{y:3});
-// 		defrostThermostatRotated=true;
-// 	}else{
-// 		TweenMax.to(path334,1,{rotation:0});
-// 		TweenMax.to(path334copy,1,{rotation:0});
-// 		TweenMax.to(path324,1,{y:0});
-// 		defrostThermostatRotated=false;
-// 	}
-// }
-
+function showWireVoltage(){
+	alert("fired")
+}
