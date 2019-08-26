@@ -24,8 +24,12 @@ for(i=0; i<noPathsLength; i++){
 	path.setAttribute("d", noPaths[i].getAttribute("d"));
 	diagram1.appendChild(path);
 	path.style["stroke-width"]= 3;
-	// path.setAttribute('touchmove','wireClicked(this);');
+	path.setAttribute('ontouch','touchHappened(this);');
 	// path.setAttribute('ontouchend','outWire(this);');	
+}
+
+function touchHappened(){
+	console. log("touch happened")
 }
 
 function toggleAnswers(){
@@ -284,7 +288,7 @@ function wireClicked(wire){
 	wire2 = document.getElementById(nameSplit[0]);
 	TweenMax.to(wire2,.1,{stroke:highlightColor});
 	wire.setAttribute("opacity", "0");
-	
+
 }
 
 function overWire(wire){
