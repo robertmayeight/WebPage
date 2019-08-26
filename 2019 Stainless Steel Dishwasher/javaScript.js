@@ -25,7 +25,7 @@ for(i=0; i<noPathsLength; i++){
 	diagram1.appendChild(path);
 	path.style["stroke-width"]= 3;
 	path.setAttribute('touchmove','wireClicked(this);');
-	path.setAttribute('ontouchend','wireClicked(this);');	
+	path.setAttribute('ontouchend','outWire(this);');	
 }
 
 function toggleAnswers(){
