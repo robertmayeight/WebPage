@@ -13,8 +13,8 @@
   
   <div class="questions" style="scroll-behavior: smooth;">
   	<center>Highlight Colors</center>
-  	  <br>
-  	 <div id="redBox" onclick="changeColors('red')" style="cursor:pointer; display:block; width:100%; background-color:red; color:white";><center>Red</center></div>
+  	<br>
+  	<div id="redBox" onclick="changeColors('red')" style="cursor:pointer; display:block; width:100%; background-color:red; color:white";><center>Red</center></div>
     <div id="blueBox" onclick="changeColors('blue')" style="cursor:pointer; display:block; width:100%; background-color:blue; color:white";><center>Blue</center></div>
     <div id="orangeBox" onclick="changeColors('orange')" style="cursor:pointer; display:block; width:100%; background-color:orange; color:black";><center>Orange</center></div>
     <div id="yellowBox" onclick="changeColors('yellow')" style="cursor:pointer;display:block; width:100%; background-color:yellow";><center>Yellow</center></div>
@@ -26,13 +26,14 @@
   </div>
   <br>
   	  	<hr>
-  	  	<button type="button" id="toggleAnswers" onclick="toggleAnswers()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Toggle Answers</center></button>
+  	  	<button type="button" id="toggleAnswers" onclick="toggleAnswers()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Hide Answers</center></button>
+  	  	<br>
+	<button type="button" id="clearDiagram" onclick="clearHighlights()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Clear Diagram</center></button>
 
 
-
-  <div id="answers" class="hidden">
+  <div id="answers" class="visible">
     &nbsp;
-        <button type="button" id="clearDiagram" onclick="clearHighlights()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Clear Diagram</center></button>
+        
          <button type="button" id="showL1" onclick="showL1()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Show L1</center></button>
          <button type="button" id="showNeutral" onclick="showNeutral()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Show Neutral</center></button>
          &nbsp;
