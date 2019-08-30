@@ -769,3 +769,13 @@ path10804.setAttribute('onmouseout','outWire(this);');
 function showWireVoltage(){
 	alert("fired")
 }
+
+//Show image on mouseover
+noiseFilterBtn.setAttribute('onclick','showNoiseFilter();');
+noiseFilterBtn.setAttribute('onmouseover','this.style.cursor = "pointer";');
+function showNoiseFilter(){
+	var largeImage = document.getElementById('img1');
+	var url=largeImage.getAttribute('src');
+	window.open(url,'Image');
+
+}

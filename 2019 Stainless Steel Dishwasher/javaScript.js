@@ -407,3 +407,9 @@ function changediverterSwitch2(){
 }
 
 
+///Show image on mouseover
+noiseFilter_btn.setAttribute('onclick','showNoiseFilter();');
+noiseFilter_btn.setAttribute('onmouseover','this.style.cursor = "pointer";');
+function showNoiseFilter(){
+	console.log("Noise Filter")
+}

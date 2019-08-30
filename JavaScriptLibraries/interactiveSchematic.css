@@ -196,7 +196,7 @@ body{
 
 .hidden{
   position: fixed;
-  top:-500px;
+  top:-50000px;
   display: block;
 }
 
@@ -293,3 +293,4 @@ body{
       background: #4CAF50;
       cursor: pointer;
     }
+

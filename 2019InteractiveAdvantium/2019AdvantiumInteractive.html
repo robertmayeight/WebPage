@@ -10,8 +10,9 @@
 <body>
   <input type="range" min="1" max="5" value="0" step="0.01" id="zoomSlider" class="slider">
   <div id="showWindow"></div>
-  
+  <img id="img1" class="hidden" src="test.png" width="200%">
   <div class="questions" style="scroll-behavior: smooth;">
+
     <div id="redBox" onclick="changeColors('red')" style="cursor:pointer; display:block; width:100%; background-color:red; color:white";><center>Red</center></div>
     <div id="blueBox" onclick="changeColors('blue')" style="cursor:pointer; display:block; width:100%; background-color:blue; color:white";><center>Blue</center></div>
     <div id="orangeBox" onclick="changeColors('orange')" style="cursor:pointer; display:block; width:100%; background-color:orange; color:black";><center>Orange</center></div>
