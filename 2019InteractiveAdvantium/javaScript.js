@@ -27,6 +27,10 @@ for(i=0; i<noPathsLength; i++){
 	path.setAttribute('touchmove','wireClicked(this);');	
 }
 
+function toggleAnswers(){
+	answers.className = "hidden"
+}
+
 function clearHighlights(){
 	TweenMax.to([ry1Blade,ry2Blade,ry3Blade,ry4Blade,ry5Blade,ry7Blade,ry8Blade,ry9Blade,ry10Blade,ry11Blade,ry13Blade,ry15Blade,ry16Blade,ry19Blade,PISBlade,MISBlade],1,{rotation:0});
 	TweenMax.to([ry1Bladecopy,ry2Bladecopy,ry3Bladecopy,ry4Bladecopy,ry5Bladecopy,ry7Bladecopy,ry8Bladecopy,ry9Bladecopy,ry10Bladecopy,ry11Bladecopy,ry13Bladecopy,ry15Bladecopy,ry16Bladecopy,ry19Bladecopy,PISBladecopy,MISBladecopy,doorSwitchBladecopy],1,{rotation:0});

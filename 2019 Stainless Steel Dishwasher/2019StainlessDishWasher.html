@@ -12,7 +12,7 @@
   <div id="showWindow"></div>
   
   <div class="questions" style="scroll-behavior: smooth;">
-  	<center>Highlight Colors</center>
+  	<span style="color:white"><center>Highlight Colors</center></span>
   	<br>
   	<div id="redBox" onclick="changeColors('red')" style="cursor:pointer; display:block; width:100%; background-color:red; color:white";><center>Red</center></div>
     <div id="blueBox" onclick="changeColors('blue')" style="cursor:pointer; display:block; width:100%; background-color:blue; color:white";><center>Blue</center></div>
@@ -25,43 +25,68 @@
     <div id="blackBox" onclick="changeColors('black')" style="cursor:pointer;display:block; width:100%; background-color:black; color:white";><center>Black</center>
   </div>
   <br>
-  	  	<hr>
-  	  	<button type="button" id="toggleAnswers" onclick="toggleAnswers()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Hide Answers</center></button>
-  	  	<br>
-	<button type="button" id="clearDiagram" onclick="clearHighlights()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Clear Diagram</center></button>
+  <hr>
+  <button type="button" id="toggleAnswers" onclick="toggleAnswers()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid; color:white";><center>Hide Buttons</center></button>
+  <br>
+	<button type="button" id="clearDiagram" onclick="clearHighlights()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid; color:white";><center>Clear Diagram</center></button>
 
 
   <div id="answers" class="visible">
-    &nbsp;
-        
-         <button type="button" id="showL1" onclick="showL1()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Show L1</center></button>
-         <button type="button" id="showNeutral" onclick="showNeutral()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Show Neutral</center></button>
+    &nbsp;        
+         <button type="button" id="showL1" onclick="showL1()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid; color:white"><center>Show L1</center></button>
+         <br>
+         <button type="button" id="showNeutral" onclick="showNeutral()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid; color:white"><center>Show Neutral</center></button>
          &nbsp;
-        <button type="button" id="waterValveBtn" onclick="showWaterValve()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Water Valve</center></button>
-        <button type="button" id="doorLatchBtn" onclick="showDoorLatch()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Door Latch</center></button>
-        <button type="button" id="diverterSensorBtn" onclick="showDiverterSensor()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Diverter Sensor</center></button>
-        <button type="button" id="pressureSensorBtn" onclick="showPressureSensor()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Pressure Sensor</center></button>
-        <button type="button" id="leakPanSensorBtn" onclick="showLeakPanSensor()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Leak Pan Sensor</center></button>
-        <button type="button" id="thermistorBtn" onclick="showThermistor()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Thermistor - Water</center></button>
-        <button type="button" id="turbidityBtn" onclick="showTurbiditySensor()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Turbidity Sensor</center></button>
-        <button type="button" id="inverterPowerBtn" onclick="showInverterPower()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Inverter Power</center></button>
-        <button type="button" id="drainPumpBtn" onclick="showDrainPump()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Drain Pump</center></button>
-        <button type="button" id="circPumpBtn" onclick="showCircPump()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Circulation Pump</center></button>
-        <button type="button" id="heaterWaterBtn" onclick="showHeaterWater()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Heater - Water</center></button>
+         <br>
+        <button type="button" id="waterValveBtn" onclick="showWaterValve()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid; color:white"><center>Water Valve</center></button>
+        <br>
+        <button type="button" id="doorLatchBtn" onclick="showDoorLatch()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid; color:white"><center>Door Latch</center></button>
+        <br>
+        <button type="button" id="diverterSensorBtn" onclick="showDiverterSensor()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid; color:white"><center>Diverter Sensor</center></button>
+        <br>
+        <button type="button" id="pressureSensorBtn" onclick="showPressureSensor()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid; color:white"><center>Pressure Sensor</center></button>
+        <br>
+        <button type="button" id="leakPanSensorBtn" onclick="showLeakPanSensor()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid; color:white"><center>Leak Pan Sensor</center></button>
+        <br>
+        <button type="button" id="thermistorBtn" onclick="showThermistor()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid; color:white"><center>Thermistor - Water</center></button>
+        <br>
+        <button type="button" id="turbidityBtn" onclick="showTurbiditySensor()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid; color:white"><center>Turbidity Sensor</center></button>
+        <br>
+        <button type="button" id="inverterPowerBtn" onclick="showInverterPower()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid; color:white"><center>Inverter Power</center></button>
+        <br>
+        <button type="button" id="drainPumpBtn" onclick="showDrainPump()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid; color:white"><center>Drain Pump</center></button>
+        <br>
+        <button type="button" id="circPumpBtn" onclick="showCircPump()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid; color:white"><center>Circulation Pump</center></button>
+        <br>
+        <button type="button" id="heaterWaterBtn" onclick="showHeaterWater()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid; color:white"><center>Heater - Water</center></button>
+        <br>
 
-        <button type="button" id="wifiBtn" onclick="showWifi()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>WIFI Board</center></button>
+        <button type="button" id="wifiBtn" onclick="showWifi()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid; color:white"><center>WIFI Board</center></button>
+        <br>
 
-        <button type="button" id="thermistorAirBtn" onclick="showThermistorAir()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Thermistor Air</center></button>
+        <button type="button" id="thermistorAirBtn" onclick="showThermistorAir()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid; color:white"><center>Thermistor Air</center></button>
+        <br>
 
-        <button type="button" id="fanDryBtn" onclick="showFanDry()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Fan - Dry</center></button>
+        <button type="button" id="fanDryBtn" onclick="showFanDry()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid; color:white"><center>Fan - Dry</center></button>
+        <br>
 
-        <button type="button" id="heaterAirBtn" onclick="showHeaterAir()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Heater - Air</center></button>
+        <button type="button" id="heaterAirBtn" onclick="showHeaterAir()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid; color:white"><center>Heater - Air</center></button>
+        <br>
 
-        <button type="button" id="ductFanBtn" onclick="showDuctFan()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Fan - Duct</center></button>
+        <button type="button" id="ductFanBtn" onclick="showDuctFan()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid; color:white"><center>Fan - Duct</center></button>
+        <br>
 
-        <button type="button" id="rinseAidBtn" onclick="showRinseAid()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Rinse Aid Sensor</center></button>
+        <button type="button" id="rinseAidBtn" onclick="showRinseAid()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid; color:white"><center>Rinse Aid Sensor</center></button>
+        <br>
 
-        <button type="button" id="detergentDispenserBtn" onclick="showDetergentDispenser()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid";><center>Detergent Dispenser</center></button>
+        <button type="button" id="detergentDispenserBtn" onclick="showDetergentDispenser()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid; color:white"><center>Detergent Dispenser</center></button>
+        <br>
+        <button type="button" id="UIBoardBtn" onclick="showUIBoard()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid; color:white";><center>User Interface</center></button>
+        <br>
+        <button type="button" id="ledBoardBtn" onclick="showLEDBoard()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid; color:white"><center>LED Board</center></button>
+        <br>
+        <button type="button" id="LCDASMBtn" onclick="showLCDASM()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid; color:white"><center>LCD Assembly</center></button>
+        <br>
         <br><br><br>
     </div>
 </div>

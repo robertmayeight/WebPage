@@ -40,9 +40,6 @@ function clearHighlights(){
 	TweenMax.to([lineSwitchBlade,lineSwitchBladecopy,neutralSwitchBlade,neutralSwitchBladecopy],1,{rotation:0});
 	lineSwitchBladeRotated=true;
 	neutralSwitchBladeRotated=true;
-
-	TweenMax.to([cpTCO,dpTCO], 1, {autoAlpha:0});
-
 	TweenMax.to([diverterSwitch1Blade,diverterSwitch1Bladecopy,diverterSwitch2Blade,diverterSwitch2Bladecopy],1,{rotation:0, transformOrigin: "100% 0%"});
 	lineSwitchBladeRotated=true;
 
@@ -129,8 +126,7 @@ function showDrainPump(){
 	TweenMax.to([path67891,path76210], .1, {stroke:"blue"});
 	TweenMax.to([path67909,path76238], .1, {stroke:"red"});
 	TweenMax.to([path76266,path67965], .1, {stroke:"yellow"});
-	TweenMax.to([path76294,path76610,path76622], .1, {stroke:"purple"});
-	TweenMax.to([cpTCO,dpTCO], 1, {autoAlpha:1});
+	TweenMax.to([path76294,path76610,path76622,dpTCO,cpTCO], .1, {stroke:"purple"});
 }
 
 function showCircPump(){
@@ -138,8 +134,7 @@ function showCircPump(){
 	TweenMax.to([path76746,path67981], .1, {stroke:"blue"});
 	TweenMax.to([path76646,path68001], .1, {stroke:"red"});
 	TweenMax.to([path76766,path67965], .1, {stroke:"yellow"});
-	TweenMax.to([path76294,path76610,path76622], .1, {stroke:"purple"});
-	TweenMax.to([cpTCO,dpTCO], 1, {autoAlpha:1});
+	TweenMax.to([path76294,path76610,path76622,dpTCO,cpTCO], .1, {stroke:"purple"});
 }
 
 function showHeaterWater(){
@@ -202,7 +197,31 @@ function showDetergentDispenser(){
 	TweenMax.to([detergentDispenser], .1, {stroke:"orange"});
 }
 
+function showLEDBoard(){
+	clearHighlights();
+	TweenMax.to([path77414], .1, {stroke:"blue"});
+	TweenMax.to([path77506], .1, {stroke:"red"});
+	TweenMax.to([LEDBoard], .1, {stroke:"orange"});
+	TweenMax.to([path77434], .1, {stroke:"green"});
+	TweenMax.to([path77450], .1, {stroke:"yellow"});
+}
 
+function showLCDASM(){
+	clearHighlights();
+	TweenMax.to([path77238], .1, {stroke:"blue"});
+	TweenMax.to([path77322], .1, {stroke:"red"});
+	TweenMax.to([path78526], .1, {stroke:"orange"});
+	TweenMax.to([path77270], .1, {stroke:"green"});
+	TweenMax.to([path77302], .1, {stroke:"yellow"});
+}
+
+function showUIBoard(){
+	clearHighlights();
+	TweenMax.to([path76434], .1, {stroke:"blue"});
+	TweenMax.to([path76186], .1, {stroke:"red"});
+	TweenMax.to([path76174], .1, {stroke:"green"});
+	TweenMax.to([path76274], .1, {stroke:"yellow"});
+}
 
 
 
