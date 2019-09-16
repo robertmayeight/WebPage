@@ -366,7 +366,7 @@ function changeColors(myColor){
 }
 
 // Opening view for schematic
-TweenMax.to(schematic,.01,{scaleX:2, scaleY:2, x:100, y:-200})
+TweenMax.to(schematic,.01,{scaleX:2, scaleY:2, x:100, y:-190})
 
 // -----------------------------------------------------------------------------------------------------------------------------
 var lineSwitchRotated=false;

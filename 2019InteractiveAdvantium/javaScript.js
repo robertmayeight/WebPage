@@ -27,6 +27,8 @@ for(i=0; i<noPathsLength; i++){
 	path.setAttribute('touchmove','wireClicked(this);');	
 }
 
+
+
 function toggleAnswers(){
 	answers.className = "hidden"
 }
@@ -476,7 +478,7 @@ function changeColors(myColor){
 }
 
 // Opening view for schematic
-TweenMax.to(schematic,.01,{scaleX:2, scaleY:2, x:50, y:-125})
+TweenMax.to(schematic,.01,{scaleX:2, scaleY:2, x:100, y:-200})
 
 // -----------------------------------------------------------------------------------------------------------------------------
 var ry1Rotated=false;
