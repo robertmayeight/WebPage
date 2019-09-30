@@ -10,21 +10,468 @@
 <body>
   <input type="range" min="1" max="5" value="0" step="0.01" id="zoomSlider" class="slider">
   <div id="showWindow"></div>
-  <img id="img1" class="hidden" src="test.png" width="200%">
   <div class="questions" style="scroll-behavior: smooth;">
-<span style="color:white"><center>Highlight Colors</center></span>
-    <br>
-    <div id="redBox" onclick="changeColors('red')" style="cursor:pointer; display:block; width:100%; background-color:red; color:white";><center>Red</center></div>
-    <div id="blueBox" onclick="changeColors('blue')" style="cursor:pointer; display:block; width:100%; background-color:blue; color:white";><center>Blue</center></div>
-    <div id="orangeBox" onclick="changeColors('orange')" style="cursor:pointer; display:block; width:100%; background-color:orange; color:black";><center>Orange</center></div>
-    <div id="yellowBox" onclick="changeColors('yellow')" style="cursor:pointer;display:block; width:100%; background-color:yellow";><center>Yellow</center></div>
-    <div id="purpleBox" onclick="changeColors('purple')" style="cursor:pointer;display:block; width:100%; background-color:purple; color:white";><center>Purple</center></div>
-    <div id="greenBox" onclick="changeColors('green')" style="cursor:pointer;display:block; width:100%; background-color:green";><center>Green</center></div>
-    <div id="greyBox" onclick="changeColors('grey')" style="cursor:pointer;display:block; width:100%; background-color:grey";><center>Grey</center></div>
-    <div id="brownBox" onclick="changeColors('brown')" style="cursor:pointer;display:block; width:100%; background-color:brown";><center>Brown</center></div>
-    <div id="blackBox" onclick="changeColors('black')" style="cursor:pointer;display:block; width:100%; background-color:black; color:white";><center>Black</center>
-  </div>
-    &nbsp;
+    <div id="partData">
+
+      <div id="ovenTCODiv" class="hidden" >
+        <center><h2>OVEN TCO</h2></center>
+        <a href="images/ovenTCO.png" target="_blank" width="100%"><img src="images/ovenTCO.png" width="100%"/></a>
+        <center>CLICK IMAGE TO ENLARGE</center>
+        <hr>
+        <ul>
+          <li>Used as a safety to disable unit if oven cavity gets too hot.</li>
+          <li>Not Resettable</li>
+          <li>Normally Closed</li>
+          <li>Opens: 293 degrees</li>
+          <li>Operating Votage: 120 VAC</li>
+        </ul> 
+        <hr>
+        Possible Cause of Failure
+         <ol>
+          <li>Fire in cavity.</li>
+          <li>Oven TCO failure.</li>
+          <li>Loose/burnt connector.</li>
+        </ol>
+      </div>
+
+      <div id="heaterTCODiv" class="hidden" >
+        <center><h2>HEATER TCO</h2></center>
+        <a href="images/heaterTCO.png" target="_blank" width="100%"><img src="images/heaterTCO.png" width="100%"/></a>
+        <center>CLICK IMAGE TO ENLARGE</center>
+        <hr>
+        <ul>
+          <li>Used as a safety to disable unit if either of the upper heaters get too hot.</li>
+          <li>Not Resettable</li>
+          <li>Normally Closed</li>
+          <li>Opens: 293 degrees</li>
+          <li>Operating Votage: 120 VAC</li>
+        </ul> 
+        <hr>
+        Possible Cause of Failure
+         <ol>
+          <li>One of the upper heaters shorted to GND.</li>
+          <li>Heater TCO failure.</li>
+          <li>Loose/burnt connector.</li>
+        </ol>
+      </div>
+
+      <div id="magnetronTCODiv" class="hidden" >
+        <center><h3>MAGNETRON TCO</h3></center>
+        <a href="images/magnetronTCO.png" target="_blank" width="100%"><img src="images/magnetronTCO.png" width="100%"/></a>
+        <center>CLICK IMAGE TO ENLARGE</center>
+        <hr>
+        <ul>
+          <li>Used as a safety to disable entire unit if magnetron overheats.</li>
+          <li>Not Resettable</li>
+          <li>Opens: 320 degrees</li>
+          <li>Operating Votage: 120 VAC</li>
+        </ul> 
+        <hr>
+        Possible Cause of Failure
+         <ol>
+          <li>Magnetron failure.</li>
+          <li>Magnetron TCO failure.</li>
+          <li>Airflow.</li>
+          <li>Loose/burnt connector.</li>
+        </ol>
+      </div>
+
+       <div id="convectionHeaterTCODiv" class="hidden" >
+        <center><h3>CONVECTION HEATER TCO</h3></center>
+        <a href="images/convectionHeaterTCO.png" target="_blank" width="100%"><img src="images/convectionHeaterTCO.png" width="100%"/></a>
+        <center>CLICK IMAGE TO ENLARGE</center>
+        <hr>
+        <ul>
+          <li>Used as a safety to disable unit if magnetron overheats.</li>
+          <li>Not Resettable</li>
+          <li>Opens: 320 degrees</li>
+          <li>Operating Votage: 120 VAC</li>
+        </ul> 
+        <hr>
+        Possible Cause of Failure
+         <ol>
+          <li>Convection Heater TCO failure.</li>
+          <li>Convection fan motor failure.</li>
+          <li>Loose/burnt connector.</li>
+        </ol>
+      </div>
+
+      <div id="PISBladeDiv" class="hidden" >
+        <center><h3>PRIMARY INTERLOCK SWITCH</h3></center>
+        <a href="images/primaryInterlockSwitch.png" target="_blank" width="100%"><img src="images/primaryInterlockSwitch.png" width="100%"/></a>
+        <center>CLICK IMAGE TO ENLARGE</center>
+        <hr>
+        <ul>
+          <li>Switches L1 to high current loads ONLY when door is closed.</li>
+          <li>Operating Votage: 120 VAC</li>
+        </ul>
+        <hr>
+        Possible Cause of Failure
+         <ol>
+          <li>Primary Interlock Switch.</li>
+          <li>Latch body (siwtch holder).</li>
+          <li>Latch pawls on door.</li>
+          <li>Door alignment.</li>
+        </ol>
+      </div>
+
+      <div id="MISBladeDiv" class="hidden" >
+        <center><h3>MONITOR INTERLOCK SWITCH</h3></center>
+        <a href="images/monitorSwitch.png" target="_blank" width="100%"><img src="images/monitorSwitch.png" width="100%"/></a>
+        <center>CLICK IMAGE TO ENLARGE</center>
+        <hr>
+        <ul>
+          <li>Used as a safety to blow fuse if 120 VAC is applied to the High Voltage transformer while door is open.</li>
+          <li>Operating Votage: 120 VAC</li>
+        </ul> 
+        <hr>
+        Possible Cause of Failure
+         <ol>
+          <li>Monitor Switch.</li>
+          <li>Latch body (siwtch holder).</li>
+          <li>Latch pawls on door.</li>
+          <li>Door alignment.</li>
+        </ol>
+      </div>
+
+      <div id="doorSwitchBladeDiv" class="hidden" >
+        <center><h3>DOOR SWITCH</h3></center>
+        <a href="images/doorSwitch.png" target="_blank" width="100%"><img src="images/doorSwitch.png" width="100%"/></a>
+        <center>CLICK IMAGE TO ENLARGE</center>
+        <hr>
+        <ul>
+          <li>Used signal Power PCB door status (open or closed).</li>
+          <li>Operating Votage: LOW VDC</li>
+        </ul> 
+        <hr>
+        Possible Cause of Failure
+         <ol>
+          <li>Door Switch.</li>
+          <li>Latch body (siwtch holder).</li>
+          <li>Latch pawls on door.</li>
+          <li>Door alignment.</li>
+        </ol>
+      </div>
+
+      <div id="humiditySensorDiv" class="hidden" >
+        <center><h3>HUMIDITY SENSOR</h3></center>
+        <a href="images/humiditySensor.png" target="_blank" width="100%"><img src="images/humiditySensor.png" width="100%"/></a>
+        <center>CLICK IMAGE TO ENLARGE</center>
+        <hr>
+        <ul>
+          <li>Used to get moisture content of cavity air.</li>
+          <li>TBD</li>
+        </ul>
+        <hr>
+        Possible Cause of Failure
+         <ol>
+          <li>Humidity Sensor</li>
+          <li>TBD</li>
+          <li>TBD</li>
+      </div>
+
+      <div id="damperSwitchDiv" class="hidden" >
+        <center><h3>DAMPER SWITCH</h3></center>
+        <a href="images/damperSwitch.png" target="_blank" width="100%"><img src="images/damperSwitch.png" width="100%"/></a>
+        <center>CLICK IMAGE TO ENLARGE</center>
+        <hr>
+        <ul>
+          <li>Gives Power PCB? damper position.</li>
+          <li>Operating Votage: Low VDC</li>
+        </ul> 
+        <hr>
+        Possible Cause of Failure
+         <ol>
+          <li>Damper Switch.</li>
+          <li>Damper Motor.</li>
+          <li>Damper mechanical failure.</li>
+      </div>
+
+      <div id="ovenLampDiv" class="hidden" >
+        <center><h3>OVEN LAMP</h3></center>
+        <a href="images/ovenLamp.png" target="_blank" width="100%"><img src="images/ovenLamp.png" width="100%"/></a>
+        <center>CLICK IMAGE TO ENLARGE</center>
+        <hr>
+        <ul>
+          <li>Illuminates oven cavity and provides heat during "Proof".</li>
+          <li>Operating Votage: 120 VAC</li>
+          <li>Resistance: TBD</li>
+          <li>Current: TBD</li>
+          <li>Wattage: TBD</li>
+        </ul>
+        <hr>
+        Possible Cause of Failure
+         <ol>
+          <li>Oven Lamp.</li>
+          <li>Relay PCB.</li>
+          <li>Wiring between Oven Lamp and Relay PCB.</li>
+          <li>Wiring between Oven Lamp and Magnetron TCO.</li>
+      </div>
+
+      <div id="fanMotorDiv" class="hidden" >
+        <center><h3>FAN MOTOR</h3></center>
+        <a href="images/fanMotor.png" target="_blank" width="100%"><img src="images/fanMotor.png" width="100%"/></a>
+        <center>CLICK IMAGE TO ENLARGE</center>
+        <hr>
+        <ul>
+          <li>Used to cool Magnetron and other elecronic components.</li>
+          <li>Operating Votage: 120 VAC</li>
+          <li>Resistace: TBD</li>
+          <li>Current: TBD</li>
+        </ul> 
+        <hr>
+        Possible Cause of Failure
+         <ol>
+          <li>Fan Motor.</li>
+          <li>Relay PCB.</li>
+          <li>Wiring between Fan Motor and Relay PCB.</li>
+          <li>Wiring between Fan Motor and Primary Interlock Switch.</li>
+      </div>
+
+      <div id="convectionFanMotorDiv" class="hidden" >
+        <center><h3>CONVECTION MOTOR</h3></center>
+        <a href="images/convectionFanMotor.png" target="_blank" width="100%"><img src="images/convectionFanMotor.png" width="100%"/></a>
+        <center>CLICK IMAGE TO ENLARGE</center>
+        <hr>
+        <ul>
+          <li>Circulates air through the oven cavity during convection cooking modes.</li>
+          <li>Operating Votage: 120 VAC</li>
+          <li>Resistace: TBD</li>
+          <li>Current: TBD</li>
+        </ul>
+        <hr>
+        Possible Cause of Failure
+         <ol>
+          <li>Fan Motor.</li>
+          <li>Relay PCB.</li>
+          <li>Wiring between Convection Motor and Relay PCB.</li>
+          <li>Wiring between Convection Motor and Primary Interlock Switch.</li>
+      </div>
+
+      <div id="turntableMotorDiv" class="hidden" >
+        <center><h3>TURNTABLE MOTOR</h3></center>
+        <a href="images/turntableMotor.png" target="_blank" width="100%"><img src="images/turntableMotor.png" width="100%"/></a>
+        <center>CLICK IMAGE TO ENLARGE</center>
+        <hr>
+        <ul>
+          <li>Rotates food for more even distribution of microwave energy.</li>
+          <li>Operating Votage: 120 VAC</li>
+          <li>Resistace: TBD</li>
+          <li>Current: TBD</li>
+        </ul>
+        <hr>
+        Possible Cause of Failure
+         <ol>
+          <li>Turntable Motor.</li>
+          <li>Relay PCB.</li>
+          <li>Wiring between Turntable Motor and Relay PCB.</li>
+          <li>Wiring between Turntable Motor and Primary Interlock Switch.</li>
+      </div>
+
+      <div id="lowerHeaterCeramicDiv" class="hidden" >
+        <center><h3>LOWER HEATER</h3></center>
+        <a href="images/lowerHeater.png" target="_blank" width="100%"><img src="images/lowerHeater.png" width="100%"/></a>
+        <center>CLICK IMAGE TO ENLARGE</center>
+        <hr>
+        <ul>
+          <li>Provides resistance heat source from bottom.</li>
+          <li>Operating Votage: 120 VAC</li>
+          <li>Resistace: TBD</li>
+          <li>Current: TBD</li>
+          <li>Type: Ceramic</li>
+        </ul>
+        <hr>
+        Possible Cause of Failure
+         <ol>
+          <li>Lower Heater.</li>
+          <li>Relay PCB.</li>
+          <li>Wiring between Lower Heater and Relay PCB.</li>
+          <li>Wiring between Lower Heater and Primary Interlock Switch.</li>
+      </div>
+
+      <div id="upperHeater1Div" class="hidden" >
+        <center><h3>Upper HEATER 1</h3></center>
+        <a href="images/upperHeater1.png" target="_blank" width="100%"><img src="images/upperHeater1.png" width="100%"/></a>
+        <center>CLICK IMAGE TO ENLARGE</center>
+        <hr>
+        <ul>
+          <li>One of two resistance heat sources from top.</li>
+          <li>Operating Votage: 120 VAC</li>
+          <li>Resistace: TBD</li>
+          <li>Current: TBD</li>
+          <li>Type: Halogen</li>
+        </ul>
+        <hr>
+        Possible Cause of Failure
+         <ol>
+          <li>Upper Heater 1.</li>
+          <li>Relay PCB.</li>
+          <li>Wiring between Upper Heater 1 and Relay PCB.</li>
+          <li>Wiring between Upper Heater 1 and Primary Interlock Switch.</li>
+      </div>
+
+      <div id="upperHeater2Div" class="hidden" >
+        <center><h3>Upper HEATER 2</h3></center>
+        <a href="images/upperHeater2.png" target="_blank" width="100%"><img src="images/upperHeater2.png" width="100%"/></a>
+        <center>CLICK IMAGE TO ENLARGE</center>
+        <hr>
+        <ul>
+          <li>One of two resistance heat sources from top.</li>
+          <li>Operating Votage: 120 VAC</li>
+          <li>Resistace: TBD</li>
+          <li>Current: TBD</li>
+          <li>Type: Ceramic</li>
+        </ul>
+        <hr>
+        Possible Cause of Failure
+         <ol>
+          <li>Upper Heater 2.</li>
+          <li>Relay PCB.</li>
+          <li>Wiring between Upper Heater 2 and Relay PCB.</li>
+          <li>Wiring between Upper Heater 2 and Primary Interlock Switch.</li>
+      </div>
+
+      <div id="convectionHeaterDiv" class="hidden" >
+        <center><h3>CONVECTION HEATER</h3></center>
+        <a href="images/convectionHeater.png" target="_blank" width="100%"><img src="images/convectionHeater.png" width="100%"/></a>
+        <center>CLICK IMAGE TO ENLARGE</center>
+        <hr>
+        <ul>
+          <li>Provides resistance heat during convection cycles.</li>
+          <li>Operating Votage: 120 VAC</li>
+          <li>Resistace: TBD</li>
+          <li>Current: TBD</li>
+          <li>Type: Sheath (Calrod)</li>
+        </ul>
+        <hr>
+        Possible Cause of Failure
+         <ol>
+          <li>Convection Heater.</li>
+          <li>Relay PCB.</li>
+          <li>Wiring between Convection Heater and Relay PCB.</li>
+          <li>Wiring between Convection Heater and Primary Interlock Switch.</li>
+      </div>
+
+      <div id="highVoltageTransformerDiv" class="hidden" >
+        <center><h3>HIGH VOLTAGE TRANSFORMER</h3></center>
+        <a href="images/highVoltageTransformer.png" target="_blank" width="100%"><img src="images/highVoltageTransformer.png" width="100%"/></a>
+        <center>CLICK IMAGE TO ENLARGE</center>
+        <hr>
+        <ul>
+          <li>Used to generate high voltage for Magnetron</li>
+          <li>Operating Votage: 120 VAC In, 2000 VAC out.</li>
+          <li>DO NOT ATTEMPT TO MEASURE 2000 VAC!</li>
+          <li>Resistace: TBD</li>
+          <li>Current: TBD</li>
+        </ul>
+        <hr>
+        Possible Cause of Failure
+         <ol>
+          <li>High Voltage Transformer.</li>
+          <li>Relay PCB.</li>
+          <li>Wiring between High Voltage Transformer and Relay PCB.</li>
+          <li>Wiring between High Voltage Transformer and Primary Interlock Switch.</li>
+      </div>
+
+      <div id="highVoltageCapacitorDiv" class="hidden" >
+        <center><h3>HIGH VOLTAGE CAPACITOR</h3></center>
+        <a href="images/highVoltageCapacitor.png" target="_blank" width="100%"><img src="images/highVoltageCapacitor.png" width="100%"/></a>
+        <center>CLICK IMAGE TO ENLARGE</center>
+        <hr>
+        <ul>
+          <li>Used as a safety to disable entire unit if magnetron overheats.</li>
+          <li>Not Resettable</li>
+          <li>Opens: 320 degrees</li>
+          <li>Operating Votage: 120 VAC</li>
+        </ul> 
+      </div>
+
+      <div id="rectifierDiv" class="hidden" >
+        <center><h3>HIGH VOLTAGE DIODE (RECTIFIER)</h3></center>
+        <a href="images/rectifier.png" target="_blank" width="100%"><img src="images/rectifier.png" width="100%"/></a>
+        <center>CLICK IMAGE TO ENLARGE</center>
+        <hr>
+        <ul>
+          <li>Used as a safety to disable entire unit if magnetron overheats.</li>
+          <li>Not Resettable</li>
+          <li>Opens: 320 degrees</li>
+          <li>Operating Votage: 120 VAC</li>
+        </ul> 
+      </div>
+
+      <div id="magnetronDiv" class="hidden" >
+        <center><h3>MAGNETRON</h3></center>
+        <a href="images/magnetron.png" target="_blank" width="100%"><img src="images/magnetron.png" width="100%"/></a>
+        <center>CLICK IMAGE TO ENLARGE</center>
+        <hr>
+        <ul>
+          <li>Used as a safety to disable entire unit if magnetron overheats.</li>
+          <li>Not Resettable</li>
+          <li>Opens: 320 degrees</li>
+          <li>Operating Votage: 120 VAC</li>
+        </ul> 
+      </div>
+
+      <div id="magnetronRelayDiv" class="hidden" >
+        <center><h3>RELAY BOARD BK (Black) CONNECTOR</h3></center>
+        <a href="images/relayBoard.png" target="_blank" width="100%"><img src="images/relayBoard.png" width="100%"/></a>
+        <center>CLICK IMAGE TO ENLARGE</center>
+        <hr>
+        <br><br><br><br>
+        <a href="images/magnetronRelay.png" target="_blank" width="100%"><img src="images/magnetronRelay.png" width="100%"/></a>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     
+
+      <div id="ovenTCODiv" class="hidden" >
+        <a href="images/ovenTCO.png" target="_blank" width="100%"><img src="images/ovenTCO.png" width="100%"/></a>
+        <br><br>
+        <br>
+        <a href="#">Show Part</a>
+        <br><br>
+        Operating Votage: 120 VAC
+        <br>
+        Amps: Need to get.
+      </div>
+
+      <div id="thermistorDiv" class="hidden" >
+        <a href="images/thermistor.png" target="_blank" width="100%"><img src="images/thermistor.png" width="100%"/></a>
+        <ul>
+          <li>Thermisor used for oven temperature measurements.</li>
+          <li>Thermistor consists of two thermistors for redundancy.</li>
+          <li>Operating Votage: TBD</li>
+        </ul> 
+       
+        
+      </div>
+
+  <hr>
+    </div>
+    
+    
     <button type="button" id="toggleAnswers" onclick="toggleAnswers()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid; color:white";><center>Hide Buttons</center></button>
   <br>
         <button type="button" id="clearDiagram" onclick="clearHighlights()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid; color:white";><center>Clear Diagram</center></button>
@@ -41,7 +488,7 @@
         <br>
         <button type="button" id="conMotorBtn" onclick="showConMotor()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid; color:white";><center>Covection Fan Motor</center></button>
         <br>
-        <button type="button" id="turnTableBtn" onclick="showTurnTableMotor()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid; color:white";><center>TurnTable Fan Motor</center></button>
+        <button type="button" id="turnTableBtn" onclick="showTurnTableMotor()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid; color:white";><center>TurnTable Motor</center></button>
         <br>
         <button type="button" id="damperMotorBtn" onclick="showDamperMotor()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid; color:white";><center>Damper Motor</center></button>
         <br>
@@ -56,6 +503,18 @@
         <button type="button" id="highVotageBtn" onclick="showHighVoltage()" style="cursor:pointer;display:block; width:100%; background-color:grey; border-style: solid; color:white";><center>High Voltage (Mag)</center></button>
         <br>
         <br>
+        <span style="color:white"><center>Color Picker</center></span>
+    <br>
+    <div id="redBox" onclick="changeColors('red')" style="cursor:pointer; display:block; width:100%; background-color:red; color:white";><center>Red</center></div>
+    <div id="blueBox" onclick="changeColors('blue')" style="cursor:pointer; display:block; width:100%; background-color:blue; color:white";><center>Blue</center></div>
+    <div id="orangeBox" onclick="changeColors('orange')" style="cursor:pointer; display:block; width:100%; background-color:orange; color:black";><center>Orange</center></div>
+    <div id="yellowBox" onclick="changeColors('yellow')" style="cursor:pointer;display:block; width:100%; background-color:yellow; color:black";><center>Yellow</center></div>
+    <div id="purpleBox" onclick="changeColors('purple')" style="cursor:pointer;display:block; width:100%; background-color:purple";><center>Purple</center></div>
+    <div id="greenBox" onclick="changeColors('green')" style="cursor:pointer;display:block; width:100%; background-color:green";><center>Green</center></div>
+    <div id="greyBox" onclick="changeColors('grey')" style="cursor:pointer;display:block; width:100%; background-color:grey";><center>Grey</center></div>
+    <div id="brownBox" onclick="changeColors('brown')" style="cursor:pointer;display:block; width:100%; background-color:brown";><center>Brown</center></div>
+    <div id="blackBox" onclick="changeColors('black')" style="cursor:pointer;display:block; width:100%; background-color:black";><center>Black</center></div>
+    &nbsp;
         <br>
         <br>
       </div>

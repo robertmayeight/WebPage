@@ -154,6 +154,15 @@ body{
     list-style-type:disc;
 }
 
+ul{
+  font-size: medium;
+  width: 200px;
+  padding: 0px;
+  margin: 15px;
+}
+
+ul li { padding: 5px 0px; }
+
 .redBoldText{
   font-weight: bold;
   color:red;
@@ -177,9 +186,11 @@ body{
     top:0;
   top: 5px;
   left: 5px;
-  width: 175px;
+  width: 20%;
   height: 100%;
   padding: 10px;
+  color: white;
+  font-family: "Arial", Times, serif;
 }
 
 
@@ -195,9 +206,17 @@ body{
 }
 
 .hidden{
-  position: fixed;
+  /*position: fixed;
   top:-50000px;
-  display: block;
+  display: block;*/
+  display: none;
+}
+
+.visible{
+  /*position: fixed;
+  top:-50000px;
+  display: block;*/
+  display: inline;
 }
 
 .greenBox{
@@ -271,9 +290,9 @@ body{
 
 .slider {
       position: fixed;
-      width: 80%;
+      width: 70%;
       height: 25px;
-      left: 225px;
+      left: 300px;
       padding: 0;
       z-index: 10000;
       background: #d3d3d3;
