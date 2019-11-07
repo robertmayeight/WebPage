@@ -1,4 +1,4 @@
-document.title = "HVAC Parts"
+document.title = "K-Cup Interactive Diagram"
 
 TweenMax.to(mainWindow, 0, {x:1000, y:400, scaleX:2, scaleY:2});
 var diagram1Paths = document.getElementById("diagram1").getElementsByTagName("path");
