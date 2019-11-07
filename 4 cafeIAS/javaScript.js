@@ -1,6 +1,6 @@
 document.title = "HVAC Parts"
 
-TweenMax.to(mainWindow, 0, {x:1200, y:400, scaleX:2, scaleY:2});
+TweenMax.to(mainWindow, 0, {x:1000, y:400, scaleX:2, scaleY:2});
 var diagram1Paths = document.getElementById("diagram1").getElementsByTagName("path");
 var diagram1PathsLength = diagram1Paths.length;
 // for(i=0; i<diagram1PathsLength; i++){
