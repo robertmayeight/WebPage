@@ -40,10 +40,10 @@
      inkscape:window-height="828"
      id="namedview11897"
      showgrid="false"
-     inkscape:zoom="5.6568542"
-     inkscape:cx="117.31012"
-     inkscape:cy="-305.10273"
-     inkscape:current-layer="partNameGroup"
+     inkscape:zoom="7.9999999"
+     inkscape:cx="343.82247"
+     inkscape:cy="-169.85091"
+     inkscape:current-layer="surface473"
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
@@ -6423,7 +6423,7 @@
       <path
          inkscape:connector-curvature="0"
          id="ry8Blade"
-         d="m 436.14004,742.50562 4.01834,5.62281"
+         d="m 436.14004,742.50562 -0.10098,6.92797"
          style="fill:none;stroke:#211e1e;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:9.96924019;stroke-dasharray:none;stroke-opacity:1"
          sodipodi:nodetypes="cc"
          inkscape:label="#path4264" />
@@ -19992,8 +19992,9 @@
     <path
        inkscape:connector-curvature="0"
        id="path4250"
-       d="m 290.61203,1083.9747 h 9.57585"
-       style="fill:none;stroke:#211e1e;stroke-width:0.92343807;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:9.96924019;stroke-dasharray:none;stroke-opacity:1" />
+       d="m 290.61203,1083.9747 h 6.76335"
+       style="fill:none;stroke:#211e1e;stroke-width:0.92343807;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:9.96924019;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:nodetypes="cc" />
     <path
        inkscape:connector-curvature="0"
        id="path4256"

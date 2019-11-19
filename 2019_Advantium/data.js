@@ -222,18 +222,18 @@ var hvTransformerOrangeArray = [highVoltageTransformer];
 var hvTransformerRedArray = [];
 var hvTransformerBrownArray = [];
 
-var magBlackArray = [];
+var magBlackArray = [path4394,pathmagnetronTCO,ovenTCOD,PISBlade,path6738,path5133,path7524,path7632,heaterTCOD,path10442,path10444,path10730,fuse,path14232,path14236,path8843];
 var magDarkGrayArray = [];
 var magLightGrayArray = [];
 var magAquamarineArray = [];
 var magBlueArray = [];
-var magPurpleArray = [];
+var magPurpleArray = [rectifier,path8945,path8943];
 var magVioletArray = [];
 var magPinkArray = [];
 var magYellowGreenArray = [];
 var magYellowArray = [];
-var magOrangeArray = [path8843];
-var magRedArray = [];
+var magOrangeArray = [path3872,path3900,path3902,path4270,path4272,path7080,path7250,path7258,path7384,path5189,path5137,path7526,path7528,path7530,path7630,path10008,path19982,path10734,dlbRelaySwitch,path18560,path18563,ry8Blade];
+var magRedArray = [path4906,path4835,highVoltageTransformer,path8841,path8833,magnetron];
 var magBrownArray = [];
 
 var diodeBlackArray = [];

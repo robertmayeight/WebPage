@@ -175,6 +175,7 @@ function componentChange(){
   TweenMax.to([damperSwitch,damperSwitchcopy], .5, {rotation:0, transformOrigin: "0% 100%", ease: Power0.easeNone});
   TweenMax.to([path5615,path5613,path5615copy,path5613copy], 0, {autoAlpha:0});
   TweenMax.to([path5619,path5617,path5619copy,path5617copy], 0, {autoAlpha:0});
+  TweenMax.to([ry8Blade,ry8Bladecopy], .5, {rotation:40, transformOrigin: "0% 100%", ease: Power0.easeNone});
   
   
   
@@ -284,7 +285,11 @@ function componentChange(){
     TweenMax.to([path5619,path5617], 0, {autoAlpha:1});
     break;
 
-    
+    case "mag":
+    TweenMax.to([ry8Blade,ry8Bladecopy], .5, {rotation:0, transformOrigin: "0% 100%", ease: Power0.easeNone});
+    TweenMax.to([PISBlade,PISBladecopy], .5, {rotation:0, transformOrigin: "100% 0%", ease: Power0.easeNone});
+    TweenMax.to([dlbRelaySwitch,dlbRelaySwitchcopy], .5, {rotation:0, transformOrigin: "100% 0%", ease: Power0.easeNone});
+    break;
 
     
   }
