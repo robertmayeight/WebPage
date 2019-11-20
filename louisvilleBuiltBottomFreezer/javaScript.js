@@ -13,6 +13,7 @@ function handleMenu(){
   }
 }
 
+
 //Toggle Edit Functions
 getWireColors.style.display="none";
 window.addEventListener("keydown", toggleEditor);
