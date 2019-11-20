@@ -52,20 +52,7 @@ function myredraw(){
   .attr("height", height);
 }
 myredraw();
-window.addEventListener("resize", myredraw);
-
-var schematicScale = 1;
-function scaleUp(){
-  console.log("fired")
-  TweenMax.to([schematic], .5, {scaleX:schematicScale, scaleY:schematicScale, transformOrigin: "50% 50%", ease: Power0.easeNone});
-  schematicScale = schematicScale+.2;
-}
-
-function scaleDown(){
-  console.log("fired")
-  TweenMax.to([schematic], .5, {scaleX:schematicScale, scaleY:schematicScale, transformOrigin: "50% 50%", ease: Power0.easeNone});
-  schematicScale = schematicScale-.2;
-}
+window.addEventListener("resize", myredraw)
 
 //Set Path Codes
 var diagram1Paths = document.getElementById("diagram1").getElementsByTagName("path");
