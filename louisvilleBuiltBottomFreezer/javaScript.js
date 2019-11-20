@@ -1,5 +1,18 @@
 document.title = "Louisville Built Bottom Freezer"
 
+menuBox.setAttribute('onclick','this.style.cursor = "pointer"; handleMenu();');
+menuBox.setAttribute('onmouseover','this.style.cursor = "pointer"');
+
+function handleMenu(){
+  if(componentSelect.style.display == "none"){
+    componentSelect.style.display="inline-block";
+    colorPicker.style.display="inline-block";
+  }else{
+    componentSelect.style.display="none";
+    colorPicker.style.display="none";
+  }
+}
+
 //Toggle Edit Functions
 getWireColors.style.display="none";
 window.addEventListener("keydown", toggleEditor);

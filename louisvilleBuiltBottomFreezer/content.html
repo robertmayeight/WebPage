@@ -11,14 +11,20 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.12.0/d3.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.1/TweenMax.min.js"></script>
+    <style type="text/css">
+      select
+ {
+  display:inline;
+  cursor:pointer;
+  margin-left: 10px;
+ }
+    </style>
   </head>
 <body>
-  <div id="mainWindow"></div>
-    <span style="position: fixed; top: 10px; left: 5px; width: 20%; margin: 0; padding: 0; z-index: 1; display: inline-block;">
-      <select id="componentSelect" onChange="componentChange(this.selectedIndex.value);">
-        <option value="NONE">CLEAR HIGHLIGHTS</option>
-      </select>
-      <select id="colorPicker" onChange="colorPickerChange(this.selectedIndex);">
+  
+    <span>
+      <img id="menuBox" src="../menuIcon.svg" style="display: inline;">
+      <select id="colorPicker" onChange="colorPickerChange(this.selectedIndex);" style="position: absolute;">
         <option value="#000000" style="background-color: Black;color: #FFFFFF;">COLOR PICKER</option>
         <option value="#000000" style="background-color: Black;color: #FFFFFF;">Black</option>
         <option value="#A9A9A9" style="background-color: DarkGray;">DarkGray</option>
@@ -35,8 +41,14 @@
         <option value="#FF0000" style="background-color: Red;">Red</option>
         <option value="#A52A2A" style="background-color: Brown;">Brown</option>
       </select>
+
+      <select id="componentSelect" onChange="componentChange(this.selectedIndex.value);" style="position: absolute; top: 10px; left: 175px;">
+        <option value="NONE">CLEAR HIGHLIGHTS</option>
+      </select>
+
       <button id="getWireColors" onclick="getColors()">Get Wire Colors CTRL+Shift To Hide This Button</button>
     </span>
+    <div id="mainWindow"></div>
 </body>
 <script src="javaScript.js"></script>
 <script src="data.js"></script>
