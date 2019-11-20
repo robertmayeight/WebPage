@@ -172,7 +172,6 @@ sortSelect(componentSelect)
 
 //Change DropDown when component is clicked on diagram.
 function changeDropDown(e){
-  console.log("fired" + e)
   newDropDownValue = e.split("_")[0];
   for(i=0; i<componentSelect.length; i++){
     if(newDropDownValue == componentSelect[i].value){
