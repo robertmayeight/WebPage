@@ -15,7 +15,7 @@ function handleMenu(){
 
 
 //Toggle Edit Functions
-getWireColors.style.display="none";
+// getWireColors.style.display="none";
 window.addEventListener("keydown", toggleEditor);
 function toggleEditor(){
   if(event.keyCode == 16 && event.ctrlKey){
