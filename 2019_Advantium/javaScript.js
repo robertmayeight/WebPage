@@ -1,5 +1,18 @@
 document.title = "2019 Advantium Oven"
 
+menuBox.setAttribute('onclick','this.style.cursor = "pointer"; handleMenu();');
+menuBox.setAttribute('onmouseover','this.style.cursor = "pointer"');
+
+function handleMenu(){
+  if(componentSelect.style.display == "none"){
+    componentSelect.style.display="inline-block";
+    colorPicker.style.display="inline-block";
+  }else{
+    componentSelect.style.display="none";
+    colorPicker.style.display="none";
+  }
+}
+
 var originalLineSize = .5;
 var highlightedWidth = 1.45;
 
