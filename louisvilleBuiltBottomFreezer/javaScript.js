@@ -39,8 +39,6 @@ var schematic = document.getElementById("mainWindow").appendChild(xhr.responseXM
 schematic.setAttribute("width", screen.width);
 schematic.setAttribute("height", screen.height); 
 
-var schematicDrag = Draggable.create(schematic, {zIndexBoost:false});
-
 //Resize Window
 var svgWindow = document.getElementById("mainWindow");
 var svg = d3.select(schematic);

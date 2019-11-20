@@ -415,7 +415,7 @@ var SvgPanZoom = function(svg, options) {
 
 var optionsDefaults = {
   viewportSelector: ".svg-pan-zoom_viewport", // Viewport selector. Can be querySelector string or SVGElement
-  panEnabled: false, // enable or disable panning (default enabled)
+  panEnabled: true, // enable or disable panning (default enabled)
   zoomEnabled: true, // enable or disable zooming (default enabled)
   dblClickZoomEnabled: true, // enable or disable zooming by double clicking (default enabled)
   mouseWheelZoomEnabled: true, // enable or disable zooming by mouse wheel (default enabled)
