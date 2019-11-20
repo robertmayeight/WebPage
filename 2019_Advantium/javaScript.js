@@ -54,19 +54,19 @@ myredraw();
 window.addEventListener("resize", myredraw);
 
 
-var schematicDrag = Draggable.create(schematic, {zIndexBoost:false});
-var schematicScale = 1;
-function scaleUp(){
-  schematicScale = schematicScale+.2;
-  TweenMax.to([schematic], .5, {scaleX:schematicScale, scaleY:schematicScale, transformOrigin: "50% 50%", ease: Power0.easeNone});
+// var schematicDrag = Draggable.create(schematic, {zIndexBoost:false});
+// var schematicScale = 1;
+// function scaleUp(){
+//   schematicScale = schematicScale+.2;
+//   TweenMax.to([schematic], .5, {scaleX:schematicScale, scaleY:schematicScale, transformOrigin: "50% 50%", ease: Power0.easeNone});
   
-}
+// }
 
-function scaleDown(){
-  schematicScale = schematicScale-.2;
-  TweenMax.to([schematic], .5, {scaleX:schematicScale, scaleY:schematicScale, transformOrigin: "50% 50%", ease: Power0.easeNone});
+// function scaleDown(){
+//   schematicScale = schematicScale-.2;
+//   TweenMax.to([schematic], .5, {scaleX:schematicScale, scaleY:schematicScale, transformOrigin: "50% 50%", ease: Power0.easeNone});
   
-}
+// }
 
 //Set Path Codes
 var diagram1Paths = document.getElementById("diagram1").getElementsByTagName("path");
