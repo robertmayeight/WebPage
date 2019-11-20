@@ -17,7 +17,6 @@ var originalLineSize = .5;
 var highlightedWidth = 1.45;
 
 //Toggle Edit Functions
-getWireColors.style.display="none";
 window.addEventListener("keydown", toggleEditor);
 function toggleEditor(){
   if(event.keyCode == 16 && event.ctrlKey){
