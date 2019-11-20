@@ -4,18 +4,26 @@
     <title>loading</title>
     <meta charset="UTF-8">
     <!DOCTYPE html>
-    <!-- <link rel="stylesheet" href="../JavaScriptLibraries/interactiveSchematic.css"> -->
+    <link rel="stylesheet" href="../JavaScriptLibraries/interactiveSchematic.css">
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
     <script src="../JavaScriptLibraries/svgPanZoom.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.12.0/d3.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.1/TweenMax.min.js"></script>
+    <script src="../JavaScriptLibraries/draggable.js"></script>
+    <style type="text/css">
+      body{
+        overflow: hidden;
+      }
+    </style>
   </head>
 <body>
   
     <div id="mainWindow"></div>
       <img id="menuBox" src="../menuIcon.svg" style="position: absolute; top: 10px; left: 10px;">
+      <img id="menuBox" src="../zoomUpIcon.svg" style="position: absolute; top: 50px; left: 10px;" onclick="scaleUp();">
+      <img id="menuBox" src="../zoomDownIcon.svg" style="position: absolute; top: 60px; left: 10px;" onclick="scaleDown();">
       <select id="colorPicker" onChange="colorPickerChange(this.selectedIndex);" style="position: absolute; top: 10px; left: 50px;">
         <option value="#000000" style="background-color: Black;color: #FFFFFF;">COLOR PICKER</option>
         <option value="#000000" style="background-color: Black;color: #FFFFFF;">Black</option>
@@ -39,57 +47,60 @@
       </select>
 
       <button id="getWireColors" onclick="getColors()" style="position: absolute; top: 10px; left: 500px;">Get Wire Colors CTRL+Shift To Hide This Button</button>
-    
+
+    </body>
     
 <script src="javaScript.js"></script>
+
 <script src="data.js"></script>
+
 <script>
-        var eventsHandler;
-        eventsHandler = {
-          haltEventListeners: ['touchstart', 'touchend', 'touchmove', 'touchleave', 'touchcancel']
-        , init: function(options) {
-            var instance = options.instance
-              , initialScale = 1
-              , pannedX = 0
-              , pannedY = 0
-              this.hammer = Hammer(options.svgElement, {
-              inputClass: Hammer.SUPPORT_POINTER_EVENTS ? Hammer.PointerEventInput : Hammer.TouchInput
-            })
-            this.hammer.get('pinch').set({enable: true})
-            this.hammer.on('doubletap', function(ev){
-              instance.zoomIn()
-            })
-            this.hammer.on('panstart panmove', function(ev){
-              if (ev.type === 'panstart') {
-                pannedX = 0
-                pannedY = 0
-              }
-              instance.panBy({x: ev.deltaX - pannedX, y: ev.deltaY - pannedY})
-              pannedX = ev.deltaX
-              pannedY = ev.deltaY
-            })
-            this.hammer.on('pinchstart pinchmove', function(ev){
-              if (ev.type === 'pinchstart') {
-                initialScale = instance.getZoom()
-                instance.zoomAtPoint(initialScale * ev.scale, {x: ev.center.x, y: ev.center.y})
-              }
-              instance.zoomAtPoint(initialScale * ev.scale, {x: ev.center.x, y: ev.center.y})
-            })
-            options.svgElement.addEventListener('touchmove', function(e){ e.preventDefault(); });
-          }
-        , destroy: function(){
-            this.hammer.destroy()
-          }
-        }
+        // var eventsHandler;
+        // eventsHandler = {
+        //   haltEventListeners: ['touchstart', 'touchend', 'touchmove', 'touchleave', 'touchcancel']
+        // , init: function(options) {
+        //     var instance = options.instance
+        //       , initialScale = 1
+        //       , pannedX = 0
+        //       , pannedY = 0
+        //       this.hammer = Hammer(options.svgElement, {
+        //       inputClass: Hammer.SUPPORT_POINTER_EVENTS ? Hammer.PointerEventInput : Hammer.TouchInput
+        //     })
+        //     this.hammer.get('pinch').set({enable: true})
+        //     this.hammer.on('doubletap', function(ev){
+        //       instance.zoomIn()
+        //     })
+        //     this.hammer.on('panstart panmove', function(ev){
+        //       if (ev.type === 'panstart') {
+        //         pannedX = 0
+        //         pannedY = 0
+        //       }
+        //       instance.panBy({x: ev.deltaX - pannedX, y: ev.deltaY - pannedY})
+        //       pannedX = ev.deltaX
+        //       pannedY = ev.deltaY
+        //     })
+        //     this.hammer.on('pinchstart pinchmove', function(ev){
+        //       if (ev.type === 'pinchstart') {
+        //         initialScale = instance.getZoom()
+        //         instance.zoomAtPoint(initialScale * ev.scale, {x: ev.center.x, y: ev.center.y})
+        //       }
+        //       instance.zoomAtPoint(initialScale * ev.scale, {x: ev.center.x, y: ev.center.y})
+        //     })
+        //     options.svgElement.addEventListener('touchmove', function(e){ e.preventDefault(); });
+        //   }
+        // , destroy: function(){
+        //     this.hammer.destroy()
+        //   }
+        // }
 
         
-        window.panZoom = svgPanZoom(schematic, {
-          zoomEnabled: true
-        , controlIconsEnabled: true
-        , fit: 1
-        , center: 1
-        , customEventsHandler: eventsHandler
-        });
+        // window.panZoom = svgPanZoom(schematic, {
+        //   zoomEnabled: true
+        // , controlIconsEnabled: true
+        // , fit: 1
+        // , center: 1
+        // , customEventsHandler: eventsHandler
+        // });
       
     </script>
 </html>
