@@ -17,7 +17,6 @@ var originalLineSize = .5;
 var highlightedWidth = 1.45;
 
 //Toggle Edit Functions
-getWireColors.style.display="none";
 window.addEventListener("keydown", toggleEditor);
 function toggleEditor(){
   if(event.keyCode == 16 && event.ctrlKey){
@@ -52,7 +51,22 @@ function myredraw(){
   .attr("height", height);
 }
 myredraw();
-window.addEventListener("resize", myredraw)
+window.addEventListener("resize", myredraw);
+
+
+var schematicDrag = Draggable.create(schematic, {zIndexBoost:false});
+var schematicScale = 1;
+function scaleUp(){
+  schematicScale = schematicScale+.2;
+  TweenMax.to([schematic], .5, {scaleX:schematicScale, scaleY:schematicScale, transformOrigin: "50% 50%", ease: Power0.easeNone});
+  
+}
+
+function scaleDown(){
+  schematicScale = schematicScale-.2;
+  TweenMax.to([schematic], .5, {scaleX:schematicScale, scaleY:schematicScale, transformOrigin: "50% 50%", ease: Power0.easeNone});
+  
+}
 
 //Set Path Codes
 var diagram1Paths = document.getElementById("diagram1").getElementsByTagName("path");
