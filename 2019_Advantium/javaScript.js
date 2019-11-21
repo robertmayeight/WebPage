@@ -36,7 +36,7 @@ zoomNav.overrideMimeType("image/svg+xml");
 zoomNav.send("");
 
 var zoomIcon = document.getElementById("rob").appendChild(zoomNav.responseXML.documentElement);
-zoomIcon.style.width = 200;
+zoomIcon.style.top = 200;
 
 xhr = new XMLHttpRequest();
 xhr.open("GET","schematic.svg",false);
@@ -72,8 +72,36 @@ function scaleUp(){
 
 function scaleDown(){
   schematicScale = schematicScale-.2;
-  TweenMax.to([schematic], .5, {scaleX:schematicScale, scaleY:schematicScale, transformOrigin: "50% 50%", ease: Power0.easeNone});
+  // TweenMax.to([schematic], .5, {scaleX:schematicScale, scaleY:schematicScale, transformOrigin: "50% 50%", ease: Power0.easeNone});
   
+  
+}
+
+
+var zoomUp;
+$("#scaleUp_btn").mousedown(function() {
+  zoomUp = setInterval(zoomIn, 1);
+}).mouseup(function() {
+  clearInterval(zoomUp);
+});
+
+function zoomIn() {
+
+  TweenMax.to([schematic], .5, {scaleX:"+=.3", scaleY:"+=.3", transformOrigin: "50% 50%", ease: Power0.easeNone});
+
+}
+
+var zoomDown;
+$("#scaleDown_btn").mousedown(function() {
+  zoomDown = setInterval(zoomOut, 1);
+}).mouseup(function() {
+  clearInterval(zoomDown);
+});
+
+function zoomOut() {
+  if(schematic._gsTransform.scaleX> 1){
+  TweenMax.to([schematic], .5, {scaleX:"-=.3", scaleY:"-=.3", transformOrigin: "50% 50%", ease: Power0.easeNone});
+}
 }
 
 //Set Path Codes

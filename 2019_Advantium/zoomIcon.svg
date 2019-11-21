@@ -61,27 +61,29 @@
     <path
        style="opacity:0.25;vector-effect:none;fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:0.53318697;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        d="m 18.743849,285.42377 -6.931431,7.46463 h 14.39605 z"
-       id="path4755"
+       id="scaleUp_btn"
        inkscape:connector-curvature="0"
-       onclick="scaleUp();" />
+       onclick=""
+       inkscape:label="#path4755" />
     <path
        style="opacity:0.25;vector-effect:none;fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:0.53318697;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        d="m 19.277043,325.32018 6.931425,-7.46463 h -14.39605 z"
-       id="path4755-6"
+       id="scaleDown_btn"
        inkscape:connector-curvature="0"
-       onclick="scaleDown();" />
+       onclick=""
+       inkscape:label="#path4755-6" />
     <path
        style="opacity:0.25;vector-effect:none;fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:0.53318697;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        d="M -0.93773481,305.63858 6.5268922,312.57 v -14.39604 z"
        id="path4755-1"
        inkscape:connector-curvature="0"
-       onclick="zoomUp();" />
+       onclick="" />
     <path
        style="opacity:0.25;vector-effect:none;fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:0.53318697;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        d="m 38.95862,305.10537 -7.464626,-6.93141 V 312.57 Z"
        id="path4755-1-7"
        inkscape:connector-curvature="0"
-       onclick="zoomUp();" />
+       onclick="" />
     <rect
        style="opacity:0.25;vector-effect:none;fill:#0000ff;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:0.88092089;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
        id="rect4781"
