@@ -85,6 +85,13 @@ $("#scaleUp_btn").mousedown(function() {
   clearInterval(zoomUp);
 });
 
+var zoomUp;
+$("#scaleUp_btn").ontouchstart(function() {
+  zoomUp = setInterval(zoomIn, 1);
+}).mouseup(function() {
+  clearInterval(zoomUp);
+});
+
 function zoomIn() {
 
   TweenMax.to([schematic], .5, {scaleX:"+=.3", scaleY:"+=.3", transformOrigin: "50% 50%", ease: Power0.easeNone});
