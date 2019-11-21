@@ -90,7 +90,7 @@ $("#scaleUp_btn").mousedown(function(e) {
 
 
 function zoomIn() {
-
+alert("shit")
   TweenMax.to([schematic], 0, {scaleX:"+=.02", scaleY:"+=.02", transformOrigin: "50% 50%", ease: Power0.easeNone});
 
 }
