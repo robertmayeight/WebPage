@@ -81,7 +81,6 @@ function scaleDown(){
 var zoomUp;
 $("#scaleUp_btn").mousedown(function(e) {
   e.preventDefault();
-  alert("fuck")
   zoomUp = setInterval(zoomIn, 1);
 }).mouseup(function() {
   clearInterval(zoomUp);
@@ -90,7 +89,7 @@ $("#scaleUp_btn").mousedown(function(e) {
 
 
 function zoomIn() {
-alert("shit")
+
   TweenMax.to([schematic], 0, {scaleX:"+=.02", scaleY:"+=.02", transformOrigin: "50% 50%", ease: Power0.easeNone});
 
 }
