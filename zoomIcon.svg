@@ -25,12 +25,12 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="11.2"
-     inkscape:cx="10.69093"
-     inkscape:cy="19.116295"
+     inkscape:zoom="16"
+     inkscape:cx="23.824129"
+     inkscape:cy="23.837912"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
-     showgrid="true"
+     showgrid="false"
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
@@ -47,7 +47,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -56,23 +56,35 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(-0.26930803,-287.13534)">
-    <rect
-       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.04743285;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
-       id="rect4747"
-       width="9.1516523"
-       height="9.1995678"
-       x="0.29302445"
-       y="287.15906" />
     <path
-       style="opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.16014194;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       d="m 4.871664,288.70942 -2.0818455,2.24199 h 4.3238329 z"
+       style="opacity:0.25;vector-effect:none;fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:0.16014194;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 4.9736008,285.42377 -2.0818455,2.24199 h 4.3238329 z"
        id="path4755"
        inkscape:connector-curvature="0"
        onclick="zoomUp();" />
     <path
-       style="opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.16014194;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       d="m 5.031808,294.79484 2.0818434,-2.24199 H 2.7898185 Z"
+       style="opacity:0.25;vector-effect:none;fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:0.16014194;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 5.1337448,297.4066 2.0818434,-2.24199 H 2.8917553 Z"
        id="path4755-6"
        inkscape:connector-curvature="0" />
+    <path
+       style="opacity:0.25;vector-effect:none;fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:0.16014194;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m -0.93773481,291.49526 2.24199001,2.08184 v -4.32383 z"
+       id="path4755-1"
+       inkscape:connector-curvature="0"
+       onclick="zoomUp();" />
+    <path
+       style="opacity:0.25;vector-effect:none;fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:0.16014194;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 11.045078,291.33511 -2.2419897,-2.08184 v 4.32383 z"
+       id="path4755-1-7"
+       inkscape:connector-curvature="0"
+       onclick="zoomUp();" />
+    <rect
+       style="opacity:0.25;vector-effect:none;fill:#0000ff;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:0.26458332;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="rect4781"
+       width="4.3238325"
+       height="4.3238301"
+       x="2.8917556"
+       y="289.25327" />
   </g>
 </svg>

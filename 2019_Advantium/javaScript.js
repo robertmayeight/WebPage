@@ -1,7 +1,7 @@
 document.title = "2019 Advantium Oven"
 
-menuBox.setAttribute('onclick','this.style.cursor = "pointer"; handleMenu();');
-menuBox.setAttribute('onmouseover','this.style.cursor = "pointer"');
+// menuBox.setAttribute('onclick','this.style.cursor = "pointer"; handleMenu();');
+// menuBox.setAttribute('onmouseover','this.style.cursor = "pointer"');
 
 function handleMenu(){
   if(componentSelect.style.display == "none"){
@@ -29,6 +29,14 @@ var deviceType = "not mobile";
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
   deviceType="mobile"
 }
+
+zoomNav = new XMLHttpRequest();
+zoomNav.open("GET","zoomIcon.svg",false);
+zoomNav.overrideMimeType("image/svg+xml");
+zoomNav.send("");
+
+var zoomIcon = document.getElementById("rob").appendChild(zoomNav.responseXML.documentElement);
+zoomIcon.style.width = 200;
 
 xhr = new XMLHttpRequest();
 xhr.open("GET","schematic.svg",false);
