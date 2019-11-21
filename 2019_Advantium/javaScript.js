@@ -61,52 +61,90 @@ function myredraw(){
 myredraw();
 window.addEventListener("resize", myredraw);
 
-
 var schematicDrag = Draggable.create(schematic, {zIndexBoost:false});
 var schematicScale = 1;
-function scaleUp(){
-  schematicScale = schematicScale+.2;
-  TweenMax.to([schematic], .5, {scaleX:schematicScale, scaleY:schematicScale, transformOrigin: "50% 50%", ease: Power0.easeNone});
-  
+
+
+
+schematic.addEventListener("DOMMouseScroll", function(e){zoomIn(e)}, false);
+
+// function zoomIn() {
+//   TweenMax.to([schematic], .5, {scaleX:"+=.2", scaleY:"+=.2",  transformOrigin: "50% 50%", ease: Power0.easeNone});
+// }
+// function zoomOut() {
+//   TweenMax.to([schematic], .5, {scaleX:"-=.2", scaleY:"-=.2",  transformOrigin: "50% 50%", ease: Power0.easeNone});
+// }
+
+function panDown() {
+  console.log("down")
+  TweenMax.to([schematic], .5, {y:"+=50",  transformOrigin: "50% 50%", ease: Power0.easeNone});
 }
 
-function scaleDown(){
-  schematicScale = schematicScale-.2;
-  // TweenMax.to([schematic], .5, {scaleX:schematicScale, scaleY:schematicScale, transformOrigin: "50% 50%", ease: Power0.easeNone});
-  
-  
-}
-
-
-var zoomUp;
-$("#scaleUp_btn").mousedown(function(e) {
-  e.preventDefault();
-  zoomUp = setInterval(zoomIn, 1);
-}).mouseup(function() {
-  clearInterval(zoomUp);
-});
-
-
-
-function zoomIn() {
-
-  TweenMax.to([schematic], 0, {scaleX:"+=.02", scaleY:"+=.02", transformOrigin: "50% 50%", ease: Power0.easeNone});
-
-}
 
 var zoomDown;
-$("#scaleDown_btn").mousedown(function() {
-  zoomDown = setInterval(zoomOut, 1);
+$("#scaleUp_btn").mousedown(function() {
+  zoomDown = setInterval(zoomIn, 1);
 }).mouseup(function() {
   clearInterval(zoomDown);
 });
 
-function zoomOut() {
-  if(schematic._gsTransform.scaleX> 1){
-  TweenMax.to([schematic], 0, {scaleX:"-=.02", scaleY:"-=.02", transformOrigin: "50% 50%", ease: Power0.easeNone});
-}else{
-  TweenMax.to([schematic], .5, {scaleX:1, scaleY:1, transformOrigin: "50% 50%", ease: Power0.easeNone});
+function zoomIn() {
+  TweenMax.to([schematic], 0, {scaleX:"+=.02", scaleY:"+=.02", transformOrigin: "50% 50%", ease: Power0.easeNone});
 }
+
+var zoomUp;
+$("#scaleDown_btn").mousedown(function() {
+  zoomUp = setInterval(zoomOut, 1);
+}).mouseup(function() {
+  clearInterval(zoomUp);
+});
+
+function zoomOut() {
+  TweenMax.to([schematic], 0, {scaleX:"-=.02", scaleY:"-=.02", transformOrigin: "50% 50%", ease: Power0.easeNone});
+}
+
+var panUp;
+$("#up_btn").mousedown(function() {
+  panUp = setInterval(panUpward, 1);
+}).mouseup(function() {
+  clearInterval(panUp);
+});
+
+function panUpward() {
+  TweenMax.to(schematic, .5, {y:"-=50",  transformOrigin: "50% 50%", ease: Power0.easeNone});
+}
+
+var panDown;
+$("#down_btn").mousedown(function() {
+  panDown = setInterval(panDownward, 1);
+}).mouseup(function() {
+  clearInterval(panDown);
+});
+
+function panDownward() {
+  TweenMax.to(schematic, .5, {y:"+=50",  transformOrigin: "50% 50%", ease: Power0.easeNone});
+}
+
+var panRight;
+$("#right_btn").mousedown(function() {
+  panRight = setInterval(panRightward, 1);
+}).mouseup(function() {
+  clearInterval(panRight);
+});
+
+function panRightward() {
+  TweenMax.to(schematic, .5, {x:"+=50",  transformOrigin: "50% 50%", ease: Power0.easeNone});
+}
+
+var panLeft;
+$("#left_btn").mousedown(function() {
+  panLeft = setInterval(panLeftward, 1);
+}).mouseup(function() {
+  clearInterval(panLeft);
+});
+
+function panLeftward() {
+  TweenMax.to(schematic, .5, {x:"-=50",  transformOrigin: "50% 50%", ease: Power0.easeNone});
 }
 
 //Set Path Codes
