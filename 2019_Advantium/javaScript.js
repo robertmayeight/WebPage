@@ -81,9 +81,9 @@ function scaleDown(){
 var zoomUp;
 $("#scaleUp_btn").mousedown(function(e) {
   e.preventDefault();
-  TweenMax.to([schematic], 0, {scaleX:"+=.02", scaleY:"+=.02", transformOrigin: "50% 50%", ease: Power0.easeNone});
+  zoomUp = setInterval(zoomIn, 1);
 }).mouseup(function() {
-  // clearInterval(zoomUp);
+  clearInterval(zoomUp);
 });
 
 
@@ -94,20 +94,20 @@ function zoomIn() {
 
 }
 
-// var zoomDown;
-// $("#scaleDown_btn").mousedown(function() {
-//   zoomDown = setInterval(zoomOut, 1);
-// }).mouseup(function() {
-//   clearInterval(zoomDown);
-// });
+var zoomDown;
+$("#scaleDown_btn").mousedown(function() {
+  zoomDown = setInterval(zoomOut, 1);
+}).mouseup(function() {
+  clearInterval(zoomDown);
+});
 
-// function zoomOut() {
-//   if(schematic._gsTransform.scaleX> 1){
-//   TweenMax.to([schematic], 0, {scaleX:"-=.02", scaleY:"-=.02", transformOrigin: "50% 50%", ease: Power0.easeNone});
-// }else{
-//   TweenMax.to([schematic], .5, {scaleX:1, scaleY:1, transformOrigin: "50% 50%", ease: Power0.easeNone});
-// }
-// }
+function zoomOut() {
+  if(schematic._gsTransform.scaleX> 1){
+  TweenMax.to([schematic], 0, {scaleX:"-=.02", scaleY:"-=.02", transformOrigin: "50% 50%", ease: Power0.easeNone});
+}else{
+  TweenMax.to([schematic], .5, {scaleX:1, scaleY:1, transformOrigin: "50% 50%", ease: Power0.easeNone});
+}
+}
 
 //Set Path Codes
 var diagram1Paths = document.getElementById("diagram1").getElementsByTagName("path");
