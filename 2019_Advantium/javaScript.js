@@ -24,6 +24,11 @@ function toggleEditor(){
   }
 }
 
+window.addEventListener("keydown", clearTimer);
+function clearTimer(){
+  clearInterval(buttonDowntimer);
+}
+
 
 var deviceType = "not mobile";
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
@@ -62,89 +67,94 @@ myredraw();
 window.addEventListener("resize", myredraw);
 
 var schematicDrag = Draggable.create(schematic, {zIndexBoost:false});
-var schematicScale = 1;
 
-
-
-schematic.addEventListener("DOMMouseScroll", function(e){zoomIn(e)}, false);
-
-// function zoomIn() {
-//   TweenMax.to([schematic], .5, {scaleX:"+=.2", scaleY:"+=.2",  transformOrigin: "50% 50%", ease: Power0.easeNone});
-// }
-// function zoomOut() {
-//   TweenMax.to([schematic], .5, {scaleX:"-=.2", scaleY:"-=.2",  transformOrigin: "50% 50%", ease: Power0.easeNone});
-// }
-
-function panDown() {
-  console.log("down")
-  TweenMax.to([schematic], .5, {y:"+=50",  transformOrigin: "50% 50%", ease: Power0.easeNone});
-}
-
-
-var zoomDown;
+var buttonDowntimer;
 $("#scaleUp_btn").mousedown(function() {
-  zoomDown = setInterval(zoomIn, 1);
+  clearInterval(buttonDowntimer);
+  buttonDowntimer = setInterval(zoomIn, .1);
 }).mouseup(function() {
-  clearInterval(zoomDown);
+  clearInterval(buttonDowntimer);
 });
 
 function zoomIn() {
-  TweenMax.to([schematic], 0, {scaleX:"+=.02", scaleY:"+=.02", transformOrigin: "50% 50%", ease: Power0.easeNone});
+  TweenMax.to([schematic], .1, {scaleX:"+=.1", scaleY:"+=.1", transformOrigin: "50% 50%", ease: Power0.easeNone});
 }
 
-var zoomUp;
 $("#scaleDown_btn").mousedown(function() {
-  zoomUp = setInterval(zoomOut, 1);
+  clearInterval(buttonDowntimer);
+  buttonDowntimer = setInterval(zoomOut, .1);
 }).mouseup(function() {
-  clearInterval(zoomUp);
+  clearInterval(buttonDowntimer);
 });
 
 function zoomOut() {
-  TweenMax.to([schematic], 0, {scaleX:"-=.02", scaleY:"-=.02", transformOrigin: "50% 50%", ease: Power0.easeNone});
+  if(schematic._gsTransform.scaleX  >= 1){
+  TweenMax.to([schematic], .1, {scaleX:"-=.1", scaleY:"-=.1", transformOrigin: "50% 50%", ease: Power0.easeNone});
+}
 }
 
-var panUp;
-$("#up_btn").mousedown(function() {
-  panUp = setInterval(panUpward, 1);
+$("#down_btn").mousedown(function() {
+  clearInterval(buttonDowntimer);
+  buttonDowntimer = setInterval(panUpward, .1);
 }).mouseup(function() {
-  clearInterval(panUp);
+  clearInterval(buttonDowntimer);
 });
 
 function panUpward() {
-  TweenMax.to(schematic, .5, {y:"-=50",  transformOrigin: "50% 50%", ease: Power0.easeNone});
+  TweenMax.to(schematic, 0, {y:"-=5",  transformOrigin: "50% 50%", ease: Power0.easeNone});
 }
 
-var panDown;
-$("#down_btn").mousedown(function() {
-  panDown = setInterval(panDownward, 1);
+$("#up_btn").mousedown(function() {
+  clearInterval(buttonDowntimer);
+  buttonDowntimer = setInterval(panDownward, .1);
 }).mouseup(function() {
-  clearInterval(panDown);
+  clearInterval(buttonDowntimer);
 });
 
 function panDownward() {
-  TweenMax.to(schematic, .5, {y:"+=50",  transformOrigin: "50% 50%", ease: Power0.easeNone});
+  TweenMax.to(schematic, 0, {y:"+=5",  transformOrigin: "50% 50%", ease: Power0.easeNone});
 }
 
-var panRight;
-$("#right_btn").mousedown(function() {
-  panRight = setInterval(panRightward, 1);
+$("#left_btn").mousedown(function() {
+  clearInterval(buttonDowntimer);
+  buttonDowntimer = setInterval(panRightward, .1);
 }).mouseup(function() {
-  clearInterval(panRight);
+  clearInterval(buttonDowntimer);
 });
 
 function panRightward() {
-  TweenMax.to(schematic, .5, {x:"+=50",  transformOrigin: "50% 50%", ease: Power0.easeNone});
+  TweenMax.to(schematic, 0, {x:"+=5",  transformOrigin: "50% 50%", ease: Power0.easeNone});
 }
 
-var panLeft;
-$("#left_btn").mousedown(function() {
-  panLeft = setInterval(panLeftward, 1);
+
+$("#right_btn").mousedown(function() {
+  clearInterval(buttonDowntimer);
+  buttonDowntimer = setInterval(panLeftward, .1);
 }).mouseup(function() {
-  clearInterval(panLeft);
+  clearInterval(buttonDowntimer);
 });
 
 function panLeftward() {
-  TweenMax.to(schematic, .5, {x:"-=50",  transformOrigin: "50% 50%", ease: Power0.easeNone});
+  TweenMax.to(schematic, 0, {x:"-=5",  transformOrigin: "50% 50%", ease: Power0.easeNone});
+}
+
+schematic.addEventListener("DOMMouseScroll", function(e){zoomSchematic(e)}, false);
+
+var scaleUp = 2;
+function zoomSchematic(e){
+  e.preventDefault();
+  switch(e.detail>0) {
+    case true:
+    if(scaleUp > .5 ){
+      scaleUp = scaleUp - .25;
+      TweenMax.to(schematic, 0, {scaleX:scaleUp, scaleY:scaleUp, transformOrigin: "50% 50%", ease: Power0.easeNone});
+    }
+    break;
+    case false:
+    scaleUp = scaleUp + .25;
+      TweenMax.to(schematic, 0, {scaleX:scaleUp, scaleY:scaleUp, transformOrigin: "50% 50%", ease: Power0.easeNone});
+        break;
+    }
 }
 
 //Set Path Codes
