@@ -82,19 +82,9 @@ var zoomUp;
 $("#scaleUp_btn").mousedown(function(e) {
   e.preventDefault();
   zoomUp = setInterval(zoomIn, 1);
-})
-
-$("#scaleUp_btn").mouseup(function() {
+}).mouseup(function() {
   clearInterval(zoomUp);
 });
-
- $('#scaleUp_btn').bind('touchstart mousedown', function(){
-   zoomUp = setInterval(zoomIn, 1);
-  });
-
-  $('#scaleUp_btn').bind('touchend mouseup', function(){
-      clearInterval(zoomUp);
-  });
 
 
 
