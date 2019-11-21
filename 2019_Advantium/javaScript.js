@@ -79,7 +79,8 @@ function scaleDown(){
 
 
 var zoomUp;
-$("#scaleUp_btn").mousedown(function() {
+$("#scaleUp_btn").mousedown(function(e) {
+  e.preventDefault();
   zoomUp = setInterval(zoomIn, 1);
 }).mouseup(function() {
   clearInterval(zoomUp);
