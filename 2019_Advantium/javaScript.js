@@ -76,6 +76,13 @@ $("#scaleUp_btn").mousedown(function() {
   clearInterval(buttonDowntimer);
 });
 
+$("#scaleUp_btn").bind('touchstart', function() {
+  clearInterval(buttonDowntimer);
+  buttonDowntimer = setInterval(zoomIn, .1);
+}).bind('touchend', function() {
+  clearInterval(buttonDowntimer);
+});
+
 function zoomIn() {
   TweenMax.to([schematic], .1, {scaleX:"+=.1", scaleY:"+=.1", transformOrigin: "50% 50%", ease: Power0.easeNone});
 }
