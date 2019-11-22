@@ -55,13 +55,22 @@ var schematic = document.getElementById("mainWindow").appendChild(xhr.responseXM
 schematic.setAttribute("width", screen.width);
 schematic.setAttribute("height", screen.height); 
 
-schematic.addEventListener('gestureend', function(e) {
-    if (e.scale < 1.0) {
+// schematic.addEventListener('gesturechange', function(e) {
+//     if (e.scale < 1.0) {
+//         console.log(e.scale)
+//     } else if (e.scale > 1.0) {
+//         console.log(e.scale)
+//     }
+// }, false);
+
+$("#schematic").bind('gesturechange', function(e) {
+  console.log("fires")
+  if (e.scale < 1.0) {
         console.log(e.scale)
     } else if (e.scale > 1.0) {
         console.log(e.scale)
     }
-}, false);
+})
 
 //Resize Window
 var svgWindow = document.getElementById("mainWindow");
