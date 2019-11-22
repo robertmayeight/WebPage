@@ -7,9 +7,11 @@ function handleMenu(){
   if(componentSelect.style.display == "none"){
     componentSelect.style.display="inline-block";
     colorPicker.style.display="inline-block";
+    document.getElementById("svg-pan-zoom-controls").style.display="inline-block";
   }else{
     componentSelect.style.display="none";
     colorPicker.style.display="none";
+    document.getElementById("svg-pan-zoom-controls").style.display="none";
   }
 }
 
