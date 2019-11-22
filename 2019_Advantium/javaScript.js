@@ -87,6 +87,13 @@ $("#scaleDown_btn").mousedown(function() {
   clearInterval(buttonDowntimer);
 });
 
+$("#scaleDown_btn").ontouchstart(function() {
+  clearInterval(buttonDowntimer);
+  buttonDowntimer = setInterval(zoomOut, .1);
+}).ontouchend(function() {
+  clearInterval(buttonDowntimer);
+});
+
 function zoomOut() {
   if(schematic._gsTransform.scaleX  >= 1){
   TweenMax.to([schematic], .1, {scaleX:"-=.1", scaleY:"-=.1", transformOrigin: "50% 50%", ease: Power0.easeNone});
