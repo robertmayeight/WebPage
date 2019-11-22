@@ -30,6 +30,8 @@ function clearTimer(){
 }
 
 
+
+
 var deviceType = "not mobile";
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
   deviceType="mobile"
@@ -52,6 +54,14 @@ var schematic = document.getElementById("mainWindow").appendChild(xhr.responseXM
 
 schematic.setAttribute("width", screen.width);
 schematic.setAttribute("height", screen.height); 
+
+schematic.addEventListener('gestureend', function(e) {
+    if (e.scale < 1.0) {
+        console.log(e.scale)
+    } else if (e.scale > 1.0) {
+        console.log(e.scale)
+    }
+}, false);
 
 //Resize Window
 var svgWindow = document.getElementById("mainWindow");
