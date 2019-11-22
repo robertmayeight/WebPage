@@ -87,10 +87,10 @@ $("#scaleDown_btn").mousedown(function() {
   clearInterval(buttonDowntimer);
 });
 
-$("#scaleDown_btn").ontouchstart(function() {
+$("#scaleDown_btn").bind('touchstart', function() {
   clearInterval(buttonDowntimer);
   buttonDowntimer = setInterval(zoomOut, .1);
-}).ontouchend(function() {
+}).bind('touchend', function() {
   clearInterval(buttonDowntimer);
 });
 
