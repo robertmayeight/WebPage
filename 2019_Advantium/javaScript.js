@@ -1,7 +1,7 @@
 document.title = "2019 Advantium Oven"
 
-// menuBox.setAttribute('onclick','this.style.cursor = "pointer"; handleMenu();');
-// menuBox.setAttribute('onmouseover','this.style.cursor = "pointer"');
+menuBox.setAttribute('onclick','this.style.cursor = "pointer"; handleMenu();');
+menuBox.setAttribute('onmouseover','this.style.cursor = "pointer"');
 
 function handleMenu(){
   if(componentSelect.style.display == "none"){
@@ -17,6 +17,7 @@ var originalLineSize = .5;
 var highlightedWidth = 1.45;
 
 //Toggle Edit Functions
+getWireColors.style.display="none";
 window.addEventListener("keydown", toggleEditor);
 function toggleEditor(){
   if(event.keyCode == 16 && event.ctrlKey){
@@ -24,26 +25,11 @@ function toggleEditor(){
   }
 }
 
-window.addEventListener("keydown", clearTimer);
-function clearTimer(){
-  clearInterval(buttonDowntimer);
-}
-
-
-
 
 var deviceType = "not mobile";
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
   deviceType="mobile"
 }
-
-zoomNav = new XMLHttpRequest();
-zoomNav.open("GET","zoomIcon.svg",false);
-zoomNav.overrideMimeType("image/svg+xml");
-zoomNav.send("");
-
-var zoomIcon = document.getElementById("rob").appendChild(zoomNav.responseXML.documentElement);
-zoomIcon.style.top = 200;
 
 xhr = new XMLHttpRequest();
 xhr.open("GET","schematic.svg",false);
@@ -54,23 +40,6 @@ var schematic = document.getElementById("mainWindow").appendChild(xhr.responseXM
 
 schematic.setAttribute("width", screen.width);
 schematic.setAttribute("height", screen.height); 
-
-// schematic.addEventListener('gesturechange', function(e) {
-//     if (e.scale < 1.0) {
-//         console.log(e.scale)
-//     } else if (e.scale > 1.0) {
-//         console.log(e.scale)
-//     }
-// }, false);
-
-$("#schematic").bind('gesturechange', function(e) {
-  console.log("fires")
-  if (e.scale < 1.0) {
-        console.log(e.scale)
-    } else if (e.scale > 1.0) {
-        console.log(e.scale)
-    }
-})
 
 //Resize Window
 var svgWindow = document.getElementById("mainWindow");
@@ -83,112 +52,7 @@ function myredraw(){
   .attr("height", height);
 }
 myredraw();
-window.addEventListener("resize", myredraw);
-
-var schematicDrag = Draggable.create(schematic, {zIndexBoost:false});
-
-var buttonDowntimer;
-$("#scaleUp_btn").mousedown(function() {
-  clearInterval(buttonDowntimer);
-  buttonDowntimer = setInterval(zoomIn, .1);
-}).mouseup(function() {
-  clearInterval(buttonDowntimer);
-});
-
-$("#scaleUp_btn").bind('touchstart', function() {
-  clearInterval(buttonDowntimer);
-  buttonDowntimer = setInterval(zoomIn, .1);
-}).bind('touchend', function() {
-  clearInterval(buttonDowntimer);
-});
-
-function zoomIn() {
-  TweenMax.to([schematic], .1, {scaleX:"+=.1", scaleY:"+=.1", transformOrigin: "50% 50%", ease: Power0.easeNone});
-}
-
-$("#scaleDown_btn").mousedown(function() {
-  clearInterval(buttonDowntimer);
-  buttonDowntimer = setInterval(zoomOut, .1);
-}).mouseup(function() {
-  clearInterval(buttonDowntimer);
-});
-
-$("#scaleDown_btn").bind('touchstart', function() {
-  clearInterval(buttonDowntimer);
-  buttonDowntimer = setInterval(zoomOut, .1);
-}).bind('touchend', function() {
-  clearInterval(buttonDowntimer);
-});
-
-function zoomOut() {
-  if(schematic._gsTransform.scaleX  >= 1){
-  TweenMax.to([schematic], .1, {scaleX:"-=.1", scaleY:"-=.1", transformOrigin: "50% 50%", ease: Power0.easeNone});
-}
-}
-
-$("#down_btn").mousedown(function() {
-  clearInterval(buttonDowntimer);
-  buttonDowntimer = setInterval(panUpward, .1);
-}).mouseup(function() {
-  clearInterval(buttonDowntimer);
-});
-
-function panUpward() {
-  TweenMax.to(schematic, 0, {y:"-=5",  transformOrigin: "50% 50%", ease: Power0.easeNone});
-}
-
-$("#up_btn").mousedown(function() {
-  clearInterval(buttonDowntimer);
-  buttonDowntimer = setInterval(panDownward, .1);
-}).mouseup(function() {
-  clearInterval(buttonDowntimer);
-});
-
-function panDownward() {
-  TweenMax.to(schematic, 0, {y:"+=5",  transformOrigin: "50% 50%", ease: Power0.easeNone});
-}
-
-$("#left_btn").mousedown(function() {
-  clearInterval(buttonDowntimer);
-  buttonDowntimer = setInterval(panRightward, .1);
-}).mouseup(function() {
-  clearInterval(buttonDowntimer);
-});
-
-function panRightward() {
-  TweenMax.to(schematic, 0, {x:"+=5",  transformOrigin: "50% 50%", ease: Power0.easeNone});
-}
-
-
-$("#right_btn").mousedown(function() {
-  clearInterval(buttonDowntimer);
-  buttonDowntimer = setInterval(panLeftward, .1);
-}).mouseup(function() {
-  clearInterval(buttonDowntimer);
-});
-
-function panLeftward() {
-  TweenMax.to(schematic, 0, {x:"-=5",  transformOrigin: "50% 50%", ease: Power0.easeNone});
-}
-
-schematic.addEventListener("DOMMouseScroll", function(e){zoomSchematic(e)}, false);
-
-var scaleUp = 2;
-function zoomSchematic(e){
-  e.preventDefault();
-  switch(e.detail>0) {
-    case true:
-    if(scaleUp > .5 ){
-      scaleUp = scaleUp - .25;
-      TweenMax.to(schematic, 0, {scaleX:scaleUp, scaleY:scaleUp, transformOrigin: "50% 50%", ease: Power0.easeNone});
-    }
-    break;
-    case false:
-    scaleUp = scaleUp + .25;
-      TweenMax.to(schematic, 0, {scaleX:scaleUp, scaleY:scaleUp, transformOrigin: "50% 50%", ease: Power0.easeNone});
-        break;
-    }
-}
+window.addEventListener("resize", myredraw)
 
 //Set Path Codes
 var diagram1Paths = document.getElementById("diagram1").getElementsByTagName("path");
@@ -294,6 +158,7 @@ sortSelect(componentSelect)
 
 //Change DropDown when component is clicked on diagram.
 function changeDropDown(e){
+  console.log("fired" + e)
   newDropDownValue = e.split("_")[0];
   for(i=0; i<componentSelect.length; i++){
     if(newDropDownValue == componentSelect[i].value){
