@@ -16,34 +16,43 @@
         overflow: hidden;
       }
       #zoomIconsGroup{
-        position: absolute;
-        top: 40px;
-        left: 0px;"
-      }
-      .zoomButtons{
-        display: block;
-        margin: 5px;
-      }
-      .topMenuItems{
-        background-color: green;
-        position: fixed; top: 10px; left: 175px;
+        position: fixed;
       }
 
+      .zoomButtons{
+        display: block;
+
+        margin: 5px;
+      }
+     
+
       .dropDowns{
+        position: absolute;
         margin: 10px;
          display:inline;
          cursor:pointer;
       }
+      #checkBoxes{
+        display: block;
+      }
+
+      #selects{
+        display:block;
+        margin: 10px;
+        padding: 0px;
+      }
     </style>
   </head>
 <body>
+
   <img id="menuBox" src="../menuIcon.svg" style="position: absolute; top: 10px; left: 95%;">
-  <div id="zoomIconsGroup">
-    <img id="zoomUp" class="zoomButtons" src= "../zoomUp.svg"></object>
-    <img id="reset" class="zoomButtons" src= "../reset.svg"></object>
-    <img id="zoomDown" class="zoomButtons" src= "../zoomDown.svg"></object>
-  </div>
-    
+  <span id="checkBoxes">
+       <input id="highlighter" type="checkbox" name="vehicle1" value="Bike" checked>Highlighter
+       <input id= "zoomTool" type="checkbox" onclick="toggleZoomIcons()" name="vehicle2" value="Car"> Zoom Tool
+       <input id= "colorPickerTool" type="checkbox" onclick="toggleColorPicker()" name="vehicle2" value="Car">Color Picker
+       <input id= "componentSelectTool" type="checkbox" onclick="toggleComponentSelect()" name="vehicle2" value="Car">Component Select
+    </span>
+    <span id="selects">
       <select id="colorPicker" onChange="colorPickerChange(this.selectedIndex);">
         <option value="#000000" style="background-color: Black;color: #FFFFFF;">COLOR PICKER</option>
         <option value="#000000" style="background-color: Black;color: #FFFFFF;">Black</option>
@@ -62,13 +71,16 @@
         <option value="#A52A2A" style="background-color: Brown;">Brown</option>
       </select>
 
-      <select id="componentSelect" class="dropDowns" onChange="componentChange(this.selectedIndex.value);" >
+      <select id="componentSelect" onChange="componentChange(this.selectedIndex.value);" >
         <option value="NONE">CLEAR HIGHLIGHTS</option>
       </select>
+    </span>
+    <span id="zoomIconsGroup">
+      <img id="zoomUp" class="zoomButtons" src= "../zoomUp.svg"></object>
+      <img id="reset" class="zoomButtons" src= "../reset.svg"></object>
+      <img id="zoomDown" class="zoomButtons" src= "../zoomDown.svg"></object>
+    </span>
 
-       <input id="highlighter" type="checkbox" name="vehicle1" value="Bike" checked> <span id="highlighterText">Highlighter On</span>
-       <input id= "zoomTool" type="checkbox" onclick="toggleZoomIcons()" name="vehicle2" value="Car"> <span id="zoomToolText">Zoom Tool On</span>
-    
     <div id="mainWindow"></div>
     
 <script src="javaScript.js"></script>

@@ -3,24 +3,49 @@ document.title = "2019 Advantium Oven"
 menuBox.setAttribute('onclick','this.style.cursor = "pointer"; handleMenu();');
 menuBox.setAttribute('onmouseover','this.style.cursor = "pointer"');
 
+var menuHidden = 0;
 function handleMenu(){
-  if(componentSelect.style.display == "none"){
-    componentSelect.style.display="inline-block";
-    colorPicker.style.display="inline-block";
-    zoomIconsGroup.style.display="inline-block";
-    highlighter.style.display="inline-block";
-    zoomTool.style.display="inline-block";
-    document.getElementById("svg-pan-zoom-controls").style.display="inline-block";
-    highlighterText.display="inline-block";
-    zoomToolText.display="inline-block";
+  if(menuHidden == 1){
+    // TweenMax.to([rob], .5, {autoAlpha:1});
+    checkBoxes.style.display = "block";
+    menuHidden = 0;
   }else{
-    componentSelect.style.display="none";
-    colorPicker.style.display="none";
-    zoomIconsGroup.style.display="none";
-    highlighter.style.display="none";
-    zoomTool.style.display="none";
-    highlighterText.style.display="none";
-    zoomToolText.style.display="none";
+    // TweenMax.to([checkBoxes], .5, {autoAlpha:0});
+    checkBoxes.style.display = "none";
+    menuHidden = 1;
+}
+}
+
+highlighter.checked = true;
+var zoomIconVisibility = true;
+function toggleZoomIcons(){
+  zoomIconVisibility=!zoomIconVisibility;
+  if(zoomIconVisibility == true){
+    zoomIconsGroup.style.display = "inline";
+  }else{
+    zoomIconsGroup.style.display = "none";
+  }
+}
+
+colorPickerTool.checked = true;
+var colorPickerToolIconVisibility = true;
+function toggleColorPicker(){
+  colorPickerToolIconVisibility=!colorPickerToolIconVisibility;
+  if(colorPickerToolIconVisibility == true){
+    colorPicker.style.display = "inline";
+  }else{
+    colorPicker.style.display = "none";
+  }
+}
+
+componentSelectTool.checked = true;
+var componentSelectToolIconVisibility = true;
+function toggleComponentSelect(){
+  componentSelectToolIconVisibility=!componentSelectToolIconVisibility;
+  if(componentSelectToolIconVisibility == true){
+    componentSelect.style.display = "inline";
+  }else{
+    componentSelect.style.display = "none";
   }
 }
 
@@ -128,16 +153,7 @@ function wireClicked(wire){
   }
 }
 
-highlighter.checked = true;
-var zoomIconVisibility = true;
-function toggleZoomIcons(){
-  zoomIconVisibility=!zoomIconVisibility;
-  if(zoomIconVisibility == true){
-    zoomIconsGroup.style.display = "inline";
-  }else{
-    zoomIconsGroup.style.display = "none";
-  }
-}
+
 
 var partsList = [];
 var partNameGroupList = partNameGroup.getElementsByTagName("rect");
