@@ -17,13 +17,26 @@ function handleMenu(){
 }
 
 highlighter.checked = true;
+var highlighterIconVisibility = true;
+function toggleHighlighter(){
+  console.log(highlighterIconVisibility)
+  highlighterIconVisibility=!highlighterIconVisibility;
+  if(highlighterIconVisibility == true){
+    highlighter.checked = true;
+  }else{
+    highlighter.checked = false;
+  }
+}
+
 var zoomIconVisibility = true;
 function toggleZoomIcons(){
   zoomIconVisibility=!zoomIconVisibility;
   if(zoomIconVisibility == true){
     zoomIconsGroup.style.display = "inline";
+    zoomTool.checked = true;
   }else{
     zoomIconsGroup.style.display = "none";
+    zoomTool.checked = false;
   }
 }
 
@@ -33,8 +46,10 @@ function toggleColorPicker(){
   colorPickerToolIconVisibility=!colorPickerToolIconVisibility;
   if(colorPickerToolIconVisibility == true){
     colorPicker.style.display = "inline";
+    colorPickerTool.checked = true;
   }else{
     colorPicker.style.display = "none";
+    colorPickerTool.checked = false;
   }
 }
 
@@ -44,8 +59,10 @@ function toggleComponentSelect(){
   componentSelectToolIconVisibility=!componentSelectToolIconVisibility;
   if(componentSelectToolIconVisibility == true){
     componentSelect.style.display = "inline";
+    componentSelectTool.checked = true;
   }else{
     componentSelect.style.display = "none";
+    componentSelectTool.checked = false;
   }
 }
 
