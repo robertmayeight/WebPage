@@ -15,13 +15,36 @@
       body{
         overflow: hidden;
       }
+      #zoomIconsGroup{
+        position: absolute;
+        top: 40px;
+        left: 0px;"
+      }
+      .zoomButtons{
+        display: block;
+        margin: 5px;
+      }
+      .topMenuItems{
+        background-color: green;
+        position: fixed; top: 10px; left: 175px;
+      }
+
+      .dropDowns{
+        margin: 10px;
+         display:inline;
+         cursor:pointer;
+      }
     </style>
   </head>
 <body>
-  
-    <div id="mainWindow"></div>
-      <img id="menuBox" src="../menuIcon.svg" style="position: absolute; top: 10px; left: 10px;">
-      <select id="colorPicker" onChange="colorPickerChange(this.selectedIndex);" style="position: absolute; top: 10px; left: 50px;">
+  <img id="menuBox" src="../menuIcon.svg" style="position: absolute; top: 10px; left: 95%;">
+  <div id="zoomIconsGroup">
+    <img id="zoomUp" class="zoomButtons" src= "../zoomUp.svg"></object>
+    <img id="reset" class="zoomButtons" src= "../reset.svg"></object>
+    <img id="zoomDown" class="zoomButtons" src= "../zoomDown.svg"></object>
+  </div>
+    
+      <select id="colorPicker" onChange="colorPickerChange(this.selectedIndex);">
         <option value="#000000" style="background-color: Black;color: #FFFFFF;">COLOR PICKER</option>
         <option value="#000000" style="background-color: Black;color: #FFFFFF;">Black</option>
         <option value="#A9A9A9" style="background-color: DarkGray;">DarkGray</option>
@@ -39,12 +62,14 @@
         <option value="#A52A2A" style="background-color: Brown;">Brown</option>
       </select>
 
-      <select id="componentSelect" onChange="componentChange(this.selectedIndex.value);" style="position: absolute; top: 10px; left: 175px;">
+      <select id="componentSelect" class="dropDowns" onChange="componentChange(this.selectedIndex.value);" >
         <option value="NONE">CLEAR HIGHLIGHTS</option>
       </select>
 
-      <button id="getWireColors" onclick="getColors()" style="position: absolute; top: 10px; left: 500px;">Get Wire Colors CTRL+Shift To Hide This Button</button>
+       <input id="highlighter" type="checkbox" name="vehicle1" value="Bike" checked> <span id="highlighterText">Highlighter On</span>
+       <input id= "zoomTool" type="checkbox" onclick="toggleZoomIcons()" name="vehicle2" value="Car"> <span id="zoomToolText">Zoom Tool On</span>
     
+    <div id="mainWindow"></div>
     
 <script src="javaScript.js"></script>
 <script src="data.js"></script>

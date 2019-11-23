@@ -7,11 +7,20 @@ function handleMenu(){
   if(componentSelect.style.display == "none"){
     componentSelect.style.display="inline-block";
     colorPicker.style.display="inline-block";
+    zoomIconsGroup.style.display="inline-block";
+    highlighter.style.display="inline-block";
+    zoomTool.style.display="inline-block";
     document.getElementById("svg-pan-zoom-controls").style.display="inline-block";
+    highlighterText.display="inline-block";
+    zoomToolText.display="inline-block";
   }else{
     componentSelect.style.display="none";
     colorPicker.style.display="none";
-    document.getElementById("svg-pan-zoom-controls").style.display="none";
+    zoomIconsGroup.style.display="none";
+    highlighter.style.display="none";
+    zoomTool.style.display="none";
+    highlighterText.style.display="none";
+    zoomToolText.style.display="none";
   }
 }
 
@@ -19,7 +28,6 @@ var originalLineSize = .5;
 var highlightedWidth = 1.45;
 
 //Toggle Edit Functions
-getWireColors.style.display="none";
 window.addEventListener("keydown", toggleEditor);
 function toggleEditor(){
   if(event.keyCode == 16 && event.ctrlKey){
@@ -94,11 +102,15 @@ for(i=0; i<partNameGroupLength; i++){
 }
 
 function overPath(wire){
-  wire.setAttribute("opacity", ".5"); 
+  if(highlighter.checked == true){
+    wire.setAttribute("opacity", ".5"); 
+  }
 }
 
 function notOverPath(wire){
-  wire.setAttribute("opacity", "0");
+  if(highlighter.checked == true){
+    wire.setAttribute("opacity", "0");
+  }
 }
 
 
@@ -107,11 +119,24 @@ function colorPickerChange(e){
 }
 
 function wireClicked(wire){
-  nameSplit = wire.id.split("copy");
-  wire2 = document.getElementById(nameSplit[0]);
-  wire2.style["stroke-width"]= highlightedWidth;
-  wire2.style["stroke"]= document.getElementById("colorPicker").value;
-  selectedPart = wire2.id;
+  if(highlighter.checked == true){
+    nameSplit = wire.id.split("copy");
+    wire2 = document.getElementById(nameSplit[0]);
+    wire2.style["stroke-width"]= highlightedWidth;
+    wire2.style["stroke"]= document.getElementById("colorPicker").value;
+    selectedPart = wire2.id;
+  }
+}
+
+highlighter.checked = true;
+var zoomIconVisibility = true;
+function toggleZoomIcons(){
+  zoomIconVisibility=!zoomIconVisibility;
+  if(zoomIconVisibility == true){
+    zoomIconsGroup.style.display = "inline";
+  }else{
+    zoomIconsGroup.style.display = "none";
+  }
 }
 
 var partsList = [];
