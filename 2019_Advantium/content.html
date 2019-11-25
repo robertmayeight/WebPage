@@ -15,41 +15,41 @@
       body{
         overflow: hidden;
         font-family: Arial, Helvetica, sans-serif;
+        background-color:#34495e;
       }
-
-      #toolSelectors{
-        position: relative;
-      }
-
       #zoomIconsGroup{
         position: relative;
-        display: block;
-        top: 5px;
+        display: inline;
       }
-
       #colorPicker{
-        /*position: inline;*/
+        position: relative;
+        display: inline;
+        top: -8px;
       }
-
       #componentSelect{
-        
+        position: relative;
+        display: inline;
+        top: -8px;
+      }
+      #toolSelectors{
+        position: fixed;
+        left: 80%;
       }
 
-      #mainWindow{
-        position: absolute;
-        top: 0px;
-        z-index: -1;
-      }
+      
+
+      
+     
+      
+
+      
     </style>
   </head>
 <body>
 
   <img id="menuBox" src="../menuIcon.svg" style="position: absolute; top: 10px; left: 95%;">
-  <span id="toolSelectors"></span>
-
-  
-  
-      <select id="colorPicker" class="selects" onChange="colorPickerChange(this.selectedIndex);">
+  <span id="zoomIconsGroup"></span>
+  <select id="colorPicker" class="selects" onChange="colorPickerChange(this.selectedIndex);">
         <option value="#000000" style="background-color: Black;color: #FFFFFF;">COLOR PICKER</option>
         <option value="#000000" style="background-color: Black;color: #FFFFFF;">Black</option>
         <option value="#A9A9A9" style="background-color: DarkGray;">DarkGray</option>
@@ -66,12 +66,13 @@
         <option value="#FF0000" style="background-color: Red;">Red</option>
         <option value="#A52A2A" style="background-color: Brown;">Brown</option>
       </select>
+
       <select id="componentSelect" class="selects" onChange="componentChange(this.selectedIndex.value);" >
         <option value="NONE">CLEAR HIGHLIGHTS</option>
       </select>
-    <br>
-    <div id="zoomIconsGroup"></div>
-
+    
+    
+<span id="toolSelectors"></span>
     <div id="mainWindow"></div>
     
 <script src="javaScript.js"></script>
