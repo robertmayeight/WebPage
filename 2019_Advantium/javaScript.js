@@ -38,6 +38,21 @@ function toggleSelector2(){
 }
 toggleSelector2();
 
+selector3.setAttribute('onclick','this.style.cursor = "pointer"; toggleSelector3();');
+selector3.setAttribute('onmouseover','this.style.cursor = "pointer"');
+function toggleSelector3(){
+  if(selector3Background.style.fill == "rgb(179, 179, 179)"){
+    TweenMax.to([selector3Background], .5, {fill:"green"});
+    TweenMax.to([selector3SliderKnob], .5, {x:6});
+    zoomIconsGroup.style.display = "inline";
+  }else{
+    TweenMax.to([selector3Background], .5, {fill:"rgb(179, 179, 179)"});
+    TweenMax.to([selector3SliderKnob], .5, {x:0});
+    zoomIconsGroup.style.display = "none";
+  }
+}
+toggleSelector3();
+
 
 menuBox.setAttribute('onclick','this.style.cursor = "pointer"; handleMenu();');
 menuBox.setAttribute('onmouseover','this.style.cursor = "pointer"');
