@@ -16,54 +16,40 @@
         overflow: hidden;
         font-family: Arial, Helvetica, sans-serif;
       }
+
+      #toolSelectors{
+        position: relative;
+      }
+
       #zoomIconsGroup{
-        position: fixed;
-      }
-
-      .zoomButtons{
+        position: relative;
         display: block;
-
-        margin: 5px;
+        top: 5px;
       }
-     
 
-      .dropDowns{
+      #colorPicker{
+        /*position: inline;*/
+      }
+
+      #componentSelect{
+        
+      }
+
+      #mainWindow{
         position: absolute;
-        margin: 10px;
-         display:inline;
-         cursor:pointer;
-      }
-      #checkBoxes{
-        display: block;
-        border-style: solid;
-        padding: 8px;
-        /*
-        border-width: 1px;
-        border-color: red;*/
-        background-color: grey;
-        color: gray;
-      }
-
-      #selects{
-        display:block;
-        margin: 10px;
-        padding: 0px;
+        top: 0px;
+        z-index: -1;
       }
     </style>
   </head>
 <body>
 
   <img id="menuBox" src="../menuIcon.svg" style="position: absolute; top: 10px; left: 95%;">
-  <span id="checkBoxes">
-    <!-- <object type="image/svg+xml" data="../selectorSwitch.svg"></object> -->
-    <!-- <br><br>
-       <input id="highlighter" type="radio" onclick="toggleHighlighter()"  name="highLigherBtn" value="Bikse" checked>Highlighter<br>
-       <input id= "zoomTool" type="radio" onclick="toggleZoomIcons()" name="vehcicle2" value="Cars"> Zoom Tool<br>
-       <input id= "colorPickerTool" type="radio" onclick="toggleColorPicker()" name="vehiclce2" value="Casr">Color Picker<br>
-       <input id= "componentSelectTool" type="radio" onclick="toggleComponentSelect()" name="vechicle2" value="Csasr">Component Select -->
-    </span>
-    <span id="selects">
-      <select id="colorPicker" onChange="colorPickerChange(this.selectedIndex);">
+  <span id="toolSelectors"></span>
+
+  
+  
+      <select id="colorPicker" class="selects" onChange="colorPickerChange(this.selectedIndex);">
         <option value="#000000" style="background-color: Black;color: #FFFFFF;">COLOR PICKER</option>
         <option value="#000000" style="background-color: Black;color: #FFFFFF;">Black</option>
         <option value="#A9A9A9" style="background-color: DarkGray;">DarkGray</option>
@@ -80,16 +66,11 @@
         <option value="#FF0000" style="background-color: Red;">Red</option>
         <option value="#A52A2A" style="background-color: Brown;">Brown</option>
       </select>
-
-      <select id="componentSelect" onChange="componentChange(this.selectedIndex.value);" >
+      <select id="componentSelect" class="selects" onChange="componentChange(this.selectedIndex.value);" >
         <option value="NONE">CLEAR HIGHLIGHTS</option>
       </select>
-    </span>
-    <span id="zoomIconsGroup">
-      <img id="zoomUp" class="zoomButtons" src= "../zoomUp.svg"></object>
-      <img id="reset" class="zoomButtons" src= "../reset.svg"></object>
-      <img id="zoomDown" class="zoomButtons" src= "../zoomDown.svg"></object>
-    </span>
+    <br>
+    <div id="zoomIconsGroup"></div>
 
     <div id="mainWindow"></div>
     

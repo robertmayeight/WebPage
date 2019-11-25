@@ -62,7 +62,7 @@ module.exports = {
     zoomIn.setAttribute('id', 'svg-pan-zoom-zoom-in');
     zoomIn.setAttribute('transform', 'translate(30.5 5) scale(0.015)');
     zoomIn.setAttribute('class', 'svg-pan-zoom-control');
-    zoomUp.addEventListener('click', function() {instance.getPublicInstance().zoomIn()}, false)
+    zoomIn_btn.addEventListener('click', function() {instance.getPublicInstance().zoomIn()}, false)
     zoomIn.addEventListener('touchstart', function() {instance.getPublicInstance().zoomIn()}, false)
 
     var zoomInBackground = document.createElementNS(SvgUtils.svgNS, 'rect'); // TODO change these background space fillers to rounded rectangles so they look prettier
@@ -87,7 +87,7 @@ module.exports = {
     resetPanZoomControl.setAttribute('id', 'svg-pan-zoom-reset-pan-zoom');
     resetPanZoomControl.setAttribute('transform', 'translate(5 35) scale(0.4)');
     resetPanZoomControl.setAttribute('class', 'svg-pan-zoom-control');
-    reset.addEventListener('click', function() {instance.getPublicInstance().reset()}, false);
+    reset_btn.addEventListener('click', function() {instance.getPublicInstance().reset()}, false);
     resetPanZoomControl.addEventListener('touchstart', function() {instance.getPublicInstance().reset()}, false);
 
     var resetPanZoomControlBackground = document.createElementNS(SvgUtils.svgNS, 'rect'); // TODO change these background space fillers to rounded rectangles so they look prettier
@@ -117,7 +117,7 @@ module.exports = {
     zoomOut.setAttribute('id', 'svg-pan-zoom-zoom-out');
     zoomOut.setAttribute('transform', 'translate(30.5 70) scale(0.015)');
     zoomOut.setAttribute('class', 'svg-pan-zoom-control');
-    zoomDown.addEventListener('click', function() {instance.getPublicInstance().zoomOut()}, false);
+    zoomOut_btn.addEventListener('click', function() {instance.getPublicInstance().zoomOut()}, false);
     zoomOut.addEventListener('touchstart', function() {instance.getPublicInstance().zoomOut()}, false);
 
     var zoomOutBackground = document.createElementNS(SvgUtils.svgNS, 'rect'); // TODO change these background space fillers to rounded rectangles so they look prettier

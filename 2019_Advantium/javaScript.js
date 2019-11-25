@@ -4,7 +4,7 @@ selectorSwitches = new XMLHttpRequest();
 selectorSwitches.open("GET","uiSwitch.svg",false);
 selectorSwitches.overrideMimeType("image/svg+xml");
 selectorSwitches.send("");
-var uiSwitches = document.getElementById("checkBoxes").appendChild(selectorSwitches.responseXML.documentElement);
+var uiSwitches = document.getElementById("toolSelectors").appendChild(selectorSwitches.responseXML.documentElement);
 
 selector1.setAttribute('onclick','this.style.cursor = "pointer"; toggleSelector1();');
 selector1.setAttribute('onmouseover','this.style.cursor = "pointer"');
@@ -53,6 +53,49 @@ function toggleSelector3(){
 }
 toggleSelector3();
 
+zoomIcons = new XMLHttpRequest();
+zoomIcons.open("GET","zoomIcon.svg",false);
+zoomIcons.overrideMimeType("image/svg+xml");
+zoomIcons.send("");
+var uiSwitches = document.getElementById("zoomIconsGroup").appendChild(zoomIcons.responseXML.documentElement);
+
+zoomOut_btn.setAttribute('onmouseover','this.style.cursor = "pointer"; overZoomOut();');
+function overZoomOut(){
+  TweenMax.to([zoomOutBackground], 0, {fill:"blue"});
+  TweenMax.to([zoomOutBackground], .1, {opacity:.4});
+}
+
+zoomOut_btn.setAttribute('onmouseout','notOverZoomOut();');
+function notOverZoomOut(){
+  TweenMax.to([zoomOutBackground], 0, {fill:"rgb(179, 179, 179)"});
+TweenMax.to([zoomOutBackground], .1, {opacity:.25});
+}
+
+zoomIn_btn.setAttribute('onmouseover','this.style.cursor = "pointer"; overZoomIn();');
+function overZoomIn(){
+  TweenMax.to([zoomInBackground], 0, {fill:"blue"});
+  TweenMax.to([zoomInBackground], .1, {opacity:.4});
+}
+
+zoomIn_btn.setAttribute('onmouseout','notOverZoomIn();');
+function notOverZoomIn(){
+  TweenMax.to([zoomInBackground], 0, {fill:"rgb(179, 179, 179)"});
+TweenMax.to([zoomInBackground], .1, {opacity:.25});
+}
+
+reset_btn.setAttribute('onmouseover','this.style.cursor = "pointer"; overReset();');
+function overReset(){
+  TweenMax.to([resetBackground], 0, {fill:"blue"});
+  TweenMax.to([resetBackground], .1, {opacity:.4});
+}
+
+reset_btn.setAttribute('onmouseout','notOverReset();');
+function notOverReset(){
+  TweenMax.to([resetBackground], 0, {fill:"rgb(179, 179, 179)"});
+TweenMax.to([resetBackground], .1, {opacity:.25});
+}
+
+
 
 menuBox.setAttribute('onclick','this.style.cursor = "pointer"; handleMenu();');
 menuBox.setAttribute('onmouseover','this.style.cursor = "pointer"');
@@ -62,10 +105,10 @@ menuBox.setAttribute('onmouseover','this.style.cursor = "pointer"');
 var menuHidden = 0;
 function handleMenu(){
   if(menuHidden == 1){
-    checkBoxes.style.display = "block";
+    toolSelectors.style.display = "inline";
     menuHidden = 0;
   }else{
-    checkBoxes.style.display = "none";
+    toolSelectors.style.display = "none";
     menuHidden = 1;
   }
 }
@@ -149,7 +192,7 @@ schematic.addEventListener("click", hideMenu);
 
 function hideMenu(){
   console.log("yes")
-  checkBoxes.style.display = "none";
+  toolSelectors.style.display = "none";
   menuHidden = 1;
 }
 //Resize Window
