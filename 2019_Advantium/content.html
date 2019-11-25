@@ -18,30 +18,28 @@
         /*background-color:#34495e;*/
       }
       #menuBox{
-        /*position: fixed;*/
+        position: fixed;
+        display: inline-block;
+        width: 20px;
       }
       #zoomIconsGroup{
         position: relative;
-        display: inline;
-        margin-left: 10px;
-        margin-right: 10px;
-        widows: 10px;
+        display: inline-block;
+        left: 20px;
       }
-      #colorPicker{
+      #colorSelector{
         position: relative;
-        display: inline;
-        top: -8px;
+        display: inline-block;
+        width: 0px;
       }
-      #componentSelect{
-        position: relative;
-        display: inline;
-        top: -8px;
+      #componentSelector{
+        /*position: relative;
+        display: inline-block;*/
       }
       #toolSelectors{
         position: fixed;
-        left: 10px;
-        top: 100px;
       }
+      
 
       
 
@@ -53,30 +51,30 @@
     </style>
   </head>
 <body>
-
-  <img id="menuBox" src="../menuIcon.svg">
+  <img id="menuBox" src="../menuIcon.svg" style="position: fixed">
   <span id="zoomIconsGroup"></span>
-  <select id="colorPicker" class="selects" onChange="colorPickerChange(this.selectedIndex);">
-        <option value="#000000" style="background-color: Black;color: #FFFFFF;">COLOR PICKER</option>
-        <option value="#000000" style="background-color: Black;color: #FFFFFF;">Black</option>
-        <option value="#A9A9A9" style="background-color: DarkGray;">DarkGray</option>
-        <option value="#D3D3D3" style="background-color: LightGrey;">LightGray</option>
-        <option value="#7FFFD4" style="background-color: Aquamarine;">Aquamarine</option>
-        <option value="#0000FF" style="background-color: Blue;">Blue</option>
-        <option value="#800080" style="background-color: Purple;color: #FFFFFF;">Purple</option>
-        <option value="#EE82EE" style="background-color: Violet;">Violet</option>
-        <option value="#FFC0CB" style="background-color: Pink;">Pink</option>
-        <option value="#008000" style="background-color: Green;color: #FFFFFF;">Green</option>
-        <option value="#9ACD32" style="background-color: YellowGreen;">YellowGreen</option>
-        <option value="#FFFF00" style="background-color: Yellow;">Yellow</option>
-        <option value="#FFA500" style="background-color: Orange;">Orange</option>
-        <option value="#FF0000" style="background-color: Red;">Red</option>
-        <option value="#A52A2A" style="background-color: Brown;">Brown</option>
-      </select>
+  <select id="colorPicker" onChange="colorPickerChange(this.selectedIndex);">
+    <option value="#000000" style="background-color: Black;color: #FFFFFF;">COLOR PICKER</option>
+    <option value="#000000" style="background-color: Black;color: #FFFFFF;">Black</option>
+    <option value="#A9A9A9" style="background-color: DarkGray;">DarkGray</option>
+    <option value="#D3D3D3" style="background-color: LightGrey;">LightGray</option>
+    <option value="#7FFFD4" style="background-color: Aquamarine;">Aquamarine</option>
+    <option value="#0000FF" style="background-color: Blue;">Blue</option>
+    <option value="#800080" style="background-color: Purple;color: #FFFFFF;">Purple</option>
+    <option value="#EE82EE" style="background-color: Violet;">Violet</option>
+    <option value="#FFC0CB" style="background-color: Pink;">Pink</option>
+    <option value="#008000" style="background-color: Green;color: #FFFFFF;">Green</option>
+    <option value="#9ACD32" style="background-color: YellowGreen;">YellowGreen</option>
+    <option value="#FFFF00" style="background-color: Yellow;">Yellow</option>
+    <option value="#FFA500" style="background-color: Orange;">Orange</option>
+    <option value="#FF0000" style="background-color: Red;">Red</option>
+    <option value="#A52A2A" style="background-color: Brown;">Brown</option>
+  </select>
 
-      <select id="componentSelect" class="selects" onChange="componentChange(this.selectedIndex.value);" >
-        <option value="NONE">CLEAR HIGHLIGHTS</option>
-      </select>
+  <select id="componentSelect" onChange="componentChange(this.selectedIndex.value);" >
+    <option value="NONE">CLEAR HIGHLIGHTS</option>
+  </select>
+
     
     
 <span id="toolSelectors"></span>
