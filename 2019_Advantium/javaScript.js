@@ -53,6 +53,19 @@ function toggleSelector3(){
 }
 toggleSelector3();
 
+//Resize Window
+var menuWindow = document.getElementById("checkBoxes");
+var svg = d3.select(schematic);
+function redrawCheckBoxWindow(){
+  var width = menuWindow.clientWidth;
+  var height = menuWindow.clientHeight;
+  svg
+  .attr("width", width)
+  .attr("height", height);
+}
+redrawCheckBoxWindow();
+window.addEventListener("resize", redrawCheckBoxWindow)
+
 
 menuBox.setAttribute('onclick','this.style.cursor = "pointer"; handleMenu();');
 menuBox.setAttribute('onmouseover','this.style.cursor = "pointer"');
