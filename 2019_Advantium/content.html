@@ -14,6 +14,7 @@
     <style type="text/css">
       body{
         overflow: hidden;
+        font-family: Arial, Helvetica, sans-serif;
       }
       #zoomIconsGroup{
         position: fixed;
@@ -34,6 +35,13 @@
       }
       #checkBoxes{
         display: block;
+        border-style: solid;
+        padding: 5px;
+        /*
+        border-width: 1px;
+        border-color: red;*/
+        background-color: grey;
+        color: gray;
       }
 
       #selects{
@@ -47,10 +55,12 @@
 
   <img id="menuBox" src="../menuIcon.svg" style="position: absolute; top: 10px; left: 95%;">
   <span id="checkBoxes">
-       <input id="highlighter" type="radio" onclick="toggleHighlighter()"  name="highLigherBtn" value="Bikse" checked>Highlighter
-       <input id= "zoomTool" type="radio" onclick="toggleZoomIcons()" name="vehcicle2" value="Cars"> Zoom Tool
-       <input id= "colorPickerTool" type="radio" onclick="toggleColorPicker()" name="vehiclce2" value="Casr">Color Picker
-       <input id= "componentSelectTool" type="radio" onclick="toggleComponentSelect()" name="vechicle2" value="Csasr">Component Select
+    <!-- <object type="image/svg+xml" data="../selectorSwitch.svg"></object> -->
+    <!-- <br><br>
+       <input id="highlighter" type="radio" onclick="toggleHighlighter()"  name="highLigherBtn" value="Bikse" checked>Highlighter<br>
+       <input id= "zoomTool" type="radio" onclick="toggleZoomIcons()" name="vehcicle2" value="Cars"> Zoom Tool<br>
+       <input id= "colorPickerTool" type="radio" onclick="toggleColorPicker()" name="vehiclce2" value="Casr">Color Picker<br>
+       <input id= "componentSelectTool" type="radio" onclick="toggleComponentSelect()" name="vechicle2" value="Csasr">Component Select -->
     </span>
     <span id="selects">
       <select id="colorPicker" onChange="colorPickerChange(this.selectedIndex);">

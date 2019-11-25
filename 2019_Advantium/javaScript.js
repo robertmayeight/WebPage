@@ -1,70 +1,109 @@
 document.title = "2019 Advantium Oven"
 
+selectorSwitches = new XMLHttpRequest();
+selectorSwitches.open("GET","uiSwitch.svg",false);
+selectorSwitches.overrideMimeType("image/svg+xml");
+selectorSwitches.send("");
+var uiSwitches = document.getElementById("checkBoxes").appendChild(selectorSwitches.responseXML.documentElement);
+
+selector1.setAttribute('onclick','this.style.cursor = "pointer"; toggleSelector1();');
+selector1.setAttribute('onmouseover','this.style.cursor = "pointer"');
+function toggleSelector1(){
+  if(selector1Background.style.fill == "rgb(179, 179, 179)"){
+    TweenMax.to([selector1Background], .5, {fill:"green"});
+    TweenMax.to([selector1SliderKnob], .5, {x:6});
+    colorPicker.style.display = "inline";
+    highlighterSelected = true;
+  }else{
+    TweenMax.to([selector1Background], .5, {fill:"rgb(179, 179, 179)"});
+    TweenMax.to([selector1SliderKnob], .5, {x:0});
+    colorPicker.style.display = "none";
+    highlighterSelected = false;
+  }
+}
+toggleSelector1();
+
+selector2.setAttribute('onclick','this.style.cursor = "pointer"; toggleSelector2();');
+selector2.setAttribute('onmouseover','this.style.cursor = "pointer"');
+function toggleSelector2(){
+  if(selector2Background.style.fill == "rgb(179, 179, 179)"){
+    TweenMax.to([selector2Background], .5, {fill:"green"});
+    TweenMax.to([selector2SliderKnob], .5, {x:6});
+    componentSelect.style.display = "inline";
+  }else{
+    TweenMax.to([selector2Background], .5, {fill:"rgb(179, 179, 179)"});
+    TweenMax.to([selector2SliderKnob], .5, {x:0});
+    componentSelect.style.display = "none";
+  }
+}
+toggleSelector2();
+
+
 menuBox.setAttribute('onclick','this.style.cursor = "pointer"; handleMenu();');
 menuBox.setAttribute('onmouseover','this.style.cursor = "pointer"');
+
+// TweenMax.to([selectorSliderKnob], .5, {fill:"red"});
 
 var menuHidden = 0;
 function handleMenu(){
   if(menuHidden == 1){
-    // TweenMax.to([rob], .5, {autoAlpha:1});
     checkBoxes.style.display = "block";
     menuHidden = 0;
   }else{
-    // TweenMax.to([checkBoxes], .5, {autoAlpha:0});
     checkBoxes.style.display = "none";
     menuHidden = 1;
-}
-}
-
-highlighter.checked = true;
-var highlighterIconVisibility = true;
-function toggleHighlighter(){
-  console.log(highlighterIconVisibility)
-  highlighterIconVisibility=!highlighterIconVisibility;
-  if(highlighterIconVisibility == true){
-    highlighter.checked = true;
-  }else{
-    highlighter.checked = false;
   }
 }
 
-var zoomIconVisibility = true;
-function toggleZoomIcons(){
-  zoomIconVisibility=!zoomIconVisibility;
-  if(zoomIconVisibility == true){
-    zoomIconsGroup.style.display = "inline";
-    zoomTool.checked = true;
-  }else{
-    zoomIconsGroup.style.display = "none";
-    zoomTool.checked = false;
-  }
-}
+highlighterSelected = true;
+// var highlighterIconVisibility = true;
+// function toggleHighlighter(){
+//   console.log(highlighterIconVisibility)
+//   highlighterIconVisibility=!highlighterIconVisibility;
+//   if(highlighterIconVisibility == true){
+//     highlighterSelected = true;
+//   }else{
+//     highlighter.checked = false;
+//   }
+// }
 
-colorPickerTool.checked = true;
-var colorPickerToolIconVisibility = true;
-function toggleColorPicker(){
-  colorPickerToolIconVisibility=!colorPickerToolIconVisibility;
-  if(colorPickerToolIconVisibility == true){
-    colorPicker.style.display = "inline";
-    colorPickerTool.checked = true;
-  }else{
-    colorPicker.style.display = "none";
-    colorPickerTool.checked = false;
-  }
-}
+// var zoomIconVisibility = true;
+// function toggleZoomIcons(){
+//   zoomIconVisibility=!zoomIconVisibility;
+//   if(zoomIconVisibility == true){
+//     zoomIconsGroup.style.display = "inline";
+//     zoomTool.checked = true;
+//   }else{
+//     zoomIconsGroup.style.display = "none";
+//     zoomTool.checked = false;
+//   }
+// }
 
-componentSelectTool.checked = true;
-var componentSelectToolIconVisibility = true;
-function toggleComponentSelect(){
-  componentSelectToolIconVisibility=!componentSelectToolIconVisibility;
-  if(componentSelectToolIconVisibility == true){
-    componentSelect.style.display = "inline";
-    componentSelectTool.checked = true;
-  }else{
-    componentSelect.style.display = "none";
-    componentSelectTool.checked = false;
-  }
-}
+// colorPickerTool.checked = true;
+// var colorPickerToolIconVisibility = true;
+// function toggleColorPicker(){
+//   colorPickerToolIconVisibility=!colorPickerToolIconVisibility;
+//   if(colorPickerToolIconVisibility == true){
+//     colorPicker.style.display = "inline";
+//     colorPickerTool.checked = true;
+//   }else{
+//     colorPicker.style.display = "none";
+//     colorPickerTool.checked = false;
+//   }
+// }
+
+// componentSelectTool.checked = true;
+// var componentSelectToolIconVisibility = true;
+// function toggleComponentSelect(){
+//   componentSelectToolIconVisibility=!componentSelectToolIconVisibility;
+//   if(componentSelectToolIconVisibility == true){
+//     componentSelect.style.display = "inline";
+//     componentSelectTool.checked = true;
+//   }else{
+//     componentSelect.style.display = "none";
+//     componentSelectTool.checked = false;
+//   }
+// }
 
 var originalLineSize = .5;
 var highlightedWidth = 1.45;
@@ -76,7 +115,6 @@ function toggleEditor(){
     getColors();
   }
 }
-
 
 var deviceType = "not mobile";
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
@@ -92,7 +130,13 @@ var schematic = document.getElementById("mainWindow").appendChild(xhr.responseXM
 
 schematic.setAttribute("width", screen.width);
 schematic.setAttribute("height", screen.height); 
+schematic.addEventListener("click", hideMenu);
 
+function hideMenu(){
+  console.log("yes")
+  checkBoxes.style.display = "none";
+  menuHidden = 1;
+}
 //Resize Window
 var svgWindow = document.getElementById("mainWindow");
 var svg = d3.select(schematic);
@@ -144,13 +188,13 @@ for(i=0; i<partNameGroupLength; i++){
 }
 
 function overPath(wire){
-  if(highlighter.checked == true){
+  if(highlighterSelected == true){
     wire.setAttribute("opacity", ".5"); 
   }
 }
 
 function notOverPath(wire){
-  if(highlighter.checked == true){
+  if(highlighterSelected == true){
     wire.setAttribute("opacity", "0");
   }
 }
@@ -161,7 +205,7 @@ function colorPickerChange(e){
 }
 
 function wireClicked(wire){
-  if(highlighter.checked == true){
+  if(highlighterSelected == true){
     nameSplit = wire.id.split("copy");
     wire2 = document.getElementById(nameSplit[0]);
     wire2.style["stroke-width"]= highlightedWidth;

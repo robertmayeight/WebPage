@@ -543,3 +543,9 @@ var boardSBCDCSupplyYellowArray = [];
 var boardSBCDCSupplyOrangeArray = [path3872,path10008,path10734,path10736,path10742];
 var boardSBCDCSupplyRedArray = [path10854,path9444,path5619];
 var boardSBCDCSupplyBrownArray = [];
+
+
+
+
+// console.log(path4394.getBBox())
+// path4394,path14236
