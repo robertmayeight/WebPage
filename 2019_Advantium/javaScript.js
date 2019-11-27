@@ -26,6 +26,18 @@ function handleMenu(){
     TweenMax.to([colorPicker], .5, {autoAlpha:1});
     TweenMax.to([componentSelect], .5, {autoAlpha:1});
     menuHidden = 1;
+    if(highlighterSelected == true){
+      TweenMax.to([uiSwitches], .5, {autoAlpha:0});
+      highlighterSelected = false;
+    }
+    if(highlighterSelected == true){
+      TweenMax.to([uiSwitches], .5, {autoAlpha:0});
+      highlighterSelected = false;
+    }
+    if(componentSelected == true){
+      TweenMax.to([uiSwitches], .5, {autoAlpha:0});
+      componentSelected = false;
+    }
   }
 }
 
@@ -60,15 +72,18 @@ toggleSelector1();
 
 selector2.setAttribute('onclick','this.style.cursor = "pointer"; toggleSelector2();');
 selector2.setAttribute('onmouseover','this.style.cursor = "pointer"');
+var componentSelected = true;
 function toggleSelector2(){
   if(selector2Background.style.fill == "rgb(179, 179, 179)"){
     TweenMax.to([selector2Background], .5, {fill:"green"});
     TweenMax.to([selector2SliderKnob], .5, {x:6});
     componentSelect.style.display = "inline";
+    componentSelected = true;
   }else{
     TweenMax.to([selector2Background], .5, {fill:"rgb(179, 179, 179)"});
     TweenMax.to([selector2SliderKnob], .5, {x:0});
     componentSelect.style.display = "none";
+    componentSelected = false;
   }
 }
 toggleSelector2();
@@ -79,11 +94,11 @@ function toggleSelector3(){
   if(selector3Background.style.fill == "rgb(179, 179, 179)"){
     TweenMax.to([selector3Background], .5, {fill:"green"});
     TweenMax.to([selector3SliderKnob], .5, {x:6});
-    zoomIconsGroup.style.display = "inline";
+    TweenMax.to([zoomIcons], .5, {autoAlpha:1});
   }else{
     TweenMax.to([selector3Background], .5, {fill:"rgb(179, 179, 179)"});
     TweenMax.to([selector3SliderKnob], .5, {x:0});
-    zoomIconsGroup.style.display = "none";
+    TweenMax.to([zoomIcons], .5, {autoAlpha:0});
   }
 }
 toggleSelector3();
