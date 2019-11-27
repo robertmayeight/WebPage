@@ -1,7 +1,7 @@
 document.title = "2019 Advantium Oven"
 
 selectorSwitches = new XMLHttpRequest();
-selectorSwitches.open("GET","uiSwitch.svg",false);
+selectorSwitches.open("GET","../../schematic.svg",false);
 selectorSwitches.overrideMimeType("image/svg+xml");
 selectorSwitches.send("");
 var uiSwitches = document.getElementById("toolSelectors").appendChild(selectorSwitches.responseXML.documentElement);
@@ -97,10 +97,9 @@ TweenMax.to([resetBackground], .1, {opacity:.25});
 
 
 
-menuBox.setAttribute('onclick','this.style.cursor = "pointer"; handleMenu();');
-menuBox.setAttribute('onmouseover','this.style.cursor = "pointer"');
+menuIcon.setAttribute('onclick','this.style.cursor = "pointer"; handleMenu();');
+menuIcon.setAttribute('onmouseover','this.style.cursor = "pointer"');
 
-// TweenMax.to([selectorSliderKnob], .5, {fill:"red"});
 
 var menuHidden = 0;
 function handleMenu(){
@@ -114,54 +113,7 @@ function handleMenu(){
 }
 
 highlighterSelected = true;
-// var highlighterIconVisibility = true;
-// function toggleHighlighter(){
-//   console.log(highlighterIconVisibility)
-//   highlighterIconVisibility=!highlighterIconVisibility;
-//   if(highlighterIconVisibility == true){
-//     highlighterSelected = true;
-//   }else{
-//     highlighter.checked = false;
-//   }
-// }
 
-// var zoomIconVisibility = true;
-// function toggleZoomIcons(){
-//   zoomIconVisibility=!zoomIconVisibility;
-//   if(zoomIconVisibility == true){
-//     zoomIconsGroup.style.display = "inline";
-//     zoomTool.checked = true;
-//   }else{
-//     zoomIconsGroup.style.display = "none";
-//     zoomTool.checked = false;
-//   }
-// }
-
-// colorPickerTool.checked = true;
-// var colorPickerToolIconVisibility = true;
-// function toggleColorPicker(){
-//   colorPickerToolIconVisibility=!colorPickerToolIconVisibility;
-//   if(colorPickerToolIconVisibility == true){
-//     colorPicker.style.display = "inline";
-//     colorPickerTool.checked = true;
-//   }else{
-//     colorPicker.style.display = "none";
-//     colorPickerTool.checked = false;
-//   }
-// }
-
-// componentSelectTool.checked = true;
-// var componentSelectToolIconVisibility = true;
-// function toggleComponentSelect(){
-//   componentSelectToolIconVisibility=!componentSelectToolIconVisibility;
-//   if(componentSelectToolIconVisibility == true){
-//     componentSelect.style.display = "inline";
-//     componentSelectTool.checked = true;
-//   }else{
-//     componentSelect.style.display = "none";
-//     componentSelectTool.checked = false;
-//   }
-// }
 
 var originalLineSize = .5;
 var highlightedWidth = 1.45;

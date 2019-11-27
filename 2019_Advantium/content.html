@@ -15,43 +15,12 @@
       body{
         overflow: hidden;
         font-family: Arial, Helvetica, sans-serif;
-        /*background-color:#34495e;*/
       }
-      #menuBox{
-        position: fixed;
-        display: inline-block;
-        width: 20px;
-      }
-      #zoomIconsGroup{
-        position: relative;
-        display: inline-block;
-        left: 20px;
-      }
-      #colorSelector{
-        position: relative;
-        display: inline-block;
-        width: 0px;
-      }
-      #componentSelector{
-        /*position: relative;
-        display: inline-block;*/
-      }
-      #toolSelectors{
-        position: fixed;
-      }
-      
-
-      
-
-      
-     
-      
-
-      
+    
     </style>
   </head>
 <body>
-  <img id="menuBox" src="../menuIcon.svg" style="position: fixed">
+  <img id="menuIcon" src="../menuIcon.svg" style="position: fixed">
   <span id="zoomIconsGroup"></span>
   <select id="colorPicker" onChange="colorPickerChange(this.selectedIndex);">
     <option value="#000000" style="background-color: Black;color: #FFFFFF;">COLOR PICKER</option>
