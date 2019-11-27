@@ -36,10 +36,10 @@ selectorSwitchesSVG.overrideMimeType("image/svg+xml");
 selectorSwitchesSVG.send("");
 var uiSwitches = document.getElementsByTagName("body")[0].appendChild(selectorSwitchesSVG.responseXML.documentElement);
 uiSwitches.style.position = "absolute";
+uiSwitches.style.display = "none";
 uiSwitches.style.zIndex = "1000";
 uiSwitches.style.top = "10px";
 uiSwitches.style.left = "50px";
-console.log(uiSwitches.style.left)
 
 selector1.setAttribute('onclick','this.style.cursor = "pointer"; toggleSelector1();');
 selector1.setAttribute('onmouseover','this.style.cursor = "pointer"');
@@ -134,22 +134,6 @@ function notOverReset(){
 TweenMax.to([resetBackground], .1, {opacity:.25});
 }
 
-
-// textnode2 = document.createElement("select");
-// var mySelect = document.getElementsByTagName("body")[0].appendChild(textnode2);
-// var op = new Option();
-// op.value = 1;
-// op.text = "First entry";
-// textnode2.options.add(op);  
-colorPicker.style.position = "absolute"
-colorPicker.style.zIndex = "1000";
-colorPicker.style.top = "10px";
-colorPicker.style.left = "50px";
-
-componentSelect.style.position = "absolute"
-componentSelect.style.zIndex = "1000";
-componentSelect.style.top = "10px";
-componentSelect.style.left = "200px";
 
 
 
@@ -569,4 +553,5 @@ function getColors(){
 
 
   
-handleMenu();
+
+
