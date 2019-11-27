@@ -1,10 +1,38 @@
 document.title = "2019 Advantium Oven"
 
-selectorSwitches = new XMLHttpRequest();
-selectorSwitches.open("GET","../../schematic.svg",false);
-selectorSwitches.overrideMimeType("image/svg+xml");
-selectorSwitches.send("");
-var uiSwitches = document.getElementById("toolSelectors").appendChild(selectorSwitches.responseXML.documentElement);
+menuIconSVG = new XMLHttpRequest();
+menuIconSVG.open("GET","https://robertmayeight.github.io/WebPage/nav/menuIcon.svg",false);
+menuIconSVG.overrideMimeType("image/svg+xml");
+menuIconSVG.send("");
+var menuIcon = document.getElementsByTagName("body")[0].appendChild(menuIconSVG.responseXML.documentElement)
+menuIcon.style.position = "absolute"
+menuIcon.style.zIndex = "1000";
+menuIcon.style.top = "0px";
+menuIcon.style.left = "0px";
+menuIcon.setAttribute('onclick','this.style.cursor = "pointer"; handleMenu();');
+menuIcon.setAttribute('onmouseover','this.style.cursor = "pointer"');
+var menuHidden = 0;
+function handleMenu(){
+  console.log("fired")
+  if(menuHidden == 1){
+    uiSwitches.style.display = "inline";
+    menuHidden = 0;
+  }else{
+    uiSwitches.style.display = "none";
+    menuHidden = 1;
+  }
+}
+
+selectorSwitchesSVG = new XMLHttpRequest();
+selectorSwitchesSVG.open("GET","uiSwitch.svg",false);
+selectorSwitchesSVG.overrideMimeType("image/svg+xml");
+selectorSwitchesSVG.send("");
+var uiSwitches = document.getElementsByTagName("body")[0].appendChild(selectorSwitchesSVG.responseXML.documentElement);
+uiSwitches.style.position = "absolute"
+uiSwitches.style.zIndex = "1000";
+uiSwitches.style.top = "70px";
+uiSwitches.style.left = "10px";
+console.log(uiSwitches.style.left)
 
 selector1.setAttribute('onclick','this.style.cursor = "pointer"; toggleSelector1();');
 selector1.setAttribute('onmouseover','this.style.cursor = "pointer"');
@@ -53,11 +81,15 @@ function toggleSelector3(){
 }
 toggleSelector3();
 
-zoomIcons = new XMLHttpRequest();
-zoomIcons.open("GET","zoomIcon.svg",false);
-zoomIcons.overrideMimeType("image/svg+xml");
-zoomIcons.send("");
-var uiSwitches = document.getElementById("zoomIconsGroup").appendChild(zoomIcons.responseXML.documentElement);
+zoomIconsSVG = new XMLHttpRequest();
+zoomIconsSVG.open("GET","zoomIcon.svg",false);
+zoomIconsSVG.overrideMimeType("image/svg+xml");
+zoomIconsSVG.send("");
+var zoomIcons = document.getElementsByTagName("body")[0].appendChild(zoomIconsSVG.responseXML.documentElement);
+zoomIcons.style.position = "absolute"
+zoomIcons.style.zIndex = "1000";
+zoomIcons.style.top = "10px";
+zoomIcons.style.left = "50px";
 
 zoomOut_btn.setAttribute('onmouseover','this.style.cursor = "pointer"; overZoomOut();');
 function overZoomOut(){
@@ -96,21 +128,25 @@ TweenMax.to([resetBackground], .1, {opacity:.25});
 }
 
 
+// textnode2 = document.createElement("select");
+// var mySelect = document.getElementsByTagName("body")[0].appendChild(textnode2);
+// var op = new Option();
+// op.value = 1;
+// op.text = "First entry";
+// textnode2.options.add(op);  
+colorPicker.style.position = "absolute"
+colorPicker.style.zIndex = "1000";
+colorPicker.style.top = "0px";
+colorPicker.style.left = "200px";
 
-menuIcon.setAttribute('onclick','this.style.cursor = "pointer"; handleMenu();');
-menuIcon.setAttribute('onmouseover','this.style.cursor = "pointer"');
+componentSelect.style.position = "absolute"
+componentSelect.style.zIndex = "1000";
+componentSelect.style.top = "0px";
+componentSelect.style.left = "350px";
 
 
-var menuHidden = 0;
-function handleMenu(){
-  if(menuHidden == 1){
-    toolSelectors.style.display = "inline";
-    menuHidden = 0;
-  }else{
-    toolSelectors.style.display = "none";
-    menuHidden = 1;
-  }
-}
+
+
 
 highlighterSelected = true;
 
