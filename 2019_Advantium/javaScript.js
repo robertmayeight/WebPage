@@ -15,13 +15,20 @@ var menuHidden = 0;
 function handleMenu(){
   console.log("fired")
   if(menuHidden == 1){
-    uiSwitches.style.display = "inline";
+    TweenMax.to([uiSwitches], .5, {autoAlpha:1});
+    TweenMax.to([zoomIcons], .5, {autoAlpha:0});
+    TweenMax.to([colorPicker], .5, {autoAlpha:0});
+    TweenMax.to([componentSelect], .5, {autoAlpha:0});
     menuHidden = 0;
   }else{
-    uiSwitches.style.display = "none";
+    TweenMax.to([uiSwitches], .5, {autoAlpha:0});
+    TweenMax.to([zoomIcons], .5, {autoAlpha:1});
+    TweenMax.to([colorPicker], .5, {autoAlpha:1});
+    TweenMax.to([componentSelect], .5, {autoAlpha:1});
     menuHidden = 1;
   }
 }
+
 
 selectorSwitchesSVG = new XMLHttpRequest();
 selectorSwitchesSVG.open("GET","https://robertmayeight.github.io/WebPage/nav/uiSwitch.svg",false);
@@ -30,8 +37,8 @@ selectorSwitchesSVG.send("");
 var uiSwitches = document.getElementsByTagName("body")[0].appendChild(selectorSwitchesSVG.responseXML.documentElement);
 uiSwitches.style.position = "absolute"
 uiSwitches.style.zIndex = "1000";
-uiSwitches.style.top = "70px";
-uiSwitches.style.left = "10px";
+uiSwitches.style.top = "10px";
+uiSwitches.style.left = "50px";
 console.log(uiSwitches.style.left)
 
 selector1.setAttribute('onclick','this.style.cursor = "pointer"; toggleSelector1();');
@@ -88,8 +95,8 @@ zoomIconsSVG.send("");
 var zoomIcons = document.getElementsByTagName("body")[0].appendChild(zoomIconsSVG.responseXML.documentElement);
 zoomIcons.style.position = "absolute"
 zoomIcons.style.zIndex = "1000";
-zoomIcons.style.top = "50px";
-zoomIcons.style.left = "10px";
+zoomIcons.style.top = "70px";
+zoomIcons.style.left = "0px";
 
 zoomOut_btn.setAttribute('onmouseover','this.style.cursor = "pointer"; overZoomOut();');
 function overZoomOut(){
@@ -136,13 +143,13 @@ TweenMax.to([resetBackground], .1, {opacity:.25});
 // textnode2.options.add(op);  
 colorPicker.style.position = "absolute"
 colorPicker.style.zIndex = "1000";
-colorPicker.style.top = "0px";
-colorPicker.style.left = "200px";
+colorPicker.style.top = "10px";
+colorPicker.style.left = "50px";
 
 componentSelect.style.position = "absolute"
 componentSelect.style.zIndex = "1000";
-componentSelect.style.top = "0px";
-componentSelect.style.left = "350px";
+componentSelect.style.top = "10px";
+componentSelect.style.left = "200px";
 
 
 
@@ -562,4 +569,4 @@ function getColors(){
 
 
   
-
+handleMenu();
