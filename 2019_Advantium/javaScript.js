@@ -7,7 +7,7 @@ menuIconSVG.send("");
 var menuIcon = document.getElementsByTagName("body")[0].appendChild(menuIconSVG.responseXML.documentElement)
 menuIcon.style.position = "absolute"
 menuIcon.style.zIndex = "1000";
-menuIcon.style.top = "0px";
+menuIcon.style.top = "10px";
 menuIcon.style.left = "0px";
 menuIcon.setAttribute('onclick','this.style.cursor = "pointer"; handleMenu();');
 menuIcon.setAttribute('onmouseover','this.style.cursor = "pointer"');
@@ -35,7 +35,7 @@ selectorSwitchesSVG.open("GET","https://robertmayeight.github.io/WebPage/nav/uiS
 selectorSwitchesSVG.overrideMimeType("image/svg+xml");
 selectorSwitchesSVG.send("");
 var uiSwitches = document.getElementsByTagName("body")[0].appendChild(selectorSwitchesSVG.responseXML.documentElement);
-uiSwitches.style.position = "absolute"
+uiSwitches.style.position = "absolute";
 uiSwitches.style.zIndex = "1000";
 uiSwitches.style.top = "10px";
 uiSwitches.style.left = "50px";
