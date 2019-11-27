@@ -11,7 +11,7 @@ menuIcon.style.top = "10px";
 menuIcon.style.left = "0px";
 menuIcon.setAttribute('onclick','this.style.cursor = "pointer"; handleMenu();');
 menuIcon.setAttribute('onmouseover','this.style.cursor = "pointer"');
-var menuHidden = 0;
+var menuHidden = 1;
 function handleMenu(){
   console.log("fired")
   if(menuHidden == 1){
@@ -36,10 +36,10 @@ selectorSwitchesSVG.overrideMimeType("image/svg+xml");
 selectorSwitchesSVG.send("");
 var uiSwitches = document.getElementsByTagName("body")[0].appendChild(selectorSwitchesSVG.responseXML.documentElement);
 uiSwitches.style.position = "absolute";
-uiSwitches.style.display = "none";
 uiSwitches.style.zIndex = "1000";
 uiSwitches.style.top = "10px";
 uiSwitches.style.left = "50px";
+TweenMax.to([uiSwitches], 0, {autoAlpha:0});
 
 selector1.setAttribute('onclick','this.style.cursor = "pointer"; toggleSelector1();');
 selector1.setAttribute('onmouseover','this.style.cursor = "pointer"');
@@ -94,9 +94,11 @@ zoomIconsSVG.overrideMimeType("image/svg+xml");
 zoomIconsSVG.send("");
 var zoomIcons = document.getElementsByTagName("body")[0].appendChild(zoomIconsSVG.responseXML.documentElement);
 zoomIcons.style.position = "absolute"
-zoomIcons.style.zIndex = "1000";
-zoomIcons.style.top = "70px";
-zoomIcons.style.left = "0px";
+TweenMax.to([zoomIcons], 0, {scaleX:2, scaleY:2});
+
+zoomIcons.style.top = "150px";
+zoomIcons.style.left = "10px";
+
 
 zoomOut_btn.setAttribute('onmouseover','this.style.cursor = "pointer"; overZoomOut();');
 function overZoomOut(){
@@ -134,6 +136,22 @@ function notOverReset(){
 TweenMax.to([resetBackground], .1, {opacity:.25});
 }
 
+
+// textnode2 = document.createElement("select");
+// var mySelect = document.getElementsByTagName("body")[0].appendChild(textnode2);
+// var op = new Option();
+// op.value = 1;
+// op.text = "First entry";
+// textnode2.options.add(op);  
+// colorPicker.style.position = "absolute"
+// colorPicker.style.zIndex = "1000";
+// colorPicker.style.top = "10px";
+// colorPicker.style.left = "50px";
+
+// componentSelect.style.position = "absolute"
+// componentSelect.style.zIndex = "1000";
+// componentSelect.style.top = "10px";
+// componentSelect.style.left = "200px";
 
 
 
