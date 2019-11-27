@@ -24,7 +24,7 @@ function handleMenu(){
 }
 
 selectorSwitchesSVG = new XMLHttpRequest();
-selectorSwitchesSVG.open("GET","uiSwitch.svg",false);
+selectorSwitchesSVG.open("GET","https://robertmayeight.github.io/WebPage/nav/uiSwitch.svg",false);
 selectorSwitchesSVG.overrideMimeType("image/svg+xml");
 selectorSwitchesSVG.send("");
 var uiSwitches = document.getElementsByTagName("body")[0].appendChild(selectorSwitchesSVG.responseXML.documentElement);
@@ -82,7 +82,7 @@ function toggleSelector3(){
 toggleSelector3();
 
 zoomIconsSVG = new XMLHttpRequest();
-zoomIconsSVG.open("GET","zoomIcon.svg",false);
+zoomIconsSVG.open("GET","https://robertmayeight.github.io/WebPage/nav/zoomIcon.svg",false);
 zoomIconsSVG.overrideMimeType("image/svg+xml");
 zoomIconsSVG.send("");
 var zoomIcons = document.getElementsByTagName("body")[0].appendChild(zoomIconsSVG.responseXML.documentElement);
