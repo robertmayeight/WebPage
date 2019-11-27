@@ -1,5 +1,10 @@
 document.title = "2019 Advantium Oven"
 
+var deviceType = "not mobile";
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+  deviceType="mobile"
+}
+
 menuIconSVG = new XMLHttpRequest();
 menuIconSVG.open("GET","https://robertmayeight.github.io/WebPage/nav/menuIcon.svg",false);
 menuIconSVG.overrideMimeType("image/svg+xml");
@@ -150,6 +155,9 @@ function notOverReset(){
   TweenMax.to([resetBackground], 0, {fill:"rgb(179, 179, 179)"});
 TweenMax.to([resetBackground], .1, {opacity:.25});
 }
+if(deviceType == "not mobile"){
+  zoomIcons.style.display = "none"
+}
 
 
 // textnode2 = document.createElement("select");
@@ -186,10 +194,7 @@ function toggleEditor(){
   }
 }
 
-var deviceType = "not mobile";
-if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-  deviceType="mobile"
-}
+
 
 xhr = new XMLHttpRequest();
 xhr.open("GET","schematic.svg",false);
