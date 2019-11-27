@@ -9,9 +9,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="48.85421mm"
-   height="23.790037mm"
-   viewBox="0 0 48.854211 23.790039"
+   width="128.80696mm"
+   height="5.0046215mm"
+   viewBox="0 0 128.80696 5.0046219"
    version="1.1"
    id="svg8"
    inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
@@ -26,8 +26,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="2"
-     inkscape:cx="306.49994"
-     inkscape:cy="17.687462"
+     inkscape:cx="213.49994"
+     inkscape:cy="-17.812536"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -38,8 +38,8 @@
     <inkscape:grid
        type="xygrid"
        id="grid4753"
-       originx="6.3921546"
-       originy="41.151803" />
+       originx="6.3921545"
+       originy="31.759096" />
   </sodipodi:namedview>
   <metadata
      id="metadata5">
@@ -57,11 +57,11 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(6.1228459,-313.74409)">
+     transform="translate(6.1228459,-323.1368)">
     <g
        id="selector1"
        inkscape:label="#g870"
-       transform="translate(-18.00542,-2.0253802)">
+       transform="translate(-18.00542,7.3673276)">
       <rect
          inkscape:label="#rect835"
          ry="2.5023108"
@@ -94,7 +94,7 @@
     <g
        id="selector2"
        inkscape:label="#g870"
-       transform="translate(-18.00542,8.0287858)">
+       transform="translate(20.88833,7.3673276)">
       <rect
          inkscape:label="#rect835"
          ry="2.5023108"
@@ -128,28 +128,28 @@
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        x="10.395698"
-       y="317.13782"
+       y="326.53052"
        id="text901"><tspan
          sodipodi:role="line"
          id="tspan899"
          x="10.395698"
-         y="317.13782"
+         y="326.53052"
          style="font-size:3.52777767px;fill:#000000;stroke-width:0.26458332">Highlighter</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       x="10.502496"
-       y="327.36649"
+       x="49.396244"
+       y="326.57272"
        id="text901-0"><tspan
          sodipodi:role="line"
          id="tspan899-4"
-         x="10.502496"
-         y="327.36649"
+         x="49.396244"
+         y="326.57272"
          style="font-size:3.52777767px;fill:#000000;stroke-width:0.26458332">Component Selector</tspan></text>
     <g
        id="selector3"
        inkscape:label="#g870"
-       transform="translate(-18.00542,16.760036)">
+       transform="translate(77.641455,7.3673276)">
       <rect
          inkscape:label="#rect835"
          ry="2.5023108"
@@ -182,13 +182,13 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       x="10.607571"
-       y="336.27377"
+       x="106.25445"
+       y="326.88107"
        id="text901-6"><tspan
          sodipodi:role="line"
          id="tspan899-3"
-         x="10.607571"
-         y="336.27377"
+         x="106.25445"
+         y="326.88107"
          style="font-size:3.52777767px;fill:#000000;stroke-width:0.26458332">Zoom Icon</tspan></text>
   </g>
 </svg>

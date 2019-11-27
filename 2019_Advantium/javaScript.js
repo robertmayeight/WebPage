@@ -88,8 +88,8 @@ zoomIconsSVG.send("");
 var zoomIcons = document.getElementsByTagName("body")[0].appendChild(zoomIconsSVG.responseXML.documentElement);
 zoomIcons.style.position = "absolute"
 zoomIcons.style.zIndex = "1000";
-zoomIcons.style.top = "10px";
-zoomIcons.style.left = "50px";
+zoomIcons.style.top = "50px";
+zoomIcons.style.left = "10px";
 
 zoomOut_btn.setAttribute('onmouseover','this.style.cursor = "pointer"; overZoomOut();');
 function overZoomOut(){
