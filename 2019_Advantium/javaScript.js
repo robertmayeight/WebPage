@@ -155,8 +155,10 @@ function notOverReset(){
   TweenMax.to([resetBackground], 0, {fill:"rgb(179, 179, 179)"});
 TweenMax.to([resetBackground], .1, {opacity:.25});
 }
-if(deviceType == "not mobile"){
+if(deviceType == "mobile"){
   zoomIcons.style.display = "none"
+  selector3.style.display = "none"
+  zoomText.style.display = "none"
 }
 
 
