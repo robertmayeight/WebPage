@@ -31,3 +31,7 @@ Note the three components that control power to the water valves.
 3) The pressure switch.
 
 Although the temp select switch, can control which water valves are energized, it can not d energize all water valves at the same time. The temp select switch, will always have at least one water valve in the circuit at all times. Therefore, it is not the component that terminates the fill cycle.
+
+The timer contacts, can't terminate the fill cycle either, because during fill, no voltage is applied to the timer motor, therefore, the contacts will remain closed until the timer motor moves them.
+
+The fill cycle, is terminated by the pressure switch. When the water level in the tub, reaches the appropriate level, air pressure from the tub, causes terminal 7 of the switch, to close to terminal 16.
