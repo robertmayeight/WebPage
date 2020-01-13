@@ -116,7 +116,7 @@ slideTl
 .to(bakeValve1, 1, {rotation:85, transformOrigin: "100% 0%", ease:Power0.easeNone, delay:1})
 .from(tubeGas, 2, {scaleX:0, transformOrigin: "0% 100%", ease:Power0.easeNone, delay:-1})
 .from(flames, 1, {scaleY:0, transformOrigin: "0% 100%", ease:Power0.easeNone, delay:-.5})
-.from(completeMeter, 1, {autoAlpha:0, transformOrigin: "0% 100%", ease:Power0.easeNone, delay:-.5})
+// .from(completeMeter, 1, {autoAlpha:0, transformOrigin: "0% 100%", ease:Power0.easeNone, delay:-.5})
 
 
 // .to([washerLineArt_drag, text2904], 1, {autoAlpha:0, delay:13})
