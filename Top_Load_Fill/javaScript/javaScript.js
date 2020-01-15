@@ -353,7 +353,7 @@ slideTl
 var au = document.getElementById("music");
 au.onloadedmetadata = function() {
     compensation = music.duration - slideTl.duration();
-    slideTl.add(TweenMax.to(fillWater, compensation, {autoAlpha: 0}));
+    slideTl.add(TweenMax.to(fillWater, compensation, {autoAlpha: 1}));
     console.log(music.duration - slideTl.duration())
 };
 
