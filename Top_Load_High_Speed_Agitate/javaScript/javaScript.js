@@ -1,8 +1,8 @@
-slide = new XMLHttpRequest();
-slide.open("GET","schematic.svg",false);
-slide.overrideMimeType("image/svg+xml");
-slide.send("");
-var slide= document.getElementById("main").appendChild(slide.responseXML.documentElement);
+// slide = new XMLHttpRequest();
+// slide.open("GET","schematic.svg",false);
+// slide.overrideMimeType("image/svg+xml");
+// slide.send("");
+// var slide= document.getElementById("main").appendChild(slide.responseXML.documentElement);
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Resize Window
 var svgWindow = document.getElementById("main");
