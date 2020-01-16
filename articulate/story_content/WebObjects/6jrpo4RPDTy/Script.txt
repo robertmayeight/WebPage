@@ -1,0 +1,37 @@
+<speak>
+<break time="1s"/>This presentation covers, basic top load washer theory of operation.<break time="1s"/> The washer in this presentation, is a timer controlled, 120 volt, inverter driven motor assembly, driving a mode shifter drive system.
+
+<break time="2s"/>Starting from the power cord.<break time=".5s"/> L 1, enters the unit from the power cord.<break time=".5s"/> Next, it passes thru the noise filter. <break time=".5s"/>The noise filter serves two purposes:
+1 - It prevents electrical interference from entering the machine. And 
+2 - It prevents the machine from radiating electrical interference into the house wiring.
+
+After the line filter, l1 splits into two parallel branches. Branch one connects to terminal 7, of the pressure switch.
+
+When there is no water in the tub, terminal 7 of the pressure switch is closed to terminal 15. This connection supplies l 1 to the fill system.
+
+Terminal R 5<break time=".25s"/> is a terminal on the timer. <break time=".5s"/>Timer connections can be identified by the diameter of the circle.
+
+<break time=".25s"/> Smaller diameter circles indicate timer terminals.
+
+During fill, r 5, is closed to r4.<break time=".75s"/> r 4 feeds terminals one and two of the water temperature selector switch.
+
+The water temperature selector switch is located in the control panel, and is used to select water temperature.
+
+The pressure switch is located in the control-panel.
+
+The cold water valve is energised, when the switch between terminals 2 and 4, is closed, and, timer contacts, r 9, and r 8, are closed.
+
+To complete the circuit, one side of each water valve, is permanently connected to neutral.
+
+In this example, the temp select switch, is set to warm. This means that the hot valve, and the slow cold valve, are also energized.
+
+Note the three components that control power to the water valves.
+1) The temp select switch.
+2) The timer contacts. And
+3) The pressure switch.
+
+Although the temp select switch, can control which water valves are energized, it can not d energize all water valves at the same time. The temp select switch, will always have at least one water valve in the circuit at all times. Therefore, it is not the component that terminates the fill cycle.
+
+The timer contacts, can't terminate the fill cycle either, because during fill, no voltage is applied to the timer motor, therefore, the contacts will remain closed until the timer motor moves them.
+
+The fill cycle, is terminated by the pressure switch. When the water level in the tub, reaches the appropriate level, air pressure from the tub, causes terminal 7 of the switch, to close to terminal 16.

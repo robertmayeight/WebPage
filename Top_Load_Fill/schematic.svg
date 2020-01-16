@@ -112,9 +112,9 @@
      inkscape:window-height="837"
      id="namedview4"
      showgrid="false"
-     inkscape:zoom="1"
-     inkscape:cx="-19.813225"
-     inkscape:cy="311.90695"
+     inkscape:zoom="2.8284271"
+     inkscape:cx="332.00832"
+     inkscape:cy="278.20516"
      inkscape:current-layer="g10"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -3897,6 +3897,7 @@
 
 
 
+
 <text
    id="text198"
    style="font-variant:normal;font-weight:bold;font-size:1.87256444px;font-family:Helvetica;-inkscape-font-specification:Helvetica-Bold;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
@@ -3951,6 +3952,7 @@
 
 
 
+
 <text
    id="text208"
    style="font-variant:normal;font-weight:bold;font-size:1.53411305px;font-family:Helvetica;-inkscape-font-specification:Helvetica-Bold;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
@@ -3969,6 +3971,7 @@
      sodipodi:role="line"
      y="0.00015341131"
      x="5.24682 6.3550634">NS</tspan></text>
+
 
 
 
@@ -4127,6 +4130,7 @@
 
 
 
+
 <text
    id="text336"
    style="font-variant:normal;font-weight:bold;font-size:1.53411305px;font-family:Helvetica;-inkscape-font-specification:Helvetica-Bold;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
@@ -4193,6 +4197,7 @@
 
 
 
+
 </g><text
    xml:space="preserve"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33333302px;line-height:1.25;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
@@ -4204,6 +4209,7 @@
      y="40.441559"
      style="font-size:26.66666603px"
      id="tspan2712">Basic Top Load Washer Operation - Fill</tspan></text>
+
 
 
 
@@ -4264,7 +4270,7 @@
      inkscape:groupmode="layer"
      id="layer4"
      inkscape:label="pressureSensor"
-     style="display:none"><g
+     style="display:inline"><g
        id="pressureSwitch_drag"
        inkscape:label="#g3569"
        transform="translate(2.2941711,-43.34846)"><image
@@ -4299,18 +4305,18 @@
          inkscape:label="#path7344"
          inkscape:connector-curvature="0"
          id="fillWater"
-         d="m 177.13025,706.67731 c 0,0 14.14213,16.97057 58.68986,19.44544 44.54773,2.47487 70.00357,-0.35355 70.00357,-0.35355 0,0 45.25484,-5.65686 55.50789,-19.09189 V 501.06135 c 0,0 -15.83157,9 -31.33157,13 -15.5,4 -54,4.5 -65.5,3.5 -11.5,-1 -48,-1.5 -66.5,-8 -18.5,-6.5 -22,-12 -22,-12 z"
+         d="m 174.64796,493.09309 c 0,0 14.14213,16.97057 58.68986,19.44544 44.54773,2.47487 70.00357,-0.35355 70.00357,-0.35355 0,0 45.25484,-5.65686 55.50789,-19.09189 V 287.47713 c 0,0 -15.83157,9 -31.33157,13 -15.5,4 -54,4.5 -65.5,3.5 -11.5,-1 -48,-1.5 -66.5,-8 -18.5,-6.5 -22,-12 -22,-12 z"
          style="opacity:1;vector-effect:none;fill:#0000ff;fill-opacity:0.2713568;stroke:none;stroke-width:0.46700001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" /><path
-         sodipodi:nodetypes="cscccccccc"
-         inkscape:connector-curvature="0"
-         id="path7346"
-         d="m 172.75093,496.30106 c 0,0 14.49569,12.72793 37.83021,15.90991 23.33452,3.18198 71.41778,5.3033 71.41778,5.3033 l 32.52691,-3.53553 22.98097,-4.94975 18.03123,-7.42462 4.94975,-5.65686 16,351.77776 h -207.9795 z"
-         style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.46700001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" /><path
          sodipodi:nodetypes="csc"
          inkscape:connector-curvature="0"
          id="path7337"
          d="m 184.34253,438.85385 c 0,0 12.40889,-143.94087 -96.488982,-149.79564 -55.800842,-3.00007 -132.334346,34.574 -128.269114,77.9659"
-         style="opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:#e6e6e6;stroke-width:3.66700006;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" /></g></g><g
+         style="opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:#e6e6e6;stroke-width:3.66700006;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" /><path
+         style="display:inline;opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.6449883;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         d="m 174.64796,493.09309 7.81369,11.92617 25.90857,9.86993 57.57459,6.1687 42.35845,-1.64499 37.87207,-9.96516 15.99986,-4.45753 0.63115,14.48652 -58.20431,8.16112 -59.63082,2.05623 -69.08951,-5.75746 -9.86993,-31.66602 z"
+         id="path7325"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccccccccccc" /></g></g><g
      inkscape:groupmode="layer"
      id="layer3"
      inkscape:label="chartOne"

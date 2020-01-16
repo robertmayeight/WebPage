@@ -1,8 +1,8 @@
-slide = new XMLHttpRequest();
-slide.open("GET","schematic.svg",false);
-slide.overrideMimeType("image/svg+xml");
-slide.send("");
-var slide= document.getElementById("main").appendChild(slide.responseXML.documentElement);
+// slide = new XMLHttpRequest();
+// slide.open("GET","schematic.svg",false);
+// slide.overrideMimeType("image/svg+xml");
+// slide.send("");
+// var slide= document.getElementById("main").appendChild(slide.responseXML.documentElement);
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Resize Window
 var svgWindow = document.getElementById("main");
@@ -343,9 +343,12 @@ slideTl
 
 //Pressure Switch Terminates Fill Cycle
 .to(svgContent, 1, {x:61, y:-28, scaleX:2, scaleY:2, transformOrigin: "50% 50%", ease:Power0.easeNone})
+.to(fillWater, 0, {scaleY:0, transformOrigin: "0% 100%",immediateRender:true, delay:0})
 .from(waterInTub_drag, 1, {autoAlpha:0, delay:3})
 
-.to(fillWater, 5, {y:-200, delay:0})
+// .to(fillWater, 5, {y:-200, delay:0})
+
+.to(fillWater, 5, {scaleY:1, transformOrigin: "0% 100%", delay:0})
 .to([pressureSensor_sw, pressureSensor_swcopy], .5, {rotation:0, transformOrigin: "0% 100%", ease:Power0.easeNone})
 .to([path6076copy,path4548copy,path6116copy,path11093copy,path3764copy,path11095copy,path6096copy,path6136copy,path6196copy,path4568copy,path4528copy,path1456copy,path4508copy,path6216copy], 0, {autoAlpha:0, immediateRender:false})
 

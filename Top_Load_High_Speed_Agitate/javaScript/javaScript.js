@@ -18,11 +18,10 @@ resizeSVG();
 window.addEventListener("resize", resizeSVG)
 
 
+//Audio
 var slideAudio = document.getElementById('music');
 slideAudio.src="topLoadHighSpeedAgitate.mp3"
 
-
-//Audio
 slideAudio.onplay = function() {
 	slideTl.play();
 };
@@ -201,7 +200,8 @@ TweenMax.to([lidSwitch_sw, lidSwitch_swcopy], 0, {rotation:-40, transformOrigin:
 
 var slideTl = new TimelineMax({paused:true});
 slideTl
-.to(fillWater, 5, {y:-200, delay:1})
+.to(fillWater, 0, {scaleY:0, transformOrigin: "0% 100%",immediateRender:true, delay:0})
+.to(fillWater, 5, {scaleY:1, transformOrigin: "0% 100%", delay:1})
 .to([pressureSensor_sw, pressureSensor_swcopy], .5, {rotation:0, transformOrigin: "0% 100%", ease:Power0.easeNone})
 .to([path6076copy,path4548copy,path6116copy,path11093copy,path11095copy,path4568copy,path4528copy,path1456copy,path6136copy,path6096copy,path6196copy,path4508copy,path6216copy,path6156copy,path30883copy,hotValve,coldValve,slowColdValve], 0, {stroke:'black', autoAlpha:0})
 .to(waterInTub_drag, 1, {autoAlpha:0, delay:1})
