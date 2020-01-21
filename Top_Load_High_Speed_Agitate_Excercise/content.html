@@ -38,64 +38,87 @@
     width: 100%;
   }
 
-  .slideHeading{
-    position: fixed;
-    margin: auto;
-    width: 100%;
-    top: 20%
-    font-size: xx-large;
-  }
-
   .align-top-left{
     position: fixed;
+    display: inline-block;
     top: 0px;
-    left: 10px;
+    left: 0px;
     margin: 6px;
     padding: 0;
     z-index: 1;
-    display: inline-block;
+    
   }
   
-  img{
-    position: fixed;
-    top: 10px;
-    left:10px;
-    z-index: 1;
-    border: 1px solid black;
-  }
 
   button{
-    width: 150px;
-    margin: 2px;
+    position: absolute;
+    left: 0px;
+    width: 100px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    font-size: 10px;
+    border: solid 1px grey;
+  }
+    
+   select{
+    position: absolute;
+    left: 0px;
+    width: 100px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    font-size: 10px;
+  }
+
+  .animtation1{
+    position: absolute;
+    left: 0px;
+    width: 50;
   }
     
 
   </style>
   </head>
   
+  
 <body>
   <audio id='music' controls='controls' class="playerControls" preload="metadata"></audio>
+  <textarea id="text1"></textarea>
+  <img class="animtation1" src="./images/0001.png">
+  <img class="animtation1" src="./images/0002.png">
+  <img class="animtation1" src="./images/0003.png">
+  <img class="animtation1" src="./images/0004.png">
+  <img class="animtation1" src="./images/0005.png">
+  <img class="animtation1" src="./images/0006.png">
+  <img class="animtation1" src="./images/0007.png">
+  <img class="animtation1" src="./images/0008.png">
+  <img class="animtation1" src="./images/0009.png">
+  <img class="animtation1" src="./images/0010.png">
+
   <div id="mainWindow"></div>
     
     <span class= "align-top-left">
       <select id="colorPicker" onChange="colorPickerChange(this.selectedIndex);">
-        <option value="#000000" style="background-color: Black;color: #FFFFFF;">COLOR PICKER</option>
-        <option value="l1Color" style="background-color: Black;color: #FFFFFF;">L1</option>
-        <option value=neutralColor style="background-color: Blue;">Neutral</option>
-        <option value=energizedLoadColor style="background-color: Orange;">Energized Load</option>
+        <option value="l1Color">L1</option>
+        <option value=neutralColor>Neutral</option>
+        <option value=energizedLoadColor>Energized Load</option>
       </select>
+      <br>
       <button id="getArrays" onclick="checkAnswer(exercise)">Check Answer</button>
     
       
       <br><br>
-      <button id="exercise1" onclick="clearDiagram(); exercise = 'hotValve'">Hot Water Valve</button>
+      <button id="exercise1" onclick="clearDiagram(this); exercise = 'hotValve'">Hot Water Valve</button>
       <br>
-      <button id="exercise2" onclick="clearDiagram(); exercise = 'coldValve'">Cold Water Valve</button>
+      <button id="exercise2" onclick="clearDiagram(this); exercise = 'coldValve'">Cold Water Valve</button>
       <br>
-      <button id="exercise3" onclick="clearDiagram(); exercise = 'slowColdValve'">Slow Cold Valve</button>
+      <button id="exercise3" onclick="clearDiagram(this); exercise = 'slowColdValve'">Slow Cold Valve</button>
       <br>
-      <button id="exercise4" onclick="clearDiagram(); exercise = 'lowSpeedAgitate'">Low Speed Agitate</button>
+      <button id="exercise4" onclick="clearDiagram(this); exercise = 'lowSpeedAgitate'">Low Agitate</button>
+      <br>
+      <button id="exercise4" onclick="clearDiagram(this); exercise = 'highSpeedAgitate'">High Agitate</button>
     </span>
+
+
 </body>
 <script src="javaScript.js"></script>
 <script>

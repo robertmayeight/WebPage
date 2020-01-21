@@ -1,12 +1,12 @@
-var hotValveL1Array = [ "path1154", "path4528", "path4548", "path6136", "path6168", "pressureSensor_sw", "path6076", "path6116", "path11093", "path16120" ];
+var hotValveL1Array = [ "path1154", "hotValveSwitch_sw", "fillSwitch_sw", "path6136", "path6168", "pressureSensor_sw", "path6076", "path6116", "path11093", "path16120" ];
 var hotValveNeutralArray = [ "path30883", "path6156", "path174147", "path30889" ];
 var hotValveEnergizedLoadArray = [ "hotValve" ];
 
-var coldValveL1Array = ["path1154","path4508","path4548","path4568","path6196","path6216","path6168","pressureSensor_sw","path6076","path6116","path11095","path16120"];
+var coldValveL1Array = ["path1154","rinseFillSwitch_sw","fillSwitch_sw","coldValveSwitch_sw","path6196","path6216","path6168","pressureSensor_sw","path6076","path6116","path11095","path16120"];
 var coldValveNeutralArray = [ "path30883", "path6156", "path171704", "path30889" ];
 var coldValveEnergizedLoadArray = [ "coldValve" ];
 
-var slowColdValveL1Array = ["path1154","path4548","path6168","pressureSensor_sw","path6076","path6116","path11093","path1456","path6096","path16120","path16299"];
+var slowColdValveL1Array = ["path1154","fillSwitch_sw","path6168","pressureSensor_sw","path6076","path6116","path11093","slowColdValveSwitch_sw","path6096","path16120","path16299"];
 var slowColdValveNeutralArray = [ "path30883", "path6156", "path30889", "path30925" ];
 var slowColdValveEnergizedLoadArray = [ "slowColdValve" ];
 
@@ -14,12 +14,18 @@ var lowSpeedAgitateL1Array = ["path1154","speedSelectSwitch_sw","path5854","agit
 var lowSpeedAgitateNeutralArray = [ "path6748", "path171708", "path30883", "path30889", "path4670", "path5046" ]
 var lowSpeedAgitateEnergizedLoadArray = [];
 
+var highSpeedAgitateL1Array = ["path1154","speedSwitch_sw","path5552","path6168","pressureSensor_sw","path2546","path2625","path2629","path2632","path2634","path2636","lidSwitch_sw","path2648","path16120"];
+var highSpeedAgitateNeutralArray = [ "path6748", "path171708", "path30883", "path30889", "path4670", "path5046" ]
+var highSpeedAgitateEnergizedLoadArray = [];
+
 
 
 document.title = "Top Load Practice Circuits";
 
 var componentList = [];
+var switchList = [];
 var openArray = [];
+var attempts = 0;
 
 
 highlighterSelected = true;
@@ -101,6 +107,10 @@ for(i=0; i<diagram1PathsLength; i++){
   if(loadsToPush === 'load'){
     componentList.push(diagram1Paths[i].id);
   }
+
+  if(loadsToPush === 'sw'){
+    switchList.push(diagram1Paths[i].id);
+  }
   diagram1Paths[i].style['stroke-linecap']="round";
   diagram1Paths[i].style.stroke = originalLineColor;
   diagram1Paths[i].style.strokeWidth = originalLineSize;
@@ -126,7 +136,7 @@ for(i=0; i<diagram1PathsLength; i++){
     path.style["stroke-width"]= 3;
 }
 
- 
+
 
 function overPath(wire){
   if(highlighterSelected == true){
@@ -162,7 +172,7 @@ function wireClicked(wire){
     wire2 = document.getElementById(nameSplit[0]);
     // wire2.style["stroke-width"]= highlightedWidth;
     selectedPart = wire2.id;
-    console.log(wire2.id)
+    // console.log(wire2.id)
 
     if(colorPicker.value === 'neutralColor'){
       wire2.style["stroke"]= neutralColor;
@@ -177,7 +187,6 @@ function wireClicked(wire){
     }
 
     if(wire2.style["stroke-width"] === originalLineSize +'px'){
-      console.log('fired')
       wire2.style["stroke-width"] = highlightedWidth;
     }else{
       wire2.style["stroke-width"] = originalLineSize;
@@ -185,8 +194,12 @@ function wireClicked(wire){
     }
 }
 
-var exercise = '';
+var exercise = 'hotValve';
 function checkAnswer(exercise){
+  attempts++;
+  console.log(attempts)
+  // for(s = 0; s<switchList.length)
+  //  console.log(document.getElementById(switchList[2])._gsTransform.rotation)
   l1Array = [];
   neutralArray = [];
   energizedLoadArray = [];
@@ -226,8 +239,11 @@ function checkAnswer(exercise){
 
   foundInEnergizedLoadArray = arrayC.some(r=> energizedLoadArray.includes(r));
 
-  if((foundInEnergizedLoadArray != true || arrayC.length != energizedLoadArray.length) && energizedLoadArray.length != 0){
+  if((foundInEnergizedLoadArray != true || arrayC.length != energizedLoadArray.length)){
     energizedLoad = false;
+  }
+  if(energizedLoadArray.length === 0 && arrayC.length === 0){
+    energizedLoad = true;
   }
 
   if(line === true && neutral === true && energizedLoad === true){
@@ -261,26 +277,51 @@ function checkAnswer(exercise){
   if(line === false && neutral === false && energizedLoad === false){
     alert('L1, Neutral and Energized Load are Incorrect')
   }
-  console.log(exercise + 'L1Array = ')
-  console.log(l1Array)
-  console.log('')
+  if(attempts === 3){
+    if(exercise === 'hotValve'){
+      alert('Recommend watching the fill video again.')
+    }
+    if(exercise === 'coldValve'){
+      alert('Recommend watching the fill video again.')
+    }
+    if(exercise === 'slowColdValve'){
+      alert('Recommend watching the fill video again.')
+    }
+    if(exercise === 'lowSpeedAgitate'){
+      alert('Recommend watching the low speed agitate video again.')
+    }
+    if(exercise === 'highSpeedAgitate'){
+      alert('Recommend watching the high speed agitate video again.')
+    }
+  }
+  // console.log(exercise + 'L1Array = ')
+  // console.log(l1Array)
+  // console.log('')
 
-  console.log(exercise + 'NeutralArray = ')
-  console.log(neutralArray)
-  console.log('')
+  // console.log(exercise + 'NeutralArray = ')
+  // console.log(neutralArray)
+  // console.log('')
 
-  console.log(exercise + 'EnergizedLoadArray = ')
-  console.log(energizedLoadArray)
-  console.log('')
+  // console.log(exercise + 'EnergizedLoadArray = ')
+  // console.log(energizedLoadArray)
+  // console.log('')
 }
-
-function clearDiagram(){
+var exercise1 = document.getElementById('exercise1')
+exercise1.style.borderColor = 'blue'
+function clearDiagram(clickedButton){
+  attempts = 0;
+  var buttonArray = document.getElementsByTagName('button')
+  for(a=0; a<buttonArray.length; a++){
+    buttonArray[a].style.borderColor = 'grey'
+  }
+   clickedButton.style.borderColor = 'blue'
   for(i=0; i<diagram1PathsLength; i++){
   diagram1Paths[i].style.stroke = originalLineColor;
   diagram1Paths[i].style.strokeWidth = originalLineSize;}
 }
 
 function moveSwitch(target, type, tValue, tOrigin){
+  // console.log(target)
   componentHighlight = document.getElementById(target.id.split('_')[0] + '_swcopy');
   componentID = target.id.split('_')[0] + '_sw';
   component = document.getElementById(componentID);
@@ -341,16 +382,55 @@ function sortSelect(selElem) {
 }
 
 
+//Image Code
+// for(i=1; i<250; i++){
+//   var numberDigits = i.toString().length;
+//   console.log(numberDigits)
+//   if(numberDigits === 1){
+//     document.getElementById('text1').append('<img class="animtation1" src="./images/000' + i + '.png">')
+//   }
+//   if(numberDigits === 2){
+//     document.getElementById('text1').append('<img class="animtation1" src="./images/00' + i + '.png">')
+//   }
+//   if(numberDigits === 3){
+//     document.getElementById('text1').append('<img class="animtation1" src="./images/0' + i + '.png">')
+//   }
+// }
 
-function getWireColors(){
-  console.log(l1Array)
-  console.log(neutralArray);
-  console.log(energizedLoadArray)
-}
+//Show Image Code
+// for(i=0; i<250; i++){
+//     document.getElementById('text1').append('.from(myImages[' + i + '], .1, {autoAlpha:0, immediateRender:true})')
+// }
 
+
+
+
+
+
+var myImages = document.getElementsByTagName('img')
+// console.log(myImages)
 var slideTl = new TimelineMax({paused:true});
 slideTl
-// .to(fillWater, 5, {y:-200, delay:1})
+// TweenMax.to([image], 0, {autoAlpha:0}, delay:50)
+.from(myImages[0], .1, {autoAlpha:0, immediateRender:true})
+.from(myImages[1], .1, {autoAlpha:0, immediateRender:true})
+.from(myImages[2], .1, {autoAlpha:0, immediateRender:true})
+.from(myImages[3], .1, {autoAlpha:0, immediateRender:true})
+.from(myImages[4], .1, {autoAlpha:0, immediateRender:true})
+.from(myImages[5], .1, {autoAlpha:0, immediateRender:true})
+.from(myImages[6], .1, {autoAlpha:0, immediateRender:true})
+.from(myImages[7], .1, {autoAlpha:0, immediateRender:true})
+.from(myImages[8], .1, {autoAlpha:0, immediateRender:true})
+.from(myImages[9], .1, {autoAlpha:0, immediateRender:true})
 
+// .from(myImages[0], .1, {autoAlpha:0, immediateRender:true})
+// .from(myImages[1], .1, {autoAlpha:0, immediateRender:true})
+// .from(myImages[2], .1, {autoAlpha:0, immediateRender:true})
+// .from(myImages[3], .1, {autoAlpha:0, immediateRender:true})
+// .from(myImages[4], .1, {autoAlpha:0, immediateRender:true})
 
- 
+// .from(myImages[5], .1, {autoAlpha:0, immediateRender:true})
+// .from(myImages[6], .1, {autoAlpha:0, immediateRender:true})
+// .from(myImages[7], .1, {autoAlpha:0, immediateRender:true})
+// .from(myImages[4], .1, {autoAlpha:0, immediateRender:true})
+
