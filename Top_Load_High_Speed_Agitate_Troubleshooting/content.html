@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <title>loading</title>
+      <meta charset="UTF-8">
+      <!DOCTYPE html>
+      <link rel="stylesheet" href="css/main.css" >
+      <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+      <script src="js/svgPanZoom.js"></script>
+      <script src="js/hammer.min.js"></script>
+      <script src="js/d3.min.js"></script>
+      <script src="js/jquery-3.2.1.min.js"></script>
+      <script src="js/TweenMax.min.js"></script>
+      <style type="text/css">
+        body{
+          overflow: hidden;
+          color: #333333; 
+          font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+        }
+        .align-top-left{
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 200px;
+        margin: 6px;
+        padding: 0px;
+        z-index: 1;
+        display: inline-block;
+        }
+        #meterText{
+          position: absolute;
+          left: 0px;
+          width: 100px;
+          margin: auto;
+          text-align: center;
+          border: 1px solid black;
+          background-color: white;
+        }
+        .playerControls {
+          position: absolute;
+          left: 0px;
+          bottom:0px;
+          margin: auto;
+          width: 100%;
+        }
+        .questions{
+          position: relative;
+          z-index: -1;
+        }
+        input[type=radio]:checked + label {
+          color: red;
+          font-weight: bold;
+        }
+      </style>
+    </head>
+  <body>
+
+    <audio id='slideAudio' controls='controls' class="playerControls" preload="metadata", src="audio.mp3"></audio>
+    <div id="mainWindow"></div>
+    <span class= "align-top-left">
+      <!-- <button id="toggleEditor_btn" onclick="toggleEditor()">Toggle Editor</button> -->
+      <div style="padding-bottom: 6px"> Meter Reading</div>
+      <div id="meterText">0 VAC</div>
+      <br><br>
+      <form>
+        <input type="radio" id= "redLead" name="meterLead" value="red" checked><label for="redLead">Red Lead</label><br>
+        <input type="radio" id="blackLead" name="meterLead" value="black"><label for="blackLead">Black Lead</label><br>  
+      </form>
+      <br>
+      <button id="skipInstructions_btn" onclick="skipInstructions()">Skip Instructions</button>
+      <div id="question1" class="questions" style="display: none">
+        <hr>
+        Exercise - 1<br>
+        No Agitate No Spin
+        <br><br>
+        <button id="question1_btn" onclick="checkAnswer('pressureSensor_sw')">Submit</button>
+      </div>
+
+      <div id="question2" class="questions" style="display: none">
+        <hr>
+        Exercise - 2<br>
+        No Low Speed Agitate
+        <br><br>
+        <button id="question2_btn" onclick="checkAnswer('speedSwitch_sw')">Submit</button>
+      </div>
+
+      <div id="question3" class="questions" style="display: none">
+        <hr>
+        Exercise - 3<br>
+        No Drain Pump
+        <br><br>
+        <button id="question3_btn" onclick="checkAnswer('agitationControlSwitch_sw')">Submit</button>
+      </div>
+
+      <div id="question4" class="questions" style="display: none">
+        <hr>
+        Exercise - 4<br>
+        No Agitate No Spin
+        <br><br>
+        <button id="question4_btn" onclick="checkAnswer('path6748')">Submit</button>
+      </div>
+
+      <div id="question5" class="questions" style="display: none">
+        <hr>
+        Exercise - 5<br>
+        Dead Unit
+        <br><br>
+        <button id="question5_btn" onclick="checkAnswer('filterBorder')">Submit</button>
+      </div>
+
+
+      <!-- Editor -->
+      <br><br><br><br><br><br>
+      <select id="colorPicker" onChange="colorPickerChange(this.selectedIndex);">
+        <option value="l1Color">L1</option>
+        <option value=neutralColor>Neutral</option>
+        <option value=energizedLoadColor>Energized Load</option>
+      </select>
+      <br><br>
+      <button id="getSelectionArray_btn" onclick="highlightDiagram()">Get Arrays</button> 
+      <br><br> 
+      <div id="myText" style="width: 800px; word-wrap: break-word; font-size: x-small;"></div> 
+      <!-- Editor -->
+    </span>
+  </body>
+  <script src="js/javascript.js"></script>
+  <script>
+    var eventsHandler;
+    eventsHandler = {
+      haltEventListeners: ['touchstart', 'touchend', 'touchmove', 'touchleave', 'touchcancel'],
+      init: function(options) {
+        var instance = options.instance,
+        initialScale = 1,
+        pannedX = 0,
+        pannedY = 0
+        this.hammer = Hammer(options.svgElement, {
+          inputClass: Hammer.SUPPORT_POINTER_EVENTS ? Hammer.PointerEventInput : Hammer.TouchInput
+        })
+        this.hammer.get('pinch').set({enable: true})
+        this.hammer.on('doubletap', function(ev){
+          instance.zoomIn()
+        })
+        this.hammer.on('panstart panmove', function(ev){
+          if (ev.type === 'panstart') {
+            pannedX = 0
+            pannedY = 0
+          }
+          instance.panBy({x: ev.deltaX - pannedX, y: ev.deltaY - pannedY})
+          pannedX = ev.deltaX
+          pannedY = ev.deltaY
+          })
+          this.hammer.on('pinchstart pinchmove', function(ev){
+            if (ev.type === 'pinchstart') {
+              initialScale = instance.getZoom()
+              instance.zoomAtPoint(initialScale * ev.scale, {x: ev.center.x, y: ev.center.y})
+            }
+            instance.zoomAtPoint(initialScale * ev.scale, {x: ev.center.x, y: ev.center.y})
+            })
+            options.svgElement.addEventListener('touchmove', function(e){ e.preventDefault(); });
+          },
+          destroy: function(){
+            this.hammer.destroy()
+          }
+        }
+
+        window.panZoom = svgPanZoom(schematic, {
+          zoomEnabled: true
+        , controlIconsEnabled: true
+        , fit: 1
+        , center: 1
+        , customEventsHandler: eventsHandler
+        });
+
+        $(window).resize(function(){
+          panZoom.resize();
+          panZoom.fit();
+          panZoom.center();
+        })
+        
+  </script>
+</html>

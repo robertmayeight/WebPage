@@ -67,6 +67,8 @@ scene.add(light);
 var light2 = new THREE.PointLight(0xffffff, 0.5);
 scene.add(light2);
 
+
+
 //Loader
 var loader = new THREE.GLTFLoader();
 loader.load('highSpeedAgitateAni1.glb', handle_load);
@@ -88,7 +90,11 @@ function render() {
 }
 
 
+
+
 function init() {
+  //Controls
+controls = new THREE.OrbitControls(camera, renderer.domElement)
   var gearTeeth = scene.getObjectByName("gearTeeth");
   gearTeeth.material.transparent = true;
   // gearTeeth.material.depthWrite = false;
@@ -106,6 +112,7 @@ function init() {
   var Camera = scene.getObjectByName("Camera");
   var agitator = scene.getObjectByName("agitator");
   var basket = scene.getObjectByName("basket");
+  basket.depthWrite = false
 
 //Timeline
   

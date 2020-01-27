@@ -1,48 +1,74 @@
+var edit = true;
+function toggleEditor(){
+  edit = !edit;
+  console.log(edit)
+  if(edit === false){
+    getSelectionArray_btn.style.display = 'none';
+    myText.style.display = 'none';
+  }else{
+    getSelectionArray_btn.style.display = 'block';
+    myText.style.display = 'block';
+  }
+}
+toggleEditor();
+
+document.title = "Top Load Practice Circuits";
+
 var hotValveL1Array = [ "path1154", "hotValveSwitch_sw", "fillSwitch_sw", "path6136", "path6168", "pressureSensor_sw", "path6076", "path6116", "path11093", "path16120" ];
 var hotValveNeutralArray = [ "path30883", "path6156", "path174147", "path30889" ];
-var hotValveEnergizedLoadArray = [ "hotValve" ];
+var hotValveEnergizedLoadArray = [ "hotValve_load" ];
+var hotValveRotatedArray = ["pressureSensor_sw"];
 
 var coldValveL1Array = ["path1154","rinseFillSwitch_sw","fillSwitch_sw","coldValveSwitch_sw","path6196","path6216","path6168","pressureSensor_sw","path6076","path6116","path11095","path16120"];
 var coldValveNeutralArray = [ "path30883", "path6156", "path171704", "path30889" ];
 var coldValveEnergizedLoadArray = [ "coldValve" ];
+var coldValveRotatedArray = ["pressureSensor_sw"];
 
 var slowColdValveL1Array = ["path1154","fillSwitch_sw","path6168","pressureSensor_sw","path6076","path6116","path11093","slowColdValveSwitch_sw","path6096","path16120","path16299"];
 var slowColdValveNeutralArray = [ "path30883", "path6156", "path30889", "path30925" ];
 var slowColdValveEnergizedLoadArray = [ "slowColdValve" ];
+var slowColdValveRotatedArray = ["pressureSensor_sw"];
 
 var lowSpeedAgitateL1Array = ["path1154","speedSelectSwitch_sw","path5854","agitationControlSwitch_sw","path6168","pressureSensor_sw","path2546","path2623","path2625","path2627","path2629","path2632","path2634","path2636","lidSwitch_sw","path2648","path16120"];
 var lowSpeedAgitateNeutralArray = [ "path6748", "path171708", "path30883", "path30889", "path4670", "path5046" ]
 var lowSpeedAgitateEnergizedLoadArray = [];
+var lowSpeedAgitateRotatedArray = ["speedSwitch_sw", "lidSwitch_sw"];
 
-var highSpeedAgitateL1Array = ["path1154","speedSwitch_sw","path5552","path6168","pressureSensor_sw","path2546","path2625","path2629","path2632","path2634","path2636","lidSwitch_sw","path2648","path16120"];
+var highSpeedAgitateL1Array = ["path1154","speedSelectSwitch_sw","path5552","agitationControlSwitch_sw","path6168","pressureSensor_sw","path2546","path2623","path2625","path2627","path2629","path2632","path2634","path2636","lidSwitch_sw","path2648","path16120"];
 var highSpeedAgitateNeutralArray = [ "path6748", "path171708", "path30883", "path30889", "path4670", "path5046" ]
 var highSpeedAgitateEnergizedLoadArray = [];
-
-
-
-document.title = "Top Load Practice Circuits";
+var highSpeedAgitateRotatedArray = ["lidSwitch_sw"];
 
 var componentList = [];
+var l1TestArray = [];
+var neutralTestArray = [];
+var originalLineSize = .5;
+var highlightedWidth = 1.45;
+
 var switchList = [];
 var openArray = [];
 var attempts = 0;
 
-
-highlighterSelected = true;
-var originalLineSize = .5;
-var highlightedWidth = 1.45;
-
 var l1Color = 'rgb(0, 0, 0)';
-var neutralColor = 'rgb(0,0,255)';
+var neutralColor = 'rgb(0, 0, 255)';
 var energizedLoadColor = 'rgb(255,165,0)';
 var originalLineColor = 'rgb(32,32,32)';
-var purpleArray = [];
-var selectionArray = [];
+
 
 var deviceType = "not mobile";
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
   deviceType="mobile"
 }
+
+//Audio
+slideAudio.onseeked = function() {
+  slideTl.time(slideAudio.currentTime);
+}
+
+slideAudio.ontimeupdate = function() {
+  slideTl.time(slideAudio.currentTime);
+};
+//End Audio
 
 xhr = new XMLHttpRequest();
 xhr.open("GET","schematic.svg",false);
@@ -64,41 +90,6 @@ function resizeSVG(){
 resizeSVG();
 window.addEventListener("resize", resizeSVG)
 
-//Audio
-var slideAudio = document.getElementById('music');
-slideAudio.src="audio.mp3"
-
-slideAudio.onplay = function() {
-  slideTl.play();
-};
-
-slideAudio.onpause = function() {
-  slideTl.pause();
-};
-
-slideAudio.onseeked = function() {
-  slideTl.time(slideAudio.currentTime);
-}
-
-slideAudio.ontimeupdate = function() {
-  slideTl.time(slideAudio.currentTime);
-};
-
-function playAudio(){
-  slideAudio.play();
-}
-
-function pausePlayer(){
-  slideAudio.pause();
-}
-
-var audioplay = document.createElement('audio');
-function playAudio(clip){
-  audioplay.setAttribute('src', clip);
-  audioplay.play()
-}
-//End Audio
-
 var diagram1Paths = document.getElementById("diagram1").getElementsByTagName("path");
 var diagram1PathsLength = diagram1Paths.length;
 
@@ -107,15 +98,11 @@ for(i=0; i<diagram1PathsLength; i++){
   if(loadsToPush === 'load'){
     componentList.push(diagram1Paths[i].id);
   }
-
-  if(loadsToPush === 'sw'){
-    switchList.push(diagram1Paths[i].id);
-  }
   diagram1Paths[i].style['stroke-linecap']="round";
   diagram1Paths[i].style.stroke = originalLineColor;
   diagram1Paths[i].style.strokeWidth = originalLineSize;
   var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-  path.setAttribute('stroke','#00b0ff');
+  path.setAttribute('stroke','blue');
   path.setAttribute('fill','none');
   path.setAttribute('opacity',0);
   path.setAttribute('id',diagram1Paths[i].id + 'copy');
@@ -136,43 +123,32 @@ for(i=0; i<diagram1PathsLength; i++){
     path.style["stroke-width"]= 3;
 }
 
-
-
-function overPath(wire){
-  if(highlighterSelected == true){
-    wire.setAttribute("opacity", ".5"); 
+var switches = document.getElementsByTagName("g");
+for(i=0; i<switches.length; i++){
+  switchSplit = switches[i].id.split('_')
+  if(switchSplit[1] === 'btn'){
+    switchList.push(switchSplit[0] + '_sw')
+    thisSwitch = document.getElementById(switchSplit[0] + '_sw')
+    TweenMax.to(thisSwitch, .1, {rotation:0})
   }
 }
 
+function overPath(wire){
+    wire.setAttribute("opacity", ".5"); 
+}
+
 function notOverPath(wire){
-  if(highlighterSelected == true){
     wire.setAttribute("opacity", "0");
-  }
 }
 
 function colorPickerChange(e){
   var highlightColor = document.getElementById("colorPicker").value;
 }
 
-function modeChange(e){
-  var modeSelectValue = document.getElementById("modeSelect").value;
-  
-  if(modeSelectValue === 'Simulation'){
-    componentSelect.style.display = 'none';
-    colorPicker.style.display = 'none';
-  }
-}
-
-var l1Array = [];
-var neutralArray = [];
-var energizedLoadArray = [];
-
 function wireClicked(wire){
     nameSplit = wire.id.split("copy");
     wire2 = document.getElementById(nameSplit[0]);
-    // wire2.style["stroke-width"]= highlightedWidth;
     selectedPart = wire2.id;
-    // console.log(wire2.id)
 
     if(colorPicker.value === 'neutralColor'){
       wire2.style["stroke"]= neutralColor;
@@ -194,18 +170,38 @@ function wireClicked(wire){
     }
 }
 
+
+function skipInstructions(){
+  skipInstructions_btn.style.display = 'none';
+  slideAudio.currentTime = 32;
+  slideAudio.play();
+}
+
+function updateTestArrays(array1, array2){
+  l1TestArray = array1;
+  neutralTestArray = array2;
+}
+
 var exercise = 'hotValve';
 function checkAnswer(exercise){
-  attempts++;
-  console.log(attempts)
-  // for(s = 0; s<switchList.length)
-  //  console.log(document.getElementById(switchList[2])._gsTransform.rotation)
+  attempts++;  
+  rotatedSwitchArray = [];
   l1Array = [];
   neutralArray = [];
   energizedLoadArray = [];
   line = true;
   neutral = true;
   energizedLoad = true;
+  rotated = true;
+
+  for(s = 0; s<switchList.length; s++){
+    testSwitch = document.getElementById(switchList[s]);
+    if(testSwitch._gsTransform.rotation != 0){
+      rotatedSwitchArray.push(switchList[s])
+    }
+  }
+  console.log(rotatedSwitchArray)
+
   for(i=0; i<diagram1Paths.length; i++){
       var rob = document.getElementById(diagram1Paths[i].id)
       if(diagram1Paths[i].style.stroke === 'rgb(0, 0, 0)'){
@@ -225,10 +221,8 @@ function checkAnswer(exercise){
     if(foundInL1Array != true | arrayA.length != l1Array.length){
     line = false;
   }
-  }catch(e){alert("Select A Component")}
+  }catch(e){alert("Selection Array in HTML is wrong.")}
   
-  
-
   var arrayB = window[exercise + 'NeutralArray']
   foundInNeutralArray = arrayB.some(r=> neutralArray.includes(r))
   if(foundInNeutralArray != true || arrayB.length != neutralArray.length){
@@ -238,7 +232,6 @@ function checkAnswer(exercise){
   var arrayC = window[exercise + 'EnergizedLoadArray']
 
   foundInEnergizedLoadArray = arrayC.some(r=> energizedLoadArray.includes(r));
-
   if((foundInEnergizedLoadArray != true || arrayC.length != energizedLoadArray.length)){
     energizedLoad = false;
   }
@@ -246,37 +239,63 @@ function checkAnswer(exercise){
     energizedLoad = true;
   }
 
-  if(line === true && neutral === true && energizedLoad === true){
-    alert('Correct')
+  var arrayD = window[exercise + 'RotatedArray']
+  foundInRotatedArray = arrayD.some(r=> rotatedSwitchArray.includes(r));
+  if(foundInRotatedArray != true || arrayD.length != rotatedSwitchArray.length){
+    rotated = false;
   }
 
-  if(line === true && neutral === true && energizedLoad === false){
-    alert('Energized Load is Incorrect')
-  }
 
-  if(line === true && neutral === false && energizedLoad === true){
+  if(line === true && neutral === true && energizedLoad === true && rotated === true){
+    slideAudio.play();
+  }
+  if(line === true && neutral === true && energizedLoad === true && rotated === false){
+    alert('Switches Are Incorrect')
+  }
+  if(line === true && neutral === true && energizedLoad === false && rotated === true){
+    alert('Energized Load Incorrect')
+  }
+  if(line === true && neutral === true && energizedLoad === false && rotated === false){
+    alert('Energized Load and Switches are Incorrect')
+  }
+  if(line === true && neutral === false && energizedLoad === true && rotated === true){
     alert('Neutral is Incorrect')
   }
+  if(line === true && neutral === false && energizedLoad === true && rotated === false){
+    alert('Neutral and Switches are Incorrect')
+  }
 
-  if(line === true && neutral === false && energizedLoad === false){
+  if(line === true && neutral === false && energizedLoad === false && rotated === true){
     alert('Neutral and Energized Load are Incorrect')
   }
-
-  if(line === false && neutral === true && energizedLoad === true){
+  if(line === true && neutral === false && energizedLoad === false && rotated === false){
+    alert('Neutral, Energized Load and Switches are Incorrect')
+  }
+  if(line === false && neutral === true && energizedLoad === true && rotated === true){
     alert('L1 is Incorrect')
   }
-
-  if(line === false && neutral === true && energizedLoad === false){
+  if(line === false && neutral === true && energizedLoad === true && rotated === false){
+    alert('L1 and Switches are Incorrect')
+  }
+  if(line === false && neutral === true && energizedLoad === false && rotated === true){
     alert('L1 and Energized Load are Incorrect')
   }
-
-  if(line === false && neutral === false && energizedLoad === true){
+  if(line === false && neutral === true && energizedLoad === false && rotated === false){
+    alert('L1, Energized Load and Switches are Incorrect')
+  }
+  if(line === false && neutral === false && energizedLoad === true && rotated === true){
     alert('L1 and Neutral are Incorrect')
   }
-
-  if(line === false && neutral === false && energizedLoad === false){
+  if(line === false && neutral === false && energizedLoad === true && rotated === false){
+    alert('L1, Neutral and Switches are Incorrect')
+  }
+  if(line === false && neutral === false && energizedLoad === false && rotated === true){
     alert('L1, Neutral and Energized Load are Incorrect')
   }
+  if(line === false && neutral === false && energizedLoad === false && rotated === false){
+    alert('L1, Neutral, Energized Load and Switches are Incorrect')
+  }
+
   if(attempts === 3){
     if(exercise === 'hotValve'){
       alert('Recommend watching the fill video again.')
@@ -294,30 +313,80 @@ function checkAnswer(exercise){
       alert('Recommend watching the high speed agitate video again.')
     }
   }
-  // console.log(exercise + 'L1Array = ')
-  // console.log(l1Array)
-  // console.log('')
-
-  // console.log(exercise + 'NeutralArray = ')
-  // console.log(neutralArray)
-  // console.log('')
-
-  // console.log(exercise + 'EnergizedLoadArray = ')
-  // console.log(energizedLoadArray)
-  // console.log('')
 }
-var exercise1 = document.getElementById('exercise1')
-exercise1.style.borderColor = 'blue'
-function clearDiagram(clickedButton){
-  attempts = 0;
-  var buttonArray = document.getElementsByTagName('button')
-  for(a=0; a<buttonArray.length; a++){
-    buttonArray[a].style.borderColor = 'grey'
-  }
-   clickedButton.style.borderColor = 'blue'
+
+function demoOpacity(op){
+  path30883copy.setAttribute("opacity", op)
+}
+function demoColorPicker(color){
+  console.log(colorPicker.value);
+  colorPicker.value = color;
+}
+
+var slideTl = new TimelineMax({paused:true});
+slideTl
+.to(skipInstructions_btn, .1, {autoAlpha:0, delay:0})
+.to(path30883copy, .5, {x:0, delay:3, onComplete:demoOpacity, onCompleteParams:[1]})
+.to(path30883copy, .5, {x:0, delay:3, onComplete:demoOpacity, onCompleteParams:[0]})
+
+.to(colorPicker, .5, {css:{background:'red'}, delay:2})
+.to(path30883copy, .5, {x:0, onComplete:demoColorPicker, onCompleteParams:['l1Color'], delay:1})
+.to(path30883copy, .5, {x:0, onComplete:demoColorPicker, onCompleteParams:['neutralColor'], delay:3})
+.to(path30883copy, .5, {x:0, onComplete:demoColorPicker, onCompleteParams:['energizedLoadColor'], delay:4})
+.to(colorPicker, .5, {css:{background:'red'}, delay:2})
+.to(path30883copy, .5, {x:0, onComplete:demoColorPicker, onCompleteParams:['l1Color'], delay:2})
+.to(colorPicker, .5, {css:{background:'white'}, delay:-.5})
+
+.to(question1, .5, {autoAlpha:1, display:'block', onStart:clearDiagram, delay:8.5})
+.to(skipInstructions_btn, .1, {autoAlpha:0, onComplete:function(){slideAudio.pause()}, delay:4})
+
+.to(question1, .5, {autoAlpha:0, display:'none',delay:1})
+.to(question2, .5, {autoAlpha:1, display:'block', onStart:clearDiagram, delay:1})
+.to(skipInstructions_btn, .1, {autoAlpha:0, onComplete:function(){slideAudio.pause()}, delay:3})
+
+.to(question2, .5, {autoAlpha:0, display:'none',delay:1})
+.to(question3, .5, {autoAlpha:1, display:'block', onStart:clearDiagram, delay:1})
+.to(skipInstructions_btn, .1, {autoAlpha:0, onComplete:function(){slideAudio.pause()}, delay:4})
+
+.to(question3, .5, {autoAlpha:0, display:'none',delay:1})
+.to(question4, .5, {autoAlpha:1, display:'block', onStart:clearDiagram, delay:1})
+.to(skipInstructions_btn, .1, {autoAlpha:0, onComplete:function(){slideAudio.pause()}, delay:3})
+
+.to(question4, .5, {autoAlpha:0, display:'none',delay:1})
+.to(question5, .5, {autoAlpha:1, display:'block', onStart:clearDiagram, delay:1})
+.to(skipInstructions_btn, .1, {autoAlpha:0, onComplete:function(){slideAudio.pause()}, delay:3})
+
+
+
+/////////////////////////////Comment Out After Edit
+function highlightDiagram(){
+  var l1Array = [];
+  var neutralArray = [];
   for(i=0; i<diagram1PathsLength; i++){
-  diagram1Paths[i].style.stroke = originalLineColor;
-  diagram1Paths[i].style.strokeWidth = originalLineSize;}
+    console.log(diagram1Paths[i].style.stroke)
+    if(diagram1Paths[i].style.stroke === l1Color){
+      l1Array.push(diagram1Paths[i].id)
+    }
+
+    if(diagram1Paths[i].style.stroke === neutralColor){
+      neutralArray.push(diagram1Paths[i].id)
+    }
+  }
+
+  myText.append('[')
+
+  neutralArray.forEach(function(element){
+    myText.append('"' + element + '",')
+  })
+
+  myText.append(']')
+  myText.append('[')
+
+  l1Array.forEach(function(element){
+    myText.append('"' + element + '",')
+  })
+  
+  myText.append(']')
 }
 
 function moveSwitch(target, type, tValue, tOrigin){
@@ -350,87 +419,9 @@ function moveSwitch(target, type, tValue, tOrigin){
   }
 }
 
-
-var partsList = [];
-
-for(i=0; i<componentList.length; i++){
-  myPart = document.getElementById(componentList[i]);
-  var myLabel = $(myPart).attr('inkscape:label');
-  partsList.push(myLabel);
-  var option = document.createElement("option");
-  option.value = myPart.id;
-  option.text = myLabel;
-  componentSelect.add(option);
+function clearDiagram(){
+  attempts = 0;
+  for(i=0; i<diagram1PathsLength; i++){
+  diagram1Paths[i].style.stroke = originalLineColor;
+  diagram1Paths[i].style.strokeWidth = originalLineSize;}
 }
-
-function sortSelect(selElem) {
-    var tmpAry = new Array();
-    for (var i=0;i<selElem.options.length;i++) {
-        tmpAry[i] = new Array();
-        tmpAry[i][0] = selElem.options[i].text;
-        tmpAry[i][1] = selElem.options[i].value;
-    }
-    tmpAry.sort();
-    while (selElem.options.length > 0) {
-        selElem.options[0] = null;
-    }
-    for (var i=0;i<tmpAry.length;i++) {
-        var op = new Option(tmpAry[i][0], tmpAry[i][1]);
-        selElem.options[i] = op;
-    }
-    return;
-}
-
-
-//Image Code
-// for(i=1; i<250; i++){
-//   var numberDigits = i.toString().length;
-//   console.log(numberDigits)
-//   if(numberDigits === 1){
-//     document.getElementById('text1').append('<img class="animtation1" src="./images/000' + i + '.png">')
-//   }
-//   if(numberDigits === 2){
-//     document.getElementById('text1').append('<img class="animtation1" src="./images/00' + i + '.png">')
-//   }
-//   if(numberDigits === 3){
-//     document.getElementById('text1').append('<img class="animtation1" src="./images/0' + i + '.png">')
-//   }
-// }
-
-//Show Image Code
-// for(i=0; i<250; i++){
-//     document.getElementById('text1').append('.from(myImages[' + i + '], .1, {autoAlpha:0, immediateRender:true})')
-// }
-
-
-
-
-
-
-var myImages = document.getElementsByTagName('img')
-// console.log(myImages)
-var slideTl = new TimelineMax({paused:true});
-slideTl
-// TweenMax.to([image], 0, {autoAlpha:0}, delay:50)
-.from(myImages[0], .1, {autoAlpha:0, immediateRender:true})
-.from(myImages[1], .1, {autoAlpha:0, immediateRender:true})
-.from(myImages[2], .1, {autoAlpha:0, immediateRender:true})
-.from(myImages[3], .1, {autoAlpha:0, immediateRender:true})
-.from(myImages[4], .1, {autoAlpha:0, immediateRender:true})
-.from(myImages[5], .1, {autoAlpha:0, immediateRender:true})
-.from(myImages[6], .1, {autoAlpha:0, immediateRender:true})
-.from(myImages[7], .1, {autoAlpha:0, immediateRender:true})
-.from(myImages[8], .1, {autoAlpha:0, immediateRender:true})
-.from(myImages[9], .1, {autoAlpha:0, immediateRender:true})
-
-// .from(myImages[0], .1, {autoAlpha:0, immediateRender:true})
-// .from(myImages[1], .1, {autoAlpha:0, immediateRender:true})
-// .from(myImages[2], .1, {autoAlpha:0, immediateRender:true})
-// .from(myImages[3], .1, {autoAlpha:0, immediateRender:true})
-// .from(myImages[4], .1, {autoAlpha:0, immediateRender:true})
-
-// .from(myImages[5], .1, {autoAlpha:0, immediateRender:true})
-// .from(myImages[6], .1, {autoAlpha:0, immediateRender:true})
-// .from(myImages[7], .1, {autoAlpha:0, immediateRender:true})
-// .from(myImages[4], .1, {autoAlpha:0, immediateRender:true})
-
