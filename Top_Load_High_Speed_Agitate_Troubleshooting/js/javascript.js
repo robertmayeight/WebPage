@@ -287,7 +287,7 @@ slideTl
 
 .to(question2, .5, {autoAlpha:0, display:'none',delay:1})
 .to(question3, .5, {autoAlpha:1, display:'block', delay:1})
-.to(skipInstructions_btn, .1, {autoAlpha:0, onComplete:function(){slideAudio.pause()}, delay:4})
+.to(skipInstructions_btn, .1, {autoAlpha:0, onComplete:function(){slideAudio.pause()}, delay:3})
 
 .to(question3, .5, {autoAlpha:0, display:'none',delay:1})
 .to(question4, .5, {autoAlpha:1, display:'block', delay:1})
