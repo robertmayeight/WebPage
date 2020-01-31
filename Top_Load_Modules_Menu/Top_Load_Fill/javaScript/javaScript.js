@@ -1,22 +1,21 @@
-// slide = new XMLHttpRequest();
-// slide.open("GET","schematic.svg",false);
-// slide.overrideMimeType("image/svg+xml");
-// slide.send("");
-// var slide= document.getElementById("main").appendChild(slide.responseXML.documentElement);
+slide = new XMLHttpRequest();
+slide.open("GET","schematic.svg",false);
+slide.overrideMimeType("image/svg+xml");
+slide.send("");
+var slide= document.getElementById("main").appendChild(slide.responseXML.documentElement);
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Resize Window
-var svgWindow = document.getElementById("main");
-var svg = d3.select(svgContent);
-function resizeSVG(){
-  var width = svgWindow.clientWidth;
-  var height = svgWindow.clientHeight;
-  svg
-  .attr("width", width)
-  .attr("height", height);
-}
-resizeSVG();
-window.addEventListener("resize", resizeSVG)
-
+// var svgWindow = document.getElementById("main");
+// var svg = d3.select(svgContent);
+// function resizeSVG(){
+//   var width = svgWindow.clientWidth;
+//   var height = svgWindow.clientHeight;
+//   svg
+//   .attr("width", width)
+//   .attr("height", height);
+// }
+// resizeSVG();
+// window.addEventListener("resize", resizeSVG)
 
 var slideAudio = document.getElementById('music');
 slideAudio.src="topLoadModule1.mp3"
