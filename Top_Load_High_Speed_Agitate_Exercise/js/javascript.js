@@ -1,16 +1,21 @@
 var edit = true;
-function toggleEditor(){
+
+getSelectionArray_btn.style.display = 'none';
+myText.style.display = 'none';
+
+document.addEventListener ("keydown", function (zEvent) {
   edit = !edit;
-  console.log(edit)
-  if(edit === false){
-    getSelectionArray_btn.style.display = 'none';
-    myText.style.display = 'none';
-  }else{
-    getSelectionArray_btn.style.display = 'block';
-    myText.style.display = 'block';
+  if (zEvent.ctrlKey  &&  zEvent.altKey  &&  zEvent.key === "e") { 
+    console.log(edit)
+    if(edit === false){
+      getSelectionArray_btn.style.display = 'none';
+      myText.style.display = 'none';
+    }else{
+      getSelectionArray_btn.style.display = 'block';
+      myText.style.display = 'block';
+    }
   }
-}
-toggleEditor();
+});
 
 document.title = "Top Load Practice Circuits";
 
@@ -51,8 +56,8 @@ var attempts = 0;
 
 var l1Color = 'rgb(0, 0, 0)';
 var neutralColor = 'rgb(0, 0, 255)';
-var energizedLoadColor = 'rgb(255,165,0)';
-var originalLineColor = 'rgb(32,32,32)';
+var energizedLoadColor = 'rgb(255, 165, 0)';
+var originalLineColor = 'rgb(32, 32, 32)';
 
 
 var deviceType = "not mobile";
@@ -362,6 +367,8 @@ slideTl
 function highlightDiagram(){
   var l1Array = [];
   var neutralArray = [];
+  var energizedLoadArray = [];
+  myText.innerHTML = '';
   for(i=0; i<diagram1PathsLength; i++){
     console.log(diagram1Paths[i].style.stroke)
     if(diagram1Paths[i].style.stroke === l1Color){
@@ -371,18 +378,36 @@ function highlightDiagram(){
     if(diagram1Paths[i].style.stroke === neutralColor){
       neutralArray.push(diagram1Paths[i].id)
     }
+    if(diagram1Paths[i].style.stroke === energizedLoadColor){
+      console.log(energizedLoadArray)
+      energizedLoadArray.push(diagram1Paths[i].id)
+    }
   }
+  var arrayName = energizedLoadArray[0].split('_')[0];
+  var br1 = document.createElement("br");
+  var br2 = document.createElement("br");
 
-  myText.append('[')
+  myText.append('var ' + arrayName + 'L1Array = [')
 
   neutralArray.forEach(function(element){
     myText.append('"' + element + '",')
   })
 
   myText.append(']')
-  myText.append('[')
+  myText.appendChild(br1);
+  myText.append('var ' + arrayName + 'NeutralArray = [')
 
   l1Array.forEach(function(element){
+    myText.append('"' + element + '",')
+  })
+  
+  myText.append(']')
+  myText.appendChild(br2);
+
+  // myText.append('var energizedCOMPONENT_NAMEArray = [')
+  myText.append('var ' + arrayName + 'EnergizedLoadArray = [')
+
+  energizedLoadArray.forEach(function(element){
     myText.append('"' + element + '",')
   })
   

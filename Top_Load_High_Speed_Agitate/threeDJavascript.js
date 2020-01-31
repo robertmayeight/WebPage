@@ -112,14 +112,30 @@ controls = new THREE.OrbitControls(camera, renderer.domElement)
   var Camera = scene.getObjectByName("Camera");
   var agitator = scene.getObjectByName("agitator");
   var basket = scene.getObjectByName("basket");
-  basket.depthWrite = false
+  function showObject(object){
+    object.traverse ( function (child) {
+    if (child instanceof THREE.Mesh) {
+      setTimeout(function() {child.visible = true;}, 300);
+        
+    }
+  });
+  }
+
+  function hideObject(object){
+    object.traverse ( function (child) {
+    if (child instanceof THREE.Mesh) {
+        setTimeout(function() {child.visible = false;}, 300);
+    }
+  });
+  }
+  hideObject(agitator);
+  hideObject(basket);
 
 //Timeline
   
-  slideTl
-   
-
-  .to(fillWater, 0, {scaleY:0, transformOrigin: "0% 100%",immediateRender:true, delay:0})
+slideTl
+.to([pressureSensor_sw], .5, {rotation:0, transformOrigin: "0% 100%", ease:Power0.easeNone})
+.to(fillWater, 0, {scaleY:0, transformOrigin: "0% 100%",immediateRender:true, delay:0})
 .to(fillWater, 5, {scaleY:1, transformOrigin: "0% 100%", delay:1})
 .to([pressureSensor_sw, pressureSensor_swcopy], .5, {rotation:0, transformOrigin: "0% 100%", ease:Power0.easeNone})
 .to([path6076copy,path4548copy,path6116copy,path11093copy,path11095copy,path4568copy,path4528copy,path1456copy,path6136copy,path6096copy,path6196copy,path4508copy,path6216copy,path6156copy,path30883copy,hotValve,coldValve,slowColdValve], 0, {stroke:'black', autoAlpha:0})
@@ -223,17 +239,26 @@ controls = new THREE.OrbitControls(camera, renderer.domElement)
 .to(outerTube.material.color, .5, { r: 1, g: 0, b: 0, delay:0})
 .to(outerTube.material.color, .5, { r: .504, g: .504, b: .504, delay:1})
 
-
+//Show Agitator
 .to(innerTube.material.color, .5, { r: 1, g: 0, b: 0, delay:.5})
+.to(innerTube.material.color, .1, { r: 1, g: 0, b: 0, onComplete:hideObject, onCompleteParams:[agitator]})
+.to(innerTube.material.color, .1, { r: 1, g: 0, b: 0, onComplete:showObject, onCompleteParams:[agitator]})
 .from([agitator.material], 1, {opacity:0,delay:0})
+
 
 
 .from([gearTeeth.material, beltPulley.material], 1, {opacity:0,delay:0})
 .from([gearTeeth.position, beltPulley.position], 1, {y:-50,delay:0})
 .to(innerTube.material.color, .5, { r: .504, g: .504, b: .504, delay:0})
-.to([agitator.material], 1, {opacity:0,delay:2})
+.to([agitator.material], 1, {opacity:0, onStart:hideObject, onStartParams:[agitator],delay:2})
+
+//Show Basket
+.to(innerTube.material.color, .1, { r: 1, g: 0, b: 0, onComplete:hideObject, onCompleteParams:[basket]})
+.to(innerTube.material.color, .1, { r: 1, g: 0, b: 0, onComplete:showObject, onCompleteParams:[basket]})
 .from([basket.material], 1, {opacity:0,delay:0})
-.to([basket.material], 1, {opacity:0,delay:2})
+
+//Hide Basket
+.to(innerTube.material.color, .1, { r: 1, g: 0, b: 0, onComplete:hideObject, onCompleteParams:[basket], delay:2})
 
 
 .to(camera.position, 2, {z:-2, y:-10, delay:.5})
@@ -241,11 +266,13 @@ controls = new THREE.OrbitControls(camera, renderer.domElement)
 
 
 // .to([magnet.material], 1, {opacity:0,delay:0})
-.to([magnet.material], 1, {opacity:0,delay:1})
+.to([magnet.material], 1, {opacity:0,delay:3})
 // .to([magnet], .1, {three:{opacity:0}})
 // .to(magnet.position, 1, {y:'+=1'})
-.to([shifterTeeth.position], 1, {y:'+=.5',delay:5})
-.to(gearTeeth.material.color, 2, { r: 0, g: 0, b: 0})
+.to(shifterTeeth.material.color, .5, { r: 1, g: 0, b: 0, delay:1})
+.to([shifterTeeth.position], .5, {y:'+=.5',delay:1})
+.to(shifterTeeth.material.color, .5, { r: .504, g: .504, b: .504,delay:1})
+.to(gearTeeth.material.color, .5, { r: 1, g: 0, b: 0})
 
 //Change Views
 .to(myCanvas, 1, {autoAlpha:0, delay:2})
@@ -254,6 +281,8 @@ controls = new THREE.OrbitControls(camera, renderer.domElement)
 .staggerFromTo([path5504copy], 1, {drawSVG:'0% 0%'}, {drawSVG: '100% 0%', ease: Power0.easeNone,delay:.5})
 .staggerFromTo([path5484copy], 1, {drawSVG:'0% 0%'}, {drawSVG: '100% 0%', ease: Power0.easeNone,delay:0})
 .to(modeShiftercopy, 1, {stroke:'red', autoAlpha:1, delay:0})
+.to(gearTeeth.material.color, .1, {r: .504, g: .504, b: .504})
+.to(shifterTeeth.material.color, .1, { r: 1, g: 0, b: 0, delay:0})
 .to(myCanvas, 1, {autoAlpha:1, delay:1.5})
 .to(svgContent, 1, {autoAlpha:0, delay:-1})
 

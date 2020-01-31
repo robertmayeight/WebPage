@@ -57,10 +57,6 @@
         <option value=neutralColor>Neutral</option>
         <option value=energizedLoadColor>Energized Load</option>
       </select>
-      <!-- <button id="toggleEditor_btn" onclick="toggleEditor()">Toggle Editor</button> -->
-      <br>
-      
-      
       <div id="question1" class="questions" style="display: none">
         <hr>
         Exercise - 1<br>
@@ -105,12 +101,9 @@
       <button id="skipInstructions_btn" onclick="skipInstructions()">Skip Instructions</button>
 
       <!-- Editor -->
-      <br><br><br><br><br><br>
-      
-      <br><br>
-      <button id="getSelectionArray_btn" onclick="highlightDiagram()">Get Arrays</button> 
-      <br><br> 
-      <div id="myText" style="width: 800px; word-wrap: break-word; font-size: x-small;"></div> 
+      <div id="instructionText" style="width: 800px; word-wrap: break-word; font-size: x-small;">1) Highlight circuits with appropriate color.<br>2) Click "Get Code" button.<br>3) Copy code and paste in Word document on I:drive.</div> 
+      <button id="getSelectionArray_btn" onclick="highlightDiagram()">Get Code</button> 
+      <div id="myText" style="width: 800px; word-wrap: break-word; font-size: x-small; border-style: solid 1px;"></div> 
       <!-- Editor -->
     </span>
   </body>
