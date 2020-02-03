@@ -51,6 +51,23 @@
           color: red;
           font-weight: bold;
         }
+        #editorText{
+          background-color: lightgrey;
+          width: 200px;
+          word-wrap: break-word;
+          font-size: x-small;
+          padding: 5px;
+          max-height: 25vh;
+          overflow-y: auto;
+        }
+        li{
+          padding: 0px;
+          margin-left: -25px;
+        }
+        .offScreen{
+          position: absolute;
+          left: -100000px;
+        }
       </style>
     </head>
   <body>
@@ -72,7 +89,7 @@
         Exercise - 1<br>
         No Agitate No Spin
         <br><br>
-        <button id="question1_btn" onclick="checkAnswer('pressureSensor_sw')">Submit</button>
+        <button id="question1_btn" onclick="checkAnswer('exercise1')">Submit</button>
       </div>
 
       <div id="question2" class="questions" style="display: none">
@@ -80,7 +97,7 @@
         Exercise - 2<br>
         No Low Speed Agitate
         <br><br>
-        <button id="question2_btn" onclick="checkAnswer('speedSwitch_sw')">Submit</button>
+        <button id="question2_btn" onclick="checkAnswer('exercise2')">Submit</button>
       </div>
 
       <div id="question3" class="questions" style="display: none">
@@ -88,7 +105,7 @@
         Exercise - 3<br>
         No Drain Pump
         <br><br>
-        <button id="question3_btn" onclick="checkAnswer('agitationControlSwitch_sw')">Submit</button>
+        <button id="question3_btn" onclick="checkAnswer('exercise3')">Submit</button>
       </div>
 
       <div id="question4" class="questions" style="display: none">
@@ -96,7 +113,7 @@
         Exercise - 4<br>
         No Agitate No Spin
         <br><br>
-        <button id="question4_btn" onclick="checkAnswer('path6748')">Submit</button>
+        <button id="question4_btn" onclick="checkAnswer('exercise4')">Submit</button>
       </div>
 
       <div id="question5" class="questions" style="display: none">
@@ -104,21 +121,34 @@
         Exercise - 5<br>
         Dead Unit
         <br><br>
-        <button id="question5_btn" onclick="checkAnswer('filterBorder')">Submit</button>
+        <button id="question5_btn" onclick="checkAnswer('exercise5')">Submit</button>
       </div>
       <button id="skipInstructions_btn" onclick="skipInstructions()">Skip Instructions</button>
 
       <!-- Editor -->
-      <br><br><br><br><br><br>
-      <select id="colorPicker" onChange="colorPickerChange(this.selectedIndex);">
-        <option value="l1Color">L1</option>
-        <option value=neutralColor>Neutral</option>
-        <option value=energizedLoadColor>Energized Load</option>
-      </select>
       <br><br>
-      <button id="getSelectionArray_btn" onclick="highlightDiagram()">Get Arrays</button> 
-      <br><br> 
-      <div id="myText" style="width: 800px; word-wrap: break-word; font-size: x-small;"></div> 
+      <div id="editorText">
+        <div id="instructionText">
+          Editor
+          <ol>
+           <li>Highlight circuits with appropriate color.</li>
+           <li>Click "Get Code" button.</li>
+           <li>Copy code and paste in Word document found <a target="_blank" href="https://geappliances-my.sharepoint.com/:w:/r/personal/robert_may_geappliances_com/_layouts/15/Doc.aspx?sourcedoc={356c9b47-224c-442a-b7a9-10a7cdf3db8e}&action=editnew&Source=https%3A%2F%2Fgeappliances%2Dmy%2Esharepoint%2Ecom%2Fpersonal%2Frobert%5Fmay%5Fgeappliances%5Fcom%2FDocuments%2FForms%2FAll%2Easpx%3FRootFolder%3D%252Fpersonal%252Frobert%255Fmay%255Fgeappliances%255Fcom%252FDocuments%252FCode%2520Exchange%26FolderCTID%3D0x0120002790A19C507992408FF3E6470754065F%26View%3D%257BCE682A13%252D1720%252D4003%252DAF69%252DA59DC1477A62%257D">HERE</a>.</li>
+          </ol>
+          
+        </div> 
+        Potential<br>
+        <select id="colorPicker" onChange="colorPickerChange(this.selectedIndex);">
+          <option value="l1Color">L1</option>
+          <option value=neutralColor>Neutral</option>
+          <option value=energizedLoadColor>Energized Load</option>
+        </select>
+        <br><br>
+        <button id="getSelectionArray_btn" onclick="highlightDiagram()">Get Code</button> 
+        <div id="myText" class="offScreen"></div> 
+        <input type="text" value="Hello World" id="myInput" class="offScreen">
+        </div>
+      
       <!-- Editor -->
     </span>
   </body>

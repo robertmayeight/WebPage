@@ -1,41 +1,42 @@
-var edit = true;
-function toggleEditor(){
+//Editor
+var edit = false;
+editorText.style.display = 'none';
+document.addEventListener ("keydown", function (zEvent) {
   edit = !edit;
-  console.log(edit)
-  if(edit === false){
-    colorPicker.style.display = 'none';;
-    getSelectionArray_btn.style.display = 'none';
-    myText.style.display = 'none';
-  }else{
-    colorPicker.style.display = 'block';
-    getSelectionArray_btn.style.display = 'block';
-    myText.style.display = 'block';
+  if (zEvent.ctrlKey  &&  zEvent.altKey  &&  zEvent.key === "e") { 
+    if(edit === false){
+      editorText.style.display = 'none';
+    }else{
+      editorText.style.display = 'block';
+    }
   }
-}
-toggleEditor();
+});
+
+
+//Editor
 
 document.title = "Troubleshooting Exercise";
 
-var pressureSensorNeutralArray = ["path2216","sudsLockSwitch_sw","speedSwitch_sw","rinseFillSwitch_sw","hotValveSwitch_sw","fillSwitch_sw","coldValveSwitch_sw","path4594","path4754","path5074","path5552","path6136","path6196","path6216","path6444","path6492","path6748","path171708","path171667","path6116","path11093","path11095","path30883","path6156","path171704","path30889","slowColdValveSwitch_sw","path6096","path30925","timerMotorSwitch_sw","path2546","path2638","path2640","path4670","path5046","path16073","path16096","path16100","path16108","path16118","slowColdValve","hotValve_load","coldValve","path16299",]
+var exercise1NeutralArray = ["path2216","sudsLockSwitch_sw","speedSwitch_sw","rinseFillSwitch_sw","hotValveSwitch_sw","fillSwitch_sw","coldValveSwitch_sw","path4594","path4754","path5074","path5552","path6136","path6196","path6216","path6444","path6492","path6748","path171708","path171667","path6116","path11093","path11095","path30883","path6156","path171704","path30889","slowColdValveSwitch_sw","path6096","path30925","timerMotorSwitch_sw","path2546","path2638","path2640","path4670","path5046","path16073","path16096","path16100","path16108","path16118","slowColdValve","hotValve_load","coldValve","path16299",]
 
- var pressureSensorL1Array = ["path1154","agitationControlSwitch_sw","path6168","path2623","path2625","path2627","path2629","path2632","path2634","path2636","lidSwitch_sw","path2648","path16120","pressureSensor_sw",]
+ var exercise1L1Array = ["path1154","agitationControlSwitch_sw","path6168","path2623","path2625","path2627","path2629","path2632","path2634","path2636","lidSwitch_sw","path2648","path16120","pressureSensor_sw",]
 
- var lowSpeedAgitateL1Array = ["sudsLockSwitch_sw","rinseFillSwitch_sw","hotValveSwitch_sw","fillSwitch_sw","coldValveSwitch_sw","path4754","path5074","path6136","path6196","path6216","path6444","path6748","path171708","path171667","path6076","path6116","path11093","path11095","path30883","path6156","path171704","path30889","slowColdValveSwitch_sw","path6096","path30925","timerMotorSwitch_sw","path2638","path2640","path4670","path5046","path16100","path16108","path16118","slowColdValve","hotValve_load","coldValve","path174147","path16299","sudsLockSwitch_sw","rinseFillSwitch_sw","hotValveSwitch_sw","fillSwitch_sw","coldValveSwitch_sw","path4594","path4754","path5074","path6136","path6196","path6216","path6444","path6492","path6748","path171708","path171667","path6076","path6116","path11093","path11095","path30883","path6156","path171704","path30889","slowColdValveSwitch_sw","path6096","path30925","timerMotorSwitch_sw","path2638","path2640","path4670","path5046","path16073","path16096","path16100","path16108","path16118","hotValve_load","coldValve","path174147","path16299",]
+ var exercise2AgitateL1Array = ["sudsLockSwitch_sw","rinseFillSwitch_sw","hotValveSwitch_sw","fillSwitch_sw","coldValveSwitch_sw","path4754","path5074","path6136","path6196","path6216","path6444","path6748","path171708","path171667","path6076","path6116","path11093","path11095","path30883","path6156","path171704","path30889","slowColdValveSwitch_sw","path6096","path30925","timerMotorSwitch_sw","path2638","path2640","path4670","path5046","path16100","path16108","path16118","slowColdValve","hotValve_load","coldValve","path174147","path16299","sudsLockSwitch_sw","rinseFillSwitch_sw","hotValveSwitch_sw","fillSwitch_sw","coldValveSwitch_sw","path4594","path4754","path5074","path6136","path6196","path6216","path6444","path6492","path6748","path171708","path171667","path6076","path6116","path11093","path11095","path30883","path6156","path171704","path30889","slowColdValveSwitch_sw","path6096","path30925","timerMotorSwitch_sw","path2638","path2640","path4670","path5046","path16073","path16096","path16100","path16108","path16118","hotValve_load","coldValve","path174147","path16299",]
 
- var lowSpeedAgitateNeutralArray = ["path1154","speedSwitch_sw","path4594","path4832","extraRinseSwitch_sw","agitationControlSwitch_sw","path6168","path2546","path2623","path2625","path2627","path2629","path2632","path2634","path2636","lidSwitch_sw","path2648","path16073","path16096","path16120","timerMotorL1Switch_sw","pressureSensor_sw","path1154","path4832","extraRinseSwitch_sw","agitationControlSwitch_sw","path6168","path2546","path2623","path2625","path2627","path2629","path2632","path2634","path2636","lidSwitch_sw","path2648","path16120","timerMotorL1Switch_sw","pressureSensor_sw",]
+ var exercise2AgitateNeutralArray = ["path1154","speedSwitch_sw","path4594","path4832","extraRinseSwitch_sw","agitationControlSwitch_sw","path6168","path2546","path2623","path2625","path2627","path2629","path2632","path2634","path2636","lidSwitch_sw","path2648","path16073","path16096","path16120","timerMotorL1Switch_sw","pressureSensor_sw","path1154","path4832","extraRinseSwitch_sw","agitationControlSwitch_sw","path6168","path2546","path2623","path2625","path2627","path2629","path2632","path2634","path2636","lidSwitch_sw","path2648","path16120","timerMotorL1Switch_sw","pressureSensor_sw",]
 
- var noDrainL1Array = ["sudsLockSwitch_sw","rinseFillSwitch_sw","hotValveSwitch_sw","fillSwitch_sw","coldValveSwitch_sw","path4754","path5074","path6136","path6196","path6216","path6444","path6748","path171708","path171667","path6076","path6116","path11093","path11095","path30883","path6156","path171704","path30889","slowColdValveSwitch_sw","path6096","path30925","timerMotorSwitch_sw","path2638","path2640","path4670","path5046","path16100","path16108","path16118","slowColdValve","hotValve_load","coldValve","path174147","path16299","sudsLockSwitch_sw","rinseFillSwitch_sw","hotValveSwitch_sw","fillSwitch_sw","coldValveSwitch_sw","path4594","path4754","path5074","path6136","path6196","path6216","path6444","path6748","path171708","path171667","path6076","path6116","path11093","path11095","path30883","path6156","path171704","path30889","slowColdValveSwitch_sw","path6096","path30925","timerMotorSwitch_sw","path2638","path2640","path4670","path5046","path16100","path16108","path16118","slowColdValve","hotValve_load","coldValve","path174147","path16299",]
+ var exercise3L1Array = ["sudsLockSwitch_sw","rinseFillSwitch_sw","hotValveSwitch_sw","fillSwitch_sw","coldValveSwitch_sw","path4754","path5074","path6136","path6196","path6216","path6444","path6748","path171708","path171667","path6076","path6116","path11093","path11095","path30883","path6156","path171704","path30889","slowColdValveSwitch_sw","path6096","path30925","timerMotorSwitch_sw","path2638","path2640","path4670","path5046","path16100","path16108","path16118","slowColdValve","hotValve_load","coldValve","path174147","path16299","sudsLockSwitch_sw","rinseFillSwitch_sw","hotValveSwitch_sw","fillSwitch_sw","coldValveSwitch_sw","path4594","path4754","path5074","path6136","path6196","path6216","path6444","path6748","path171708","path171667","path6076","path6116","path11093","path11095","path30883","path6156","path171704","path30889","slowColdValveSwitch_sw","path6096","path30925","timerMotorSwitch_sw","path2638","path2640","path4670","path5046","path16100","path16108","path16118","slowColdValve","hotValve_load","coldValve","path174147","path16299",]
 
- var noDrainNeutralArray = ["path1154","speedSwitch_sw","path4594","path4832","extraRinseSwitch_sw","path5854","agitationControlSwitch_sw","path6168","path2546","path2623","path2625","path2627","path2629","path2632","path2634","path2636","lidSwitch_sw","path2648","path16073","path16096","path16120","timerMotorL1Switch_sw","pressureSensor_sw","path1154","speedSwitch_sw","path4832","extraRinseSwitch_sw","path5552","agitationControlSwitch_sw","path6168","path2546","path2623","path2625","path2629","path2632","path2634","path2636","lidSwitch_sw","path2648","path16073","path16096","path16120","timerMotorL1Switch_sw","pressureSensor_sw",]
+ var exercise3NeutralArray = ["path1154","speedSwitch_sw","path4594","path4832","extraRinseSwitch_sw","path5854","agitationControlSwitch_sw","path6168","path2546","path2623","path2625","path2627","path2629","path2632","path2634","path2636","lidSwitch_sw","path2648","path16073","path16096","path16120","timerMotorL1Switch_sw","pressureSensor_sw","path1154","speedSwitch_sw","path4832","extraRinseSwitch_sw","path5552","agitationControlSwitch_sw","path6168","path2546","path2623","path2625","path2629","path2632","path2634","path2636","lidSwitch_sw","path2648","path16073","path16096","path16120","timerMotorL1Switch_sw","pressureSensor_sw",]
 
- var fuseL1Array = ["path1154","speedSwitch_sw","path4594","path5552","agitationControlSwitch_sw","path6168","path2546","path2623","path2625","path2627","path2629","path2632","path2634","path2636","lidSwitch_sw","path2648","path16073","path16096","path16120","timerMotorL1Switch_sw","pressureSensor_sw",]
+ var exercise4L1Array = ["path1154","speedSwitch_sw","path4594","path5552","agitationControlSwitch_sw","path6168","path2546","path2623","path2625","path2627","path2629","path2632","path2634","path2636","lidSwitch_sw","path2648","path16073","path16096","path16120","timerMotorL1Switch_sw","pressureSensor_sw",]
 
- var fuseNeutralArray = ["sudsLockSwitch_sw","rinseFillSwitch_sw","hotValveSwitch_sw","fillSwitch_sw","coldValveSwitch_sw","path4754","path5074","path6136","path6196","path6216","path6444","path171708","path171667","path6076","path6116","path11093","path11095","path30883","path6156","path171704","path30889","slowColdValveSwitch_sw","path6096","timerMotorSwitch_sw","path2638","path2640","path4670","path16100","path16108","path16118","slowColdValve","hotValve_load","coldValve","path16299",]
+ var exercise4NeutralArray = ["sudsLockSwitch_sw","rinseFillSwitch_sw","hotValveSwitch_sw","fillSwitch_sw","coldValveSwitch_sw","path4754","path5074","path6136","path6196","path6216","path6444","path171708","path171667","path6076","path6116","path11093","path11095","path30883","path6156","path171704","path30889","slowColdValveSwitch_sw","path6096","timerMotorSwitch_sw","path2638","path2640","path4670","path16100","path16108","path16118","slowColdValve","hotValve_load","coldValve","path16299",]
 
 
- var filterNeutralArray = ["path30889","filterBorder"]
+ var exercise5NeutralArray = ["path30889","filterBorder"]
 
-  var filterL1Array = ["path1154","sudsLockSwitch_sw","speedSwitch_sw","rinseFillSwitch_sw","hotValveSwitch_sw","fillSwitch_sw","coldValveSwitch_sw","path4594","path4754","path5074","path5552","agitationControlSwitch_sw","path6136","path6196","path6216","path6444","path6748","path171708","path6168","path171667","path6076","path6116","path11093","path11095","path30883","path6156","path171704","slowColdValveSwitch_sw","path6096","path30925","timerMotorSwitch_sw","path2546","path2623","path2625","path2627","path2629","path2632","path2634","path2636","path2638","path2640","path4670","path5046","lidSwitch_sw","path2648","path16073","path16096","path16100","path16108","path16118","path16120","slowColdValve","hotValve_load","coldValve","path174147","path16299","timerMotorL1Switch_sw","pressureSensor_sw",]
+  var exercise5L1Array = ["path1154","sudsLockSwitch_sw","speedSwitch_sw","rinseFillSwitch_sw","hotValveSwitch_sw","fillSwitch_sw","coldValveSwitch_sw","path4594","path4754","path5074","path5552","agitationControlSwitch_sw","path6136","path6196","path6216","path6444","path6748","path171708","path6168","path171667","path6076","path6116","path11093","path11095","path30883","path6156","path171704","slowColdValveSwitch_sw","path6096","path30925","timerMotorSwitch_sw","path2546","path2623","path2625","path2627","path2629","path2632","path2634","path2636","path2638","path2640","path4670","path5046","lidSwitch_sw","path2648","path16073","path16096","path16100","path16108","path16118","path16120","slowColdValve","hotValve_load","coldValve","path174147","path16299","timerMotorL1Switch_sw","pressureSensor_sw",]
 
 var componentList = [];
 var meterBlack = [];
@@ -49,8 +50,8 @@ var selection = '';
 
 var l1Color = 'rgb(0, 0, 0)';
 var neutralColor = 'rgb(0, 0, 255)';
-var energizedLoad = 'rgb(255,165,0)';
-var originalLineColor = 'rgb(32,32,32)';
+var energizedLoad = 'rgb(255, 165, 0)';
+var originalLineColor = 'rgb(32, 32, 32)';
 
 
 var deviceType = "not mobile";
@@ -157,9 +158,6 @@ function wireClicked(wire){
     }
     if(colorPicker.value === 'l1Color'){
       wire2.style["stroke"]= l1Color;
-    }
-    if(colorPicker.value === 'energizedLoadColor'){
-      wire2.style["stroke"]= energizedLoadColor;
     }
     if(wire2.style["stroke-width"] === originalLineSize +'px'){
       wire2.style["stroke-width"] = highlightedWidth;
@@ -300,11 +298,12 @@ slideTl
 
 
 /////////////////////////////Comment Out After Edit
+var exercise = 'exercise1';
 function highlightDiagram(){
   var l1Array = [];
   var neutralArray = [];
+  myText.innerHTML = '';
   for(i=0; i<diagram1PathsLength; i++){
-    console.log(diagram1Paths[i].style.stroke)
     if(diagram1Paths[i].style.stroke === l1Color){
       l1Array.push(diagram1Paths[i].id)
     }
@@ -313,31 +312,33 @@ function highlightDiagram(){
       neutralArray.push(diagram1Paths[i].id)
     }
   }
+  
+  var br1 = document.createElement("br");
+  var br2 = document.createElement("br");
+  var br3 = document.createElement("br");
 
-  myText.append('[')
-
+  myText.append('var ' + exercise + 'L1Array = [')
   neutralArray.forEach(function(element){
     myText.append('"' + element + '",')
   })
+  myText.append('];')
 
-  myText.append(']')
-  myText.append('[')
+  myText.appendChild(br1);
 
+  myText.append('var ' + exercise + 'NeutralArray = [')
   l1Array.forEach(function(element){
     myText.append('"' + element + '",')
   })
+  myText.append('];')
+
+  myInput.value = myText.textContent;
+
+  var copyText = document.getElementById("myInput");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999)
+  document.execCommand("copy");
+  alert("Copied the text: " + copyText.value);
   
-  myText.append(']')
 }
 
-// filterL1Array.forEach(function(element){
-//   wire = document.getElementById(element)
-//   wire.style.stroke = l1Color;
-//   wire.style.strokeWidth = highlightedWidth;
-// })
 
-// filterNeutralArray.forEach(function(element){
-//   wire = document.getElementById(element)
-//   wire.style.stroke = neutralColor;
-//   wire.style.strokeWidth = highlightedWidth;
-// })

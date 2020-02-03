@@ -1,69 +1,69 @@
-var edit = true;
-
-getSelectionArray_btn.style.display = 'none';
-myText.style.display = 'none';
-
-document.addEventListener ("keydown", function (zEvent) {
-  edit = !edit;
-  if (zEvent.ctrlKey  &&  zEvent.altKey  &&  zEvent.key === "e") { 
-    console.log(edit)
-    if(edit === false){
-      getSelectionArray_btn.style.display = 'none';
-      myText.style.display = 'none';
-    }else{
-      getSelectionArray_btn.style.display = 'block';
-      myText.style.display = 'block';
-    }
-  }
-});
+// xhr = new XMLHttpRequest();
+// xhr.open("GET","schematic.svg",false);
+// xhr.overrideMimeType("image/svg+xml");
+// xhr.send("");
+// var schematic = document.getElementById("mainWindow").appendChild(xhr.responseXML.documentElement);
 
 document.title = "Top Load Practice Circuits";
 
-var hotValveL1Array = [ "path1154", "hotValveSwitch_sw", "fillSwitch_sw", "path6136", "path6168", "pressureSensor_sw", "path6076", "path6116", "path11093", "path16120" ];
-var hotValveNeutralArray = [ "path30883", "path6156", "path174147", "path30889" ];
-var hotValveEnergizedLoadArray = [ "hotValve_load" ];
-var hotValveRotatedArray = ["pressureSensor_sw"];
+//Editor
+var edit = false;
+getSelectionArray_btn.style.display = 'none';
+myText.style.display = 'none';
+instructionText.style.display = 'none';
+document.addEventListener ("keydown", function (zEvent) {
+  edit = !edit;
+  if (zEvent.ctrlKey  &&  zEvent.altKey  &&  zEvent.key === "e") { 
+    if(edit === false){
+      getSelectionArray_btn.style.display = 'none';
+      myText.style.display = 'none';
+      instructionText.style.display = 'none';
+    }else{
+      getSelectionArray_btn.style.display = 'block';
+      myText.style.display = 'block';
+      instructionText.style.display = 'block';
+    }
+  }
+});
+//Editor
 
-var coldValveL1Array = ["path1154","rinseFillSwitch_sw","fillSwitch_sw","coldValveSwitch_sw","path6196","path6216","path6168","pressureSensor_sw","path6076","path6116","path11095","path16120"];
-var coldValveNeutralArray = [ "path30883", "path6156", "path171704", "path30889" ];
-var coldValveEnergizedLoadArray = [ "coldValve" ];
-var coldValveRotatedArray = ["pressureSensor_sw"];
+var exercise1L1Array = [ "path1154", "hotValveSwitch_sw", "fillSwitch_sw", "path6136", "path6168", "pressureSensor_sw", "path6076", "path6116", "path11093", "path16120" ];
+var exercise1NeutralArray = [ "path30883", "path6156", "path174147", "path30889" ];
+var exercise1EnergizedLoadArray = [ "hotValve_load" ];
+var exercise1RotatedArray = ["pressureSensor_sw"];
 
-var slowColdValveL1Array = ["path1154","fillSwitch_sw","path6168","pressureSensor_sw","path6076","path6116","path11093","slowColdValveSwitch_sw","path6096","path16120","path16299"];
-var slowColdValveNeutralArray = [ "path30883", "path6156", "path30889", "path30925" ];
-var slowColdValveEnergizedLoadArray = [ "slowColdValve" ];
-var slowColdValveRotatedArray = ["pressureSensor_sw"];
+var exercise2L1Array = ["path1154","rinseFillSwitch_sw","fillSwitch_sw","coldValveSwitch_sw","path6196","path6216","path6168","pressureSensor_sw","path6076","path6116","path11095","path16120"];
+var exercise2NeutralArray = [ "path30883", "path6156", "path171704", "path30889" ];
+var exercise2EnergizedLoadArray = [ "coldValve" ];
+var exercise2RotatedArray = ["pressureSensor_sw"];
 
-var lowSpeedAgitateL1Array = ["path1154","speedSelectSwitch_sw","path5854","agitationControlSwitch_sw","path6168","pressureSensor_sw","path2546","path2623","path2625","path2627","path2629","path2632","path2634","path2636","lidSwitch_sw","path2648","path16120"];
-var lowSpeedAgitateNeutralArray = [ "path6748", "path171708", "path30883", "path30889", "path4670", "path5046" ]
-var lowSpeedAgitateEnergizedLoadArray = [];
-var lowSpeedAgitateRotatedArray = ["speedSwitch_sw", "lidSwitch_sw"];
+var exercise3L1Array = ["path1154","fillSwitch_sw","path6168","pressureSensor_sw","path6076","path6116","path11093","slowColdValveSwitch_sw","path6096","path16120","path16299"];
+var exercise3NeutralArray = [ "path30883", "path6156", "path30889", "path30925" ];
+var exercise3EnergizedLoadArray = [ "slowColdValve" ];
+var exercise3RotatedArray = ["pressureSensor_sw"];
 
-var highSpeedAgitateL1Array = ["path1154","speedSelectSwitch_sw","path5552","agitationControlSwitch_sw","path6168","pressureSensor_sw","path2546","path2623","path2625","path2627","path2629","path2632","path2634","path2636","lidSwitch_sw","path2648","path16120"];
-var highSpeedAgitateNeutralArray = [ "path6748", "path171708", "path30883", "path30889", "path4670", "path5046" ]
-var highSpeedAgitateEnergizedLoadArray = [];
-var highSpeedAgitateRotatedArray = ["lidSwitch_sw"];
+var exercise4L1Array = ["path1154","speedSelectSwitch_sw","path5854","agitationControlSwitch_sw","path6168","pressureSensor_sw","path2546","path2623","path2625","path2627","path2629","path2632","path2634","path2636","lidSwitch_sw","path2648","path16120"];
+var exercise4NeutralArray = [ "path6748", "path171708", "path30883", "path30889", "path4670", "path5046" ]
+var exercise4EnergizedLoadArray = [];
+var exercise4RotatedArray = ["speedSwitch_sw", "lidSwitch_sw"];
 
-var componentList = [];
-var l1TestArray = [];
-var neutralTestArray = [];
+var exercise5L1Array = ["path1154","speedSelectSwitch_sw","path5552","agitationControlSwitch_sw","path6168","pressureSensor_sw","path2546","path2623","path2625","path2627","path2629","path2632","path2634","path2636","lidSwitch_sw","path2648","path16120"];
+var exercise5NeutralArray = [ "path6748", "path171708", "path30883", "path30889", "path4670", "path5046" ]
+var exercise5EnergizedLoadArray = [];
+var exercise5RotatedArray = ["lidSwitch_sw"];
+
 var originalLineSize = .5;
 var highlightedWidth = 1.45;
-
-var switchList = [];
-var openArray = [];
-var attempts = 0;
-
 var l1Color = 'rgb(0, 0, 0)';
 var neutralColor = 'rgb(0, 0, 255)';
 var energizedLoadColor = 'rgb(255, 165, 0)';
 var originalLineColor = 'rgb(32, 32, 32)';
-
-
-var deviceType = "not mobile";
-if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-  deviceType="mobile"
-}
+var componentList = [];
+var l1TestArray = [];
+var neutralTestArray = [];
+var switchList = [];
+var openArray = [];
+var attempts = 0;
 
 //Audio
 slideAudio.onseeked = function() {
@@ -75,16 +75,9 @@ slideAudio.ontimeupdate = function() {
 };
 //End Audio
 
-xhr = new XMLHttpRequest();
-xhr.open("GET","schematic.svg",false);
-xhr.overrideMimeType("image/svg+xml");
-xhr.send("");
-
-var schematic = document.getElementById("mainWindow").appendChild(xhr.responseXML.documentElement);
-
-//Resize Window
+//Resize
 var svgWindow = document.getElementById("mainWindow");
-var svg = d3.select(schematic);
+var svg = d3.select(svgContent);
 function resizeSVG(){
   var width = svgWindow.clientWidth;
   var height = svgWindow.clientHeight;
@@ -94,6 +87,12 @@ function resizeSVG(){
 }
 resizeSVG();
 window.addEventListener("resize", resizeSVG)
+//Resize
+
+var deviceType = "not mobile";
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+  deviceType="mobile"
+}
 
 var diagram1Paths = document.getElementById("diagram1").getElementsByTagName("path");
 var diagram1PathsLength = diagram1Paths.length;
@@ -187,8 +186,9 @@ function updateTestArrays(array1, array2){
   neutralTestArray = array2;
 }
 
-var exercise = 'hotValve';
+var exercise = 'exercise1';
 function checkAnswer(exercise){
+  console.log(exercise)
   attempts++;  
   rotatedSwitchArray = [];
   l1Array = [];
@@ -205,7 +205,6 @@ function checkAnswer(exercise){
       rotatedSwitchArray.push(switchList[s])
     }
   }
-  console.log(rotatedSwitchArray)
 
   for(i=0; i<diagram1Paths.length; i++){
       var rob = document.getElementById(diagram1Paths[i].id)
@@ -249,8 +248,6 @@ function checkAnswer(exercise){
   if(foundInRotatedArray != true || arrayD.length != rotatedSwitchArray.length){
     rotated = false;
   }
-
-
   if(line === true && neutral === true && energizedLoad === true && rotated === true){
     slideAudio.play();
   }
@@ -269,7 +266,6 @@ function checkAnswer(exercise){
   if(line === true && neutral === false && energizedLoad === true && rotated === false){
     alert('Neutral and Switches are Incorrect')
   }
-
   if(line === true && neutral === false && energizedLoad === false && rotated === true){
     alert('Neutral and Energized Load are Incorrect')
   }
@@ -324,7 +320,6 @@ function demoOpacity(op){
   path30883copy.setAttribute("opacity", op)
 }
 function demoColorPicker(color){
-  console.log(colorPicker.value);
   colorPicker.value = color;
 }
 
@@ -343,19 +338,19 @@ slideTl
 .to(colorPicker, .5, {css:{background:'white'}, delay:-.5})
 
 .to(question1, .5, {autoAlpha:1, display:'block', onStart:clearDiagram, delay:8.5})
-.to(skipInstructions_btn, .1, {autoAlpha:0, onComplete:function(){slideAudio.pause()}, delay:4})
+.to(skipInstructions_btn, .1, {autoAlpha:0, onComplete:function(){slideAudio.pause(), exercise = 'exercise2'}, delay:4})
 
 .to(question1, .5, {autoAlpha:0, display:'none',delay:1})
 .to(question2, .5, {autoAlpha:1, display:'block', onStart:clearDiagram, delay:1})
-.to(skipInstructions_btn, .1, {autoAlpha:0, onComplete:function(){slideAudio.pause()}, delay:3})
+.to(skipInstructions_btn, .1, {autoAlpha:0, onComplete:function(){slideAudio.pause(), exercise = 'exercise3'}, delay:3})
 
 .to(question2, .5, {autoAlpha:0, display:'none',delay:1})
 .to(question3, .5, {autoAlpha:1, display:'block', onStart:clearDiagram, delay:1})
-.to(skipInstructions_btn, .1, {autoAlpha:0, onComplete:function(){slideAudio.pause()}, delay:4})
+.to(skipInstructions_btn, .1, {autoAlpha:0, onComplete:function(){slideAudio.pause(), exercise = 'exercise4'}, delay:4})
 
 .to(question3, .5, {autoAlpha:0, display:'none',delay:1})
 .to(question4, .5, {autoAlpha:1, display:'block', onStart:clearDiagram, delay:1})
-.to(skipInstructions_btn, .1, {autoAlpha:0, onComplete:function(){slideAudio.pause()}, delay:3})
+.to(skipInstructions_btn, .1, {autoAlpha:0, onComplete:function(){slideAudio.pause(), exercise = 'exercise5'}, delay:3})
 
 .to(question4, .5, {autoAlpha:0, display:'none',delay:1})
 .to(question5, .5, {autoAlpha:1, display:'block', onStart:clearDiagram, delay:1})
@@ -368,9 +363,9 @@ function highlightDiagram(){
   var l1Array = [];
   var neutralArray = [];
   var energizedLoadArray = [];
+  var rotatedSwitchArray =[];
   myText.innerHTML = '';
   for(i=0; i<diagram1PathsLength; i++){
-    console.log(diagram1Paths[i].style.stroke)
     if(diagram1Paths[i].style.stroke === l1Color){
       l1Array.push(diagram1Paths[i].id)
     }
@@ -379,43 +374,58 @@ function highlightDiagram(){
       neutralArray.push(diagram1Paths[i].id)
     }
     if(diagram1Paths[i].style.stroke === energizedLoadColor){
-      console.log(energizedLoadArray)
       energizedLoadArray.push(diagram1Paths[i].id)
     }
   }
-  var arrayName = energizedLoadArray[0].split('_')[0];
+
+  for(s = 0; s<switchList.length; s++){
+    testSwitch = document.getElementById(switchList[s]);
+    if(testSwitch._gsTransform.rotation != 0){
+      rotatedSwitchArray.push(switchList[s])
+    }
+  }
+  
   var br1 = document.createElement("br");
   var br2 = document.createElement("br");
+  var br3 = document.createElement("br");
 
-  myText.append('var ' + arrayName + 'L1Array = [')
-
+  myText.append('var ' + exercise + 'L1Array = [')
   neutralArray.forEach(function(element){
     myText.append('"' + element + '",')
   })
+  myText.append('];')
 
-  myText.append(']')
   myText.appendChild(br1);
-  myText.append('var ' + arrayName + 'NeutralArray = [')
 
+  myText.append('var ' + exercise + 'NeutralArray = [')
   l1Array.forEach(function(element){
     myText.append('"' + element + '",')
   })
-  
-  myText.append(']')
+  myText.append('];')
+
   myText.appendChild(br2);
 
-  // myText.append('var energizedCOMPONENT_NAMEArray = [')
-  myText.append('var ' + arrayName + 'EnergizedLoadArray = [')
-
+  myText.append('var ' + exercise + 'EnergizedLoadArray = [')
   energizedLoadArray.forEach(function(element){
     myText.append('"' + element + '",')
   })
+  myText.append('];')
+
+  myText.appendChild(br3);
+
+  myText.append('var ' + exercise + 'RotatedArray = [')
+
+  rotatedSwitchArray.forEach(function(element){
+    myText.append('"' + element + '",')
+  })
   
-  myText.append(']')
+  myText.append('];')
 }
 
+
+
+
 function moveSwitch(target, type, tValue, tOrigin){
-  // console.log(target)
   componentHighlight = document.getElementById(target.id.split('_')[0] + '_swcopy');
   componentID = target.id.split('_')[0] + '_sw';
   component = document.getElementById(componentID);
