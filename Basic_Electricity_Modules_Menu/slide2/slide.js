@@ -103,21 +103,21 @@ var orbitPath7 = MorphSVGPlugin.pathDataToBezier("#orbitPath7", {align:electron7
 var orbitPath8 = MorphSVGPlugin.pathDataToBezier("#orbitPath8", {align:electron8_drag});
 // TweenLite.set(electron8_drag, {xPercent:-50, yPercent:-50});
 
-var electronOrbitTl = new TimelineMax({paused:false, repeat:-1});
+var electronOrbitTl = new TimelineMax({paused:true, repeat:-1});
 electronOrbitTl.to(electron1_drag, 4.2, {bezier:{values:orbitPath1, type:"cubic"}, ease:Linear.easeNone})
-var electronOrbitTl2 = new TimelineMax({paused:false, repeat:-1});
+var electronOrbitTl2 = new TimelineMax({paused:true, repeat:-1});
 electronOrbitTl2.to(electron2_drag, 3.8, {bezier:{values:orbitPath2, type:"cubic"}, ease:Linear.easeNone})
-var electronOrbitTl3 = new TimelineMax({paused:false, repeat:-1});
+var electronOrbitTl3 = new TimelineMax({paused:true, repeat:-1});
 electronOrbitTl3.to(electron3_drag, 4, {bezier:{values:orbitPath3, type:"cubic"}, ease:Linear.easeNone})
-var electronOrbitTl4 = new TimelineMax({paused:false, repeat:-1});
+var electronOrbitTl4 = new TimelineMax({paused:true, repeat:-1});
 electronOrbitTl4.to(electron4_drag, 4, {bezier:{values:orbitPath4, type:"cubic"}, ease:Linear.easeNone});
-var electronOrbitTl5 = new TimelineMax({paused:false, repeat:-1});
+var electronOrbitTl5 = new TimelineMax({paused:true, repeat:-1});
 electronOrbitTl5.to(electron5_drag, 4.2, {bezier:{values:orbitPath5, type:"cubic"}, ease:Linear.easeNone});
-var electronOrbitTl6 = new TimelineMax({paused:false, repeat:-1});
+var electronOrbitTl6 = new TimelineMax({paused:true, repeat:-1});
 electronOrbitTl6.to(electron6_drag, 3.8, {bezier:{values:orbitPath6, type:"cubic"}, ease:Linear.easeNone});
-var electronOrbitTl7 = new TimelineMax({paused:false, repeat:-1});
+var electronOrbitTl7 = new TimelineMax({paused:true, repeat:-1});
 electronOrbitTl7.to(electron7_drag, 4, {bezier:{values:orbitPath7, type:"cubic"}, ease:Linear.easeNone});
-var electronOrbitTl8 = new TimelineMax({paused:false, repeat:-1});
+var electronOrbitTl8 = new TimelineMax({paused:true, repeat:-1});
 electronOrbitTl8.to(electron8_drag, 4, {bezier:{values:orbitPath8, type:"cubic"}, ease:Linear.easeNone});
 var orbitsArray = [orbitPath1,orbitPath2,orbitPath3,orbitPath4,orbitPath5,orbitPath7];
 var orbit1Array = [orbitPath1,orbitPath2,orbitPath3,orbitPath4,orbitPath5,orbitPath7];
