@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>DC Voltage and Current</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+<audio id='movieAudio' controls='controls' class="playerControls" preload="metadata", src="audioClip.mp3"></audio>
+
+<!------- SCRIPTS -------><!------- SCRIPTS -------><!------- SCRIPTS -------><!------- SCRIPTS ------->
+
+<script src="JS/gsap.min.js"></script>
+<script src="JS/three.js"></script>
+<script src="js/OrbitControls.js"></script>
+<script src="js/GLTFLoader.js"></script>
+<script src="js/playerControls.js"></script>
+
+<!-- <script src="js/particles.js"></script> -->
+
+<script>
+var camera, scene, renderer, cubeMesh, clock, deltaTime, particleSystem;
+var loader = new THREE.GLTFLoader();
+var matrix = new THREE.Matrix4();
+var up = new THREE.Vector3( 0, 1, 0 );
+var axis = new THREE.Vector3( );
+var pt, radians, axis, tangent;
+
+loader.load('battery.glb', handle_load);
+function handle_load(gltf) {
+  model = gltf.scene;
+  scene.add( model );
+  model.position.y = -10;
+  createGlobals(gltf.scene.children);
+  initPresentation();
+}
+
+clock = new THREE.Clock(true);
+scene = new THREE.Scene();
+
+camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000 );
+camera.position.z = 40;
+camera.position.x = 0;
+camera.position.y = 5;
+
+var hemiLight = new THREE.HemisphereLight();
+      scene.add(hemiLight);
+var light1  = new THREE.AmbientLight(0xFFFFFF, .3);
+    scene.add( light1 );
+
+//RENDERER
+renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
+renderer.setClearColor(0xffffff);
+renderer.setPixelRatio(window.devicePixelRatio);
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild( renderer.domElement );
+window.addEventListener( 'resize', onWindowResize, false );
+render();
+
+
+//Presentation//Presentation//Presentation//Presentation//Presentation//Presentation//Presentation//Presentation//Presentation//Presentation//Presentation
+function initPresentation(){
+//Electron cloud particle generator.
+var electronCloudGeo = new THREE.PlaneGeometry( 10, 9, 50, 50 );
+var electronCloudMat = new THREE.PointsMaterial( {
+    size: 1,
+    opacity: 0,
+    map: new THREE.TextureLoader().load('img/electron.png'),
+    transparent: true
+});
+var electronCloudVerts = electronCloudGeo.vertices;
+electronCloudVerts.forEach(function (p){
+  particle = new THREE.Vector3(p.x, p.y, p.z);
+  particle.vx = .05 + Math.random() * .1;
+  electronCloudVerts.push(particle);
+});
+electronEmitter = new THREE.Points( electronCloudGeo, electronCloudMat );
+electronEmitter.sortParticles = true;
+carBattery.add(electronEmitter);
+electronEmitter.rotation.y = Math.PI / 2
+electronEmitter.position.y += 7.2;
+electronEmitter.position.x += 9;
+batteryAnimate = false;
+
+//Electron cloud animator.
+var shift = new THREE.Vector3();
+var delta = 0;
+function animateElectronCloud(){
+	requestAnimationFrame(animateElectronCloud);
+  	if(batteryAnimate === true){
+  	  electronEmitter.geometry.verticesNeedUpdate = true;
+  	  vertices = electronEmitter.geometry.vertices;
+  	  vertices.forEach(function(v){
+  	    if (v.z > -18) {
+  	     	v.z -= v.vx;
+  	     }
+  	     else{
+  	      function randomXToY(minVal,maxVal){
+  	      	var randVal = minVal+(Math.random()*(maxVal-minVal));
+  	     	 	return Math.round(randVal);
+  	    	}
+  	    	var random = randomXToY(.1,15);
+  	    	v.z = v.z + random
+  	   	}
+  	   })
+  		render();
+	}
+}
+animateElectronCloud();
+//End cloud particle generator.
+
+//Create holes group.
+var holesCloudGeo = new THREE.PlaneGeometry( 8, 9, 10, 10 );
+var holesCloudMat = new THREE.PointsMaterial( {
+    size: 1,
+    opacity: 1,
+    map: new THREE.TextureLoader().load('img/hole.png'),
+    transparent: true
+});
+var holesCloudVerts = holesCloudGeo.vertices;
+holesCloudVerts.forEach(function (p){
+  particle = new THREE.Vector3(p.x, p.y, p.z);
+  particle.vx = .05 + Math.random() * .1;
+  holesCloudVerts.push(particle);
+});
+holesGroup = new THREE.Points( holesCloudGeo, holesCloudMat );
+holesGroup.sortParticles = true;
+carBattery.add(holesGroup);
+holesGroup.position.x += 4.8;
+holesGroup.position.y += 8;
+holesGroup.position.z += 6;
+
+//Create electrons group
+var electronsCloudGeo = new THREE.PlaneGeometry( 8, 9, 10, 10 );
+var electronsCloudMat = new THREE.PointsMaterial( {
+    size: 1,
+    opacity: 1,
+    map: new THREE.TextureLoader().load('img/electron.png'),
+    transparent: true
+});
+var electronsCloudVerts = electronsCloudGeo.vertices;
+electronsCloudVerts.forEach(function (p){
+  particle = new THREE.Vector3(p.x, p.y, p.z);
+  particle.vx = .05 + Math.random() * .1;
+  electronsCloudVerts.push(particle);
+});
+electronsGroup = new THREE.Points( electronsCloudGeo, electronsCloudMat );
+electronsGroup.sortParticles = true;
+carBattery.add(electronsGroup);
+electronsGroup.position.x += 4.8;
+electronsGroup.position.y += 8;
+electronsGroup.position.z += 6
+
+var batteryChildren = carBattery.children;
+
+negativeArrow.material.transparent = true;
+negativeArrow.material.opacity = 0;
+positiveArrow.material.transparent = true;
+positiveArrow.material.opacity = 0;
+
+text1.material.transparent = true;
+text1.material.opacity = 0;
+text2.material.transparent = true;
+text2.material.opacity = 0;
+text3.material.transparent = true;
+text3.material.opacity = 0;
+text4.material.transparent = true;
+text4.material.opacity = 0;
+
+//Red wire.
+var blackWireCurveVectors = new THREE.CatmullRomCurve3( [
+new THREE.Vector3( -8.682974815368652 , 13.896724700927734 , 3.5545380115509033 ),
+new THREE.Vector3( -13.281022071838379 , 13.504379272460938 , 3.549776077270508 ),
+new THREE.Vector3( -13.860267639160156 , 12.175819396972656 , 3.8125107288360596 ),
+new THREE.Vector3( -13.90310287475586 , 9.246938705444336 , 5.521049499511719 ),
+new THREE.Vector3( -9.32116985321045 , 10.331119537353516 , 9.975523948669434 ),
+new THREE.Vector3( -0.7502323389053345 , 14.45374870300293 , 19.766427993774414 ),
+new THREE.Vector3( -0.43545806407928467 , 11.565340042114258 , 19.9318904876709 ),
+] );
+
+var geometry = new THREE.TubeBufferGeometry( blackWireCurveVectors, 64, .25, 16, false );
+var material = new THREE.MeshPhongMaterial( { ambient: 0x050505, color: 0x000000, specular: 0x555555, shininess: 30 } );
+var blackWire = new THREE.Mesh( geometry, material );
+carBattery.add( blackWire );
+blackWire.material.alphaTest = .01;
+blackWire.material.transparent = true;
+blackWire.material.opacity = .5
+
+var geometry = new THREE.SphereGeometry( .25, 32, 32 );
+var material = new THREE.MeshBasicMaterial( {color: 0x000000} );
+material.alphaTest = .01;
+material.transparent = true;
+material.opacity = 0;
+var sphere = new THREE.Mesh( geometry, material );
+
+var blackWireElectronsArray = []
+for(i=0; i<20; i++){
+	window[sphere + i] = new THREE.Mesh( geometry, material );
+	window[sphere + i].name = 'sphere' + i;
+	blackWire.add(window[sphere + i])
+	blackWireElectronsArray.push(window[sphere + i])
+}
+
+//Red wire.
+var redWireCurveVectors = new THREE.CatmullRomCurve3( [
+new THREE.Vector3( 0.3412914276123047 , 11.699121475219727 , 19.185302734375 ),
+new THREE.Vector3( 0.41710615158081055 , 14.467229843139648 , 18.923246383666992 ),
+new THREE.Vector3( 9.32116985321045 , 8.203178405761719 , 9.975523948669434 ),
+new THREE.Vector3( 13.90310287475586 , 9.246938705444336 , 5.521049499511719 ),
+new THREE.Vector3( 13.860267639160156 , 12.175819396972656 , 3.8125107288360596 ),
+new THREE.Vector3( 13.281022071838379 , 13.504379272460938 , 3.778593063354492 ),
+new THREE.Vector3( 8.682974815368652 , 14.026142120361328 , 3.354139566421509 ),
+
+] );
+
+var geometry = new THREE.TubeBufferGeometry( redWireCurveVectors, 64, .25, 16, false );
+var material = new THREE.MeshPhongMaterial( { ambient: 0x050505, color: 0xff0000, specular: 0x555555, shininess: 30 } );
+var redWire = new THREE.Mesh( geometry, material );
+carBattery.add( redWire );
+redWire.material.alphaTest = .01;
+redWire.material.transparent = true;
+redWire.material.opacity = 0;
+
+var geometry = new THREE.SphereGeometry( .25, 32, 32 );
+var material = new THREE.MeshBasicMaterial( {color: 0x000000} );
+var sphere = new THREE.Mesh( geometry, material );
+material.alphaTest = .01;
+material.transparent = true;
+material.opacity = 0;
+
+var redWireElectronsArray = []
+for(i=0; i<20; i++){
+	window[sphere + i] = new THREE.Mesh( geometry, material );
+	window[sphere + i].name = 'sphere' + i;
+	redWire.add(window[sphere + i])
+	redWireElectronsArray.push(window[sphere + i])
+}
+
+//Electron Animation
+var t0 = 0;
+var t1 = 0 + .1;
+var t2 = t1 + .1;
+var t3 = t2 + .1;
+var t4 = t3 + .1;
+var t5 = t4 + .1;
+var t6 = t5 + .1;
+var t7 = t6 + .1;
+var t8 = t7 + .1;
+var t9 = t8 + .1;
+var t10 = t9 + .1;
+
+function animateElectrons(){
+	requestAnimationFrame(animateElectrons);
+    blackWireElectronsArray[0].position.set(blackWireCurveVectors.getPoint(t0).x, blackWireCurveVectors.getPoint(t0).y, blackWireCurveVectors.getPoint(t0).z);
+    redWireElectronsArray[0].position.set(redWireCurveVectors.getPoint(t0).x, redWireCurveVectors.getPoint(t0).y, redWireCurveVectors.getPoint(t0).z);
+    t0 = (t0 >= 1) ? 0 : t0 += 0.02;
+
+    blackWireElectronsArray[1].position.set( blackWireCurveVectors.getPoint(t1).x, blackWireCurveVectors.getPoint(t1).y, blackWireCurveVectors.getPoint(t1).z );
+    redWireElectronsArray[1].position.set( redWireCurveVectors.getPoint(t1).x, redWireCurveVectors.getPoint(t1).y, redWireCurveVectors.getPoint(t1).z );
+    t1 = (t1 >= 1) ? 0 : t1 += 0.02;
+
+    blackWireElectronsArray[2].position.set( blackWireCurveVectors.getPoint(t2).x, blackWireCurveVectors.getPoint(t2).y, blackWireCurveVectors.getPoint(t2).z );
+    redWireElectronsArray[2].position.set( redWireCurveVectors.getPoint(t2).x, redWireCurveVectors.getPoint(t2).y, redWireCurveVectors.getPoint(t2).z );
+    t2 = (t2 >= 1) ? 0 : t2 += 0.02;
+
+    blackWireElectronsArray[3].position.set( blackWireCurveVectors.getPoint(t3).x, blackWireCurveVectors.getPoint(t3).y, blackWireCurveVectors.getPoint(t3).z );
+    redWireElectronsArray[3].position.set( redWireCurveVectors.getPoint(t3).x, redWireCurveVectors.getPoint(t3).y, redWireCurveVectors.getPoint(t3).z );
+    t3 = (t3 >= 1) ? 0 : t3 += 0.02;
+
+    blackWireElectronsArray[4].position.set( blackWireCurveVectors.getPoint(t4).x, blackWireCurveVectors.getPoint(t4).y, blackWireCurveVectors.getPoint(t4).z );
+    redWireElectronsArray[4].position.set( redWireCurveVectors.getPoint(t4).x, redWireCurveVectors.getPoint(t4).y, redWireCurveVectors.getPoint(t4).z );
+    t4 = (t4 >= 1) ? 0 : t4 += 0.02;
+
+    blackWireElectronsArray[5].position.set( blackWireCurveVectors.getPoint(t5).x, blackWireCurveVectors.getPoint(t5).y, blackWireCurveVectors.getPoint(t5).z );
+    redWireElectronsArray[5].position.set( redWireCurveVectors.getPoint(t5).x, redWireCurveVectors.getPoint(t5).y, redWireCurveVectors.getPoint(t5).z );
+    t5 = (t5 >= 1) ? 0 : t5 += 0.02;
+
+    blackWireElectronsArray[6].position.set( blackWireCurveVectors.getPoint(t6).x, blackWireCurveVectors.getPoint(t6).y, blackWireCurveVectors.getPoint(t6).z );
+    redWireElectronsArray[6].position.set( redWireCurveVectors.getPoint(t6).x, redWireCurveVectors.getPoint(t6).y, redWireCurveVectors.getPoint(t6).z );
+    t6 = (t6 >= 1) ? 0 : t6 += 0.02;
+
+    blackWireElectronsArray[7].position.set( blackWireCurveVectors.getPoint(t7).x, blackWireCurveVectors.getPoint(t7).y, blackWireCurveVectors.getPoint(t7).z );
+    redWireElectronsArray[7].position.set( redWireCurveVectors.getPoint(t7).x, redWireCurveVectors.getPoint(t7).y, redWireCurveVectors.getPoint(t7).z );
+    t7 = (t7 >= 1) ? 0 : t7 += 0.02;
+
+    blackWireElectronsArray[8].position.set( blackWireCurveVectors.getPoint(t8).x, blackWireCurveVectors.getPoint(t8).y, blackWireCurveVectors.getPoint(t8).z );
+    redWireElectronsArray[8].position.set( redWireCurveVectors.getPoint(t8).x, redWireCurveVectors.getPoint(t8).y, redWireCurveVectors.getPoint(t8).z );
+    t8 = (t8 >= 1) ? 0 : t8 += 0.02;
+
+    blackWireElectronsArray[9].position.set( blackWireCurveVectors.getPoint(t9).x, blackWireCurveVectors.getPoint(t9).y, blackWireCurveVectors.getPoint(t9).z );
+    redWireElectronsArray[9].position.set( redWireCurveVectors.getPoint(t9).x, redWireCurveVectors.getPoint(t9).y, redWireCurveVectors.getPoint(t9).z );
+    t9 = (t9 >= 1) ? 0 : t9 += 0.02;
+
+    blackWireElectronsArray[10].position.set( blackWireCurveVectors.getPoint(t10).x, blackWireCurveVectors.getPoint(t10).y, blackWireCurveVectors.getPoint(t10).z );
+    redWireElectronsArray[10].position.set( redWireCurveVectors.getPoint(t10).x, redWireCurveVectors.getPoint(t10).y, redWireCurveVectors.getPoint(t10).z );
+    t10 = (t10 >= 1) ? 0 : t10 += 0.02;
+    render()
+}
+animateElectrons()
+
+function motorRotate(){
+	requestAnimationFrame(motorRotate);
+	motorShaft.rotation.x +=.2;
+}
+motorRotate();
+
+var fanBlade = scene.getObjectByName( "fanBlade" );
+console.log(fanBlade)
+motor.rotation.y = -Math.PI/4
+console.log(motorChildren)
+motorChildren.transparent = true;
+fanBlade.material.transparent = true;
+
+
+gsap.to([motorChildren, blackWire.material, blackWireElectronsArray.material, fanBlade.material, posClamp.material, negClamp.material, negNut.material, posNut.material], {opacity:0})
+
+render();  
+mainTl = gsap.timeline({paused:true, onUpdate:render});
+mainTl
+.to(electronEmitter.material, {opacity:1, onComplete:function(){batteryAnimate = false;}})
+.to(batteryBodyFront.material, {duration:1, opacity:0, onComplete:function(){batteryAnimate = false}, delay:2})
+.to(electronEmitter.material, {opacity:1, onComplete:function(){batteryAnimate = false;}})
+.to(batteryBodyFront.material, {duration:1, opacity:0, onComplete:function(){batteryAnimate = true}, delay:2})
+.from(holesGroup.material, {duration:1, x:-5, opacity:0, delay:5})
+.from(electronsGroup.material, {duration:1, opacity:0, delay:2})
+
+.to(electronsGroup.position, {duration:3.5, x:-4.8, delay:0, ease:"none"})
+.to(text2.material, {duration:1, opacity:1, delay:1})
+.to(text1.material, {duration:1, opacity:1, delay:7})
+
+.to(electronsGroup.position, {duration:.1, x:'+=.25', delay:0, yoyo:true, repeat:20, ease:"none" ,delay:5})
+
+.to([positiveArrow.material, negativeArrow.material], {duration:1, opacity:1, delay:7})
+.to(text3.material, {duration:1, opacity:1, delay:2})
+.to(text4.material, {duration:1, opacity:1, delay:7})
+
+.to([text1.material,text2.material,text3.material,text4.material, negativeArrow.material, positiveArrow.material], {duration:1, opacity:0, delay:7})
+.to(camera.position, {duration:1, z:'+=20', y:'+=10', z:'+=10', delay:4})
+.to(camera.rotation, {duration:1, x:-Math.PI/8, delay:-1})
+.to([blackWire.material, motorChildren, redWire.material, fanBlade.material, posClamp.material, negClamp.material, negNut.material, posNut.material], {duration:1, opacity:1, delay:1})
+.to(blackWireElectronsArray[0].material, {duration:1, opacity:1, delay:3})
+.to(redWireElectronsArray[0].material, {duration:1, opacity:1, delay:-1})
+.to([blackWire.material, redWire.material], {duration:1, opacity:0, delay:-1})
+
+.to(electronEmitter.material, {duration:1, opacity:1, onComplete:function(){batteryAnimate = true}, delay:2})
+// .to(motorShaft.rotation, {duration: 2, x:Math.PI*2, repeat:19, ease:"none"})
+
+
+var au = document.getElementById("movieAudio");
+au.onloadedmetadata = function() {
+    compensation = movieAudio.duration - mainTl.duration();
+    mainTl.add(TweenMax.to(dummy, compensation, {autoAlpha: 1}));
+    console.log(movieAudio.duration - mainTl.duration())
+};
+
+}
+
+controls = new THREE.OrbitControls(camera, renderer.domElement);
+controls.addEventListener('change', render);
+controls.enableZoom = true;
+
+function render() {
+  renderer.render( scene, camera );
+}
+
+function onWindowResize() {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize( window.innerWidth, window.innerHeight );
+  render();
+}
+
+//Assigns variable names to all 3d meshes.
+var carBatteryChildren = [];
+var motorChildren = [];
+function createGlobals(array){
+  array.forEach(function(child){
+    if (window[child.name] !== undefined){
+      console.error("A global variable with the name " + child.name + " already exists.")
+    }
+    window[child.name] = scene.getObjectByName(child.name)
+    if (child.children){
+      createGlobals(child.children);
+      if ( child instanceof THREE.Mesh ){
+        child.material.alphaTest = .01;
+        child.transparent = true;
+      }
+      if ( child.parent.name === 'carBattery' ){
+        carBatteryChildren.push(child);
+        child.alphaTest = .01;
+        child.transparent = true;
+        child.depthTest = false;
+      }
+      if ( child.parent.name === 'motor' ){
+        motorChildren.push(child.material);
+        child.alphaTest = .01;
+        child.transparent = true;
+        child.depthTest = false;
+        child.opacity = 0;
+      }
+    }
+  });
+}
+</script>
+</body>
+</html>
