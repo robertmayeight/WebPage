@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>2019 120 V Advantium Interactive Schematic</title>
+  <meta charset="UTF-8">
+  <!DOCTYPE html>
+  <link rel="stylesheet" href="css/main.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <script src="js/d3.min.js"></script>
+</head>
+<body>
+     <div id="mainWindow"></div>
+    <span class= "align-top-left">
+      <select id="colorPicker" onChange="colorPickerChange(this.selectedIndex);">
+        <option value="#000000" style="background-color: Black;color: #FFFFFF;">COLOR PICKER</option>
+        <option value="#000000" style="background-color: Black;color: #FFFFFF;">Black</option>
+        <option value="#A9A9A9" style="background-color: DarkGray;">DarkGray</option>
+        <option value="#D3D3D3" style="background-color: LightGrey;">LightGray</option>
+        <option value="#7FFFD4" style="background-color: Aquamarine;">Aquamarine</option>
+        <option value="#0000FF" style="background-color: Blue;">Blue</option>
+        <option value="#800080" style="background-color: Purple;color: #FFFFFF;">Purple</option>
+        <option value="#EE82EE" style="background-color: Violet;">Violet</option>
+        <option value="#FFC0CB" style="background-color: Pink;">Pink</option>
+        <option value="#008000" style="background-color: Green;color: #FFFFFF;">Green</option>
+        <option value="#9ACD32" style="background-color: YellowGreen;">YellowGreen</option>
+        <option value="#FFFF00" style="background-color: Yellow;">Yellow</option>
+        <option value="#FFA500" style="background-color: Orange;">Orange</option>
+        <option value="#FF0000" style="background-color: Red;">Red</option>
+        <option value="#A52A2A" style="background-color: Brown;">Brown</option>
+      </select>
+      <div class="controls">  
+  <button id="reset">Reset</button>
+</div>
+    </span>
+
+</body>
+<script src="../JavaScriptLibraries/TweenMax.min.js"></script>
+
+<script src="js/Draggable.min.js"></script>
+<script src="../JavaScriptLibraries/Refrigeration Variables.js"></script>
+<script src="js/javaScript.js"></script>
+</html>
