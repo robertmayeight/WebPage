@@ -5,160 +5,48 @@
   <meta charset="UTF-8">
   <!DOCTYPE html>
   <link rel="stylesheet" href="../../JavaScriptLibraries/movie.css">
+  <style type="text/css">
+  body {
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+    overflow: hidden;
+  }
+  .mainWindow {
+    position: fixed;
+    left: 0%;
+    top: 0%
+    margin: auto;
+    padding:0;
+    width: 100%;
+    height:100vh;
+    overflow: hidden;
+  }
+
+    .playerControls {
+    position: absolute;
+    left: 0px;
+    bottom:0px;
+    margin: auto;
+    width: 100%;
+    z-index: 2;
+  }
+
+  .slideHeading{
+    position: fixed;
+    margin: auto;
+    width: 100%;
+    top: 20%
+    font-size: xx-large;
+  }
+  
+  </style>
 </head>
 
 <body>
-  <div id="editor" class="editorHidden">
-    <span id="editorMain">
-      <select name="1" id="selectFunction" onchange="editorChange(this.value)">
-        <option value="blank" selected> -- select tool -- </option>
-        <option value="addLine">Callout Line</option>
-        <option value="editText">Text - Add/Edit</option>
-        <option value="positionScale">Position/Scale</option>
-        <option value="traceDiagram">Line Trace</option>
-        <option value="moveMeterLeads">Move Meter Lead</option>
-      </select>
-      <span id="codeText">Code Text</span>
-    </span>
-<!-- Callout Line -->
-    <span id="addLine" class="editorHidden">
-      <button id="addLine" onclick="drawLines()">Add Line</button><button id="addPoint" onclick="addPoint()">Add Point</button>
-      <input type="text" id="pathNumber" value=1>
-      <select name="3" id="strokeColor" ">
-        <option value="red">red</option>
-        <option value="black">black</option>
-        <option value="white">white</option>
-      </select> 
-      StokeWidth: 
-      <select name="4" id="selectStrokeWidth" ">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-      </select>
-      Duration: 
-      <select name="5" id="selectTime">
-        <option value=".001">1</option>
-        <option value="2">.25</option>
-        <option value="3">.5</option>
-        <option value="1">.75</option>
-        <option value="2">1</option>
-        <option value="3">1.25</option>
-        <option value="1">1.5</option>
-        <option value="2">1.75</option>
-        <option value="3">2</option>
-        <option value="3">3</option>
-        <option value="3">4</option>
-        <option value="3">5</option>
-      </select>
-      Delay: 
-      <select name="6" id="selectDelay" onchange="setUpDelay(this.value)">
-        <option value=".1">.1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-      </select>
-      <button id="getCode" onclick="getLineCode()">Draw Line</button>
-    </span>
-
-<!-- Text - Add/Edit -->
-    <span id="editText" class="editorHidden">
-          <select name="classChange" id="changeClass">
-            <option value="h1">h1</option>
-            <option value="h1 blackBg">h1 blackBg</option>
-            <option value="h1 whiteText">h1 whiteText</option>
-            <option value="h2">h2</option>
-            <option value="h2 blackBg">h2 blackBg</option>
-            <option value="h2 whiteText">h2 whiteText</option>
-            <option value="h3">h3</option>
-            <option value="h3 blackBg">h3 blackBg</option>
-            <option value="h3 whiteText">h3 whiteText</option>
-          </select>
-          <button id="addTextBox" onclick="addTextBox()">Add Text Box</button>
-          <button id="textNewCode" onclick="getTextCode()">Get Code</button>
-    </span>
-
-<!-- Position/Scale -->
-    <span id="sizePosition" class="editorHidden">
-       Target: 
-      <select name="spTargetName" id="spTarget">
-        <option value="multimeterGroup">multimeterGroup</option>
-        <option value="showWindow">showWindow</option>
-        <option value=".5">.5</option>
-        <option value=".75">.75</option>
-        <option value="1">1</option>
-        <option value="1.25">1.25</option>
-        <option value="1.5">1.5</option>
-        <option value="1.75">1.75</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="35">5</option>
-      </select>
-
-        Duration: 
-      <select name="spSelectTime" id="spSelectTime">
-        <option value="1">1</option>
-        <option value=".25">.25</option>
-        <option value=".5">.5</option>
-        <option value=".75">.75</option>
-        <option value="1">1</option>
-        <option value="1.25">1.25</option>
-        <option value="1.5">1.5</option>
-        <option value="1.75">1.75</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="35">5</option>
-      </select>
-      Delay: 
-      <select name="6" id="spSelectDelay" >
-        <option value='+=0'>0</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-      </select>
-      <button id="sizePositionBtn1" onclick="getScalePosition()">Get Code</button>
-    </span>
-
-<!-- Trace Diagram -->
-    <span id="traceDiagram" class="editorHidden">
-      <select name="tdStrokeColor" id="tdStrokeColor">
-        <option value="red">red</option>
-        <option value="blue">blue</option>
-        <option value="orange">orange</option>
-        <option value="yellow">yellow</option>
-        <option value="green">green</option>
-        <option value="violet">violet</option>
-        <option value="black">black</option>
-        <option value="white">white</option>
-      </select> 
-       <select name="drawDirection" id="drawDirection" >
-        <option value='drawForward'>Draw Forward</option>
-        <option value='drawReverse'>Draw Reverse</option>
-      </select>
-      <button id="linetrace" onclick="traceLines()">Get Lines</button>
-    </span>
-
-<!-- Move Meter Leads -->
-    <span id="morphLeads" class="editorHidden">
-      Delay: 
-      <select name="6" id="leadColor" >
-        <option value='blackLead'>Black Lead</option>
-        <option value='redLead'>Red Lead</option>
-      </select>
-      <button id="moveLeads" onclick="moveMeterLeads()">Get Code</button>
-    </span>
-
-
-
-
-
-  </div>
+ <audio id='music' controls='controls' class="playerControls"></audio>
   <div id="showWindow">
   </div>
-  <div id="sliderContainer">
-    <!-- <button id='btn1' class='btn' onclick = pause()>PLAY</button>
-     &nbsp;&nbsp;&nbsp;&nbsp;
-     <input id="progressSlider" class="slider" type="range" min="0" max="1" value="0" step="0.001"/> -->
-   </div>
 </body>
 <script src="../../JavaScriptLibraries/TweenMax.min.js"></script>
 <script src="../../JavaScriptLibraries/draggable.js"></script>
@@ -168,8 +56,5 @@
 <script src="../../JavaScriptLibraries/TextPlugin.min.js"></script>
 <script src="../../JavaScriptLibraries/coreScript.js"></script>
 <script src="../../JavaScriptLibraries/Refrigeration Variables.js"></script>
-<script src="../../JavaScriptLibraries/Progress Bar.js"></script>
 <script src="javaScript.js"></script>
-<!-- <script src="../../JavaScriptLibraries/Multimeter.js"></script> -->
-<script src="../../JavaScriptLibraries/editor.js"></script>
 </html>

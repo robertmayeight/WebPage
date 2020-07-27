@@ -6,10 +6,9 @@
   <!DOCTYPE html>
   <link rel="stylesheet" href="css/main.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <script src="js/d3.min.js"></script>
 </head>
 <body>
-     <div id="mainWindow"></div>
+     <div id="mainWindow" style="background-color: 'red'"></div>
     <span class= "align-top-left">
       <select id="colorPicker" onChange="colorPickerChange(this.selectedIndex);">
         <option value="#000000" style="background-color: Black;color: #FFFFFF;">COLOR PICKER</option>
@@ -33,10 +32,15 @@
 </div>
     </span>
 
+<svg id="svg-scrim" class="svg svg-scrim">  
+  <circle id="pivot" class="pivot" cx="0" cy="0" r="6" />
+</svg>
+
 </body>
 <script src="../JavaScriptLibraries/TweenMax.min.js"></script>
 
 <script src="js/Draggable.min.js"></script>
 <script src="../JavaScriptLibraries/Refrigeration Variables.js"></script>
 <script src="js/javaScript.js"></script>
+<script src="js/gsapPanandZoom.js"></script>
 </html>

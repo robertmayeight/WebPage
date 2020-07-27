@@ -4,18 +4,19 @@ xhr.overrideMimeType("image/svg+xml");
 xhr.send("");
 var schematic = document.getElementById("mainWindow").appendChild(xhr.responseXML.documentElement);
 schematic.classList.add("center");
-// zoomSlider.value=0;
+
 var svgWindow = document.getElementById("mainWindow");
-var svg = d3.select(svgContent);
+var svg = document.getElementsByTagName(svgContent);
+
+
 function resizeSVG(){
-  var width = svgWindow.clientWidth;
-  var height = svgWindow.clientHeight;
-  svg
-  .attr("width", width)
-  .attr("height", height);
+  schematic.setAttribute('width', svgWindow.clientWidth);
+  schematic.setAttribute('height', svgWindow.clientHeight);
 }
-resizeSVG();
 window.addEventListener("resize", resizeSVG)
+resizeSVG();
+
+
 
 var noPaths = document.getElementById("diagram1").getElementsByTagName("path");
 var noPathsLength = noPaths.length;
@@ -37,80 +38,73 @@ for(i=0; i<noPathsLength; i++){
 	path.setAttribute('touchmove','wireClicked(this);');	
 }
 
-var pannable = new Draggable(schematic, {
-  throwResistance: 3000,
-  trigger: svg,
-  throwProps: true,
-  onPress: selectDraggable,
-  onDrag: updateViewBox,
-  onThrowUpdate: updateViewBox,
-});
+// var schematicDrag = Draggable.create(schematic, {zIndexBoost:false});
 
 
 
-var svg = document.querySelector("#svgContent");/*Must be the name of svg in Inkscape*/
-var reset = document.querySelector("#reset");/*Name of reset button in HTML*/
+// var svg = document.querySelector("#svgContent");/*Must be the name of svg in Inkscape*/
+// var reset = document.querySelector("#reset");/*Name of reset button in HTML*/
 
-var point = svg.createSVGPoint();
-var viewBox = svg.viewBox.baseVal;
+// var point = svg.createSVGPoint();
+// var viewBox = svg.viewBox.baseVal;
 
-var cachedViewBox = {
-  x: viewBox.x,
-  y: viewBox.y,
-  width: viewBox.width,
-  height: viewBox.height
-};
+// var cachedViewBox = {
+//   x: viewBox.x,
+//   y: viewBox.y,
+//   width: viewBox.width,
+//   height: viewBox.height
+// };
 
-reset.addEventListener("click", resetView);
-window.addEventListener("wheel", onWheel);
+// reset.addEventListener("click", resetView);
+// window.addEventListener("wheel", onWheel);
 
-function onWheel(event) {
+// function onWheel(event) {
   
-  event.preventDefault();
+//   event.preventDefault();
     
-  var normalized;  
-  var delta = event.wheelDelta;
+//   var normalized;  
+//   var delta = event.wheelDelta;
 
-  if (delta) {
-    normalized = (delta % 120) == 0 ? delta / 120 : delta / 12;
-  } else {
-    delta = event.deltaY || event.detail || 0;
-    normalized = -(delta % 3 ? delta * 10 : delta / 3);
-  }
+//   if (delta) {
+//     normalized = (delta % 120) == 0 ? delta / 120 : delta / 12;
+//   } else {
+//     delta = event.deltaY || event.detail || 0;
+//     normalized = -(delta % 3 ? delta * 10 : delta / 3);
+//   }
   
-  var scaleFactor = 1.2;
-  var scaleDelta = normalized > 0 ? 1 / scaleFactor : scaleFactor;
+//   var scaleFactor = 1.2;
+//   var scaleDelta = normalized > 0 ? 1 / scaleFactor : scaleFactor;
   
-  point.x = event.clientX;
-  point.y = event.clientY;
+//   point.x = event.clientX;
+//   point.y = event.clientY;
   
-  var startPoint = point.matrixTransform(svg.getScreenCTM().inverse());
+//   var startPoint = point.matrixTransform(svg.getScreenCTM().inverse());
       
-  var fromVars = {
-    x: viewBox.x,
-    y: viewBox.y,
-    width: viewBox.width,
-    height: viewBox.height,
-    ease: Power2.easeOut
-  };
+//   var fromVars = {
+//     x: viewBox.x,
+//     y: viewBox.y,
+//     width: viewBox.width,
+//     height: viewBox.height,
+//     ease: Power2.easeOut
+//   };
   
-  viewBox.x -= (startPoint.x - viewBox.x) * (scaleDelta - 1);
-  viewBox.y -= (startPoint.y - viewBox.y) * (scaleDelta - 1);
-  viewBox.width *= scaleDelta;
-  viewBox.height *= scaleDelta;
+//   viewBox.x -= (startPoint.x - viewBox.x) * (scaleDelta - 1);
+//   viewBox.y -= (startPoint.y - viewBox.y) * (scaleDelta - 1);
+//   viewBox.width *= scaleDelta;
+//   viewBox.height *= scaleDelta;
     
-  TweenLite.from(viewBox, 2, fromVars);  
-}
+//   TweenLite.from(viewBox, 2, fromVars);  
+// }
 
-function resetView() {
+// function resetView() {
   
-  TweenLite.to(viewBox, 0.4, {
-    x: cachedViewBox.x,
-    y: cachedViewBox.y,
-    width: cachedViewBox.width,
-    height: cachedViewBox.height,
-  });
-}
+//   TweenLite.to(viewBox, 0.4, {
+//     x: cachedViewBox.x,
+//     y: cachedViewBox.y,
+//     width: cachedViewBox.width,
+//     height: cachedViewBox.height,
+//   });
+// }
 
 
 
@@ -201,7 +195,7 @@ function colorPickerChange(e){
   console.log(highlightColor)
 }
 
-TweenMax.to(schematic, .01, {scaleX:2, scaleY:2, x:100, y:-200, transformOrigin: "50% 50%", ease: Power0.easeNone});
+// TweenMax.to(schematic, .01, {scaleX:2, scaleY:2, x:100, y:-200, transformOrigin: "50% 50%", ease: Power0.easeNone});
 
 // -----------------------------------------------------------------------------------------------------------------------------
 
